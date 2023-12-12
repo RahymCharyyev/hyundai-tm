@@ -1,3 +1,4 @@
+import { Layout } from '@/layout/Layout';
 import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
@@ -45,7 +46,9 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${hyundaiSans.style.fontFamily};
         }
       `}</style>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 }

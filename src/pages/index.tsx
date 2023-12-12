@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
+import { MainSlider } from '@/widgets/home/main-slider/MainSlider';
+import { CarsSlider } from '@/widgets/home/cars-slider/CarsSlider';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -14,6 +16,8 @@ export default function Home() {
           <h2>TM</h2>
         </Link>
       </div>
+      <MainSlider />
+      <CarsSlider />
     </main>
   );
 }

@@ -3,6 +3,8 @@ import useTranslation from 'next-translate/useTranslation';
 
 export function Header() {
   const { t } = useTranslation('common');
+  console.log(t('common:title'));
+  console.log('sadasdasd');
 
   return (
     <header>
