@@ -1,5 +1,3 @@
 export const MainSlider = () => {
-  return (
-    <div>MainSlider</div>
-  )
-}
+  return <div>MainSlider</div>;
+};

@@ -1,1 +1,1 @@
-export * from './exmapleAtom'
+export * from './exmapleAtom';

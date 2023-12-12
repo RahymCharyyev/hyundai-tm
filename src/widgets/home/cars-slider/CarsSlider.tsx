@@ -1,5 +1,3 @@
 export const CarsSlider = () => {
-  return (
-    <div>CarsSlider</div>
-  )
-}
+  return <div>CarsSlider</div>;
+};
