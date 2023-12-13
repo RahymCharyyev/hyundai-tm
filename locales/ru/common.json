@@ -1,3 +1,9 @@
 {
-  "title": "Привет всем!"
+  "callCenter": "Единый колл-центр",
+  "main": "Главная",
+  "modelsLineup": "Модельный ряд",
+  "maintenance": "Сервис",
+  "hyundaiHistory": "История Hyundai",
+  "stock": "Акции",
+  "services": "Услуги"
 }
