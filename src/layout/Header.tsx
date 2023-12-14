@@ -23,7 +23,7 @@ export function Header() {
         <div className="flex gap-8">
           <Link
             className={
-              router.pathname == '/' ? 'active font-medium hover:font-medium' : ''
+              router.pathname == '/' ? 'active font-medium' : 'hover:font-medium'
             }
             href="/"
           >
@@ -31,7 +31,7 @@ export function Header() {
           </Link>
           <Link
             className={
-              router.pathname == '/models' ? 'active font-medium hover:font-medium' : ''
+              router.pathname == '/models' ? 'active font-medium' : 'hover:font-medium'
             }
             href="/models"
           >
@@ -40,8 +40,8 @@ export function Header() {
           <Link
             className={
               router.pathname == '/maintenance'
-                ? 'active font-medium hover:font-medium'
-                : ''
+                ? 'active font-medium '
+                : 'hover:font-medium'
             }
             href="/maintenance"
           >
@@ -49,7 +49,7 @@ export function Header() {
           </Link>
           <Link
             className={
-              router.pathname == '/history' ? 'active font-medium hover:font-medium' : ''
+              router.pathname == '/history' ? 'active font-medium' : 'hover:font-medium'
             }
             href="/history"
           >
@@ -57,7 +57,7 @@ export function Header() {
           </Link>
           <Link
             className={
-              router.pathname == '/stock' ? 'active font-medium hover:font-medium' : ''
+              router.pathname == '/stock' ? 'active font-medium' : 'hover:font-medium'
             }
             href="/stock"
           >
@@ -65,7 +65,7 @@ export function Header() {
           </Link>
           <Link
             className={
-              router.pathname == '/services' ? 'active font-medium hover:font-medium' : ''
+              router.pathname == '/services' ? 'active font-medium' : 'hover:font-medium'
             }
             href="/services"
           >
