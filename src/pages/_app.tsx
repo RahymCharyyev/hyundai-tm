@@ -1,7 +1,8 @@
-import { Layout } from '@/layout/Layout';
-import '@/styles/globals.css';
 import type { AppProps } from 'next/app';
 import localFont from 'next/font/local';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Layout } from '@/layout/Layout';
+import '@/styles/globals.css';
 
 const hyundaiSans = localFont({
   src: [
@@ -38,6 +39,8 @@ const hyundaiSans = localFont({
   ],
 });
 
+const queryClient = new QueryClient();
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
@@ -46,9 +49,11 @@ export default function App({ Component, pageProps }: AppProps) {
           font-family: ${hyundaiSans.style.fontFamily};
         }
       `}</style>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </QueryClientProvider>
     </>
   );
 }
