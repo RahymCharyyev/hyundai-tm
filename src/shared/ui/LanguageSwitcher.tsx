@@ -5,8 +5,9 @@ import { Dropdown } from 'flowbite-react';
 
 export const LanguageSwitcher = () => {
   return (
-    <div className="flex gap-2">
+    <div className="flex gap-2 bg-white">
       <Dropdown
+        className="bg-white"
         arrowIcon={false}
         label={
           <Image

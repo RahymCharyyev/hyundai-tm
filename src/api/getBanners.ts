@@ -7,7 +7,6 @@ export const getBanners = async () => {
     method: 'GET',
     url: '/banners',
   });
-  console.log('data', data);
 
   return data.data;
 };

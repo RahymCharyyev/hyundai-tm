@@ -9,7 +9,7 @@ export function Header() {
   const router = useRouter();
 
   return (
-    <header>
+    <header className="z-10">
       <div className="h-11 flex items-center bg-secondary">
         <span className="text-primary px-28">
           {t('callCenter')}: &nbsp;
