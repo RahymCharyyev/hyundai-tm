@@ -122,7 +122,7 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="text-center text-white">
+      <div className="text-center text-white mb-3">
         Copyright {currentYear} Hyundai Motor Company. {t('allRightsReserved')}
       </div>
     </footer>
