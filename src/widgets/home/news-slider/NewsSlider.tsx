@@ -37,9 +37,15 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
           <SwiperSlide key={news.id}>
             <div className="flex flex-col gap-10 items-center">
               <div>
-                <span>
-                  {news.type} | {getCurrentDate(news.createdAt)}
-                </span>
+                {news.type == 'global' ? (
+                  <span>
+                    {t('global')} | {getCurrentDate(news.createdAt)}
+                  </span>
+                ) : (
+                  <span>
+                    {t('local')} | {getCurrentDate(news.createdAt)}
+                  </span>
+                )}
               </div>
               <Link
                 target="_blank"
@@ -58,6 +64,7 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
             </div>
           </SwiperSlide>
         ))}
+        <hr className="w-full h-px bg-thirdColor "></hr>
       </Swiper>
     </>
   );

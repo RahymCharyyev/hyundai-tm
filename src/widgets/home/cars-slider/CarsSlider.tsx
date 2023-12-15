@@ -52,6 +52,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
       >
         {t('moreModels')}
       </Link>
+      <hr className="w-full h-px bg-thirdColor mb-8"></hr>
     </>
   );
 };

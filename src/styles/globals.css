@@ -96,13 +96,12 @@
   --swiper-pagination-bullet-width: 10px;
   --swiper-pagination-bullet-height: 10px;
   --swiper-pagination-bullet-inactive-color: white;
-  --swiper-pagination-bullet-border-color: black;
   --swiper-pagination-bullet-inactive-opacity: 1;
   --swiper-pagination-bullet-opacity: 1;
   margin-bottom: 125px;
 
   .swiper-pagination-bullet {
-    border: 1px solid black;
+    border: 1px solid gray;
   }
 
   .swiper-pagination-bullet-active {
