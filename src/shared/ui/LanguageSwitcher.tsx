@@ -1,34 +1,31 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Dropdown } from 'flowbite-react';
+import { Menu, MenuHandler, MenuList, MenuItem } from '@material-tailwind/react';
 
 export const LanguageSwitcher = () => {
   return (
-    <div className="flex gap-2 bg-white">
-      <Dropdown
-        className="bg-white"
-        arrowIcon={false}
-        label={
-          <Image
-            src="/language_icon.svg"
-            alt="language select logo"
-            width={20}
-            height={20}
-          />
-        }
-      >
-        <Dropdown.Item>
+    <Menu>
+      <MenuHandler className="cursor-pointer">
+        <Image
+          src="/language_icon.svg"
+          alt="language select logo"
+          width={20}
+          height={20}
+        />
+      </MenuHandler>
+      <MenuList>
+        <MenuItem className="flex items-center gap-2">
           <Link href="/" locale="ru">
             Русский
           </Link>
-        </Dropdown.Item>
-        <Dropdown.Item>
+        </MenuItem>
+        <MenuItem className="flex items-center gap-2">
           <Link href="/" locale="tm">
             Türkmençe
           </Link>
-        </Dropdown.Item>
-      </Dropdown>
-    </div>
+        </MenuItem>
+      </MenuList>
+    </Menu>
   );
 };

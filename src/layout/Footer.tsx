@@ -8,7 +8,7 @@ export function Footer() {
 
   return (
     <footer className="h-[400px] flex flex-col justify-between bg-primary">
-      <div className="flex justify-between pt-20 px-28">
+      <div className="flex flex-wrap justify-between pt-20 px-28">
         <div className="flex flex-col gap-3 max-w-[250px]">
           <Image
             src="/hyundai_white_logo.png"

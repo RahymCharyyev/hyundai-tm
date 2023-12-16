@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Banner } from '@/types/mainPage';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, A11y } from 'swiper/modules';
@@ -9,6 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
+import { ButtonLink } from '@/shared/ui';
 
 type MainSliderProps = {
   data: Banner[];
@@ -39,13 +39,13 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
                 width={1860}
                 height={720}
               />
-              <Link
-                target="_blank"
+              <ButtonLink
                 className="bg-primary text-white py-4 px-5 absolute bottom-6 right-20 hover:underline"
+                target="_blank"
                 href={banner.link}
               >
-                {t('knowMore')}
-              </Link>
+                {t('readMore')}
+              </ButtonLink>
             </div>
           </SwiperSlide>
         ))}
