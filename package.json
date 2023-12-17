@@ -17,7 +17,6 @@
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
     "dayjs": "^1.11.10",
-    "flowbite-react": "^0.7.2",
     "next": "14.0.4",
     "next-compose-plugins": "^2.2.1",
     "next-seo": "^6.4.0",
