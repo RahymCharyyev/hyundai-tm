@@ -6,7 +6,8 @@ import { LanguageSwitcher } from '@/shared/ui';
 
 export function Header() {
   const { t } = useTranslation('common');
-  const router = useRouter();
+  const { pathname } = useRouter();
+  const activeLink = 'active font-medium hover:font-medium';
 
   return (
     <header>
@@ -21,54 +22,25 @@ export function Header() {
       <div className="flex justify-between items-center h-24 px-28">
         <Image src="/hyundai_blue_logo.png" alt="hyundai logo" width={190} height={30} />
         <div className="flex gap-8">
-          <Link
-            className={
-              router.pathname == '/' ? 'active font-medium hover:font-medium' : ''
-            }
-            href="/"
-          >
+          <Link className={pathname == '/' ? activeLink : ''} href="/">
             {t('main')}
           </Link>
-          <Link
-            className={
-              router.pathname == '/models' ? 'active font-medium hover:font-medium' : ''
-            }
-            href="/models"
-          >
+          <Link className={pathname == '/models' ? activeLink : ''} href="/models">
             {t('modelsLineup')}
           </Link>
           <Link
-            className={
-              router.pathname == '/maintenance'
-                ? 'active font-medium hover:font-medium'
-                : ''
-            }
+            className={pathname == '/maintenance' ? activeLink : ''}
             href="/maintenance"
           >
             {t('maintenance')}
           </Link>
-          <Link
-            className={
-              router.pathname == '/history' ? 'active font-medium hover:font-medium' : ''
-            }
-            href="/history"
-          >
+          <Link className={pathname == '/history' ? activeLink : ''} href="/history">
             {t('hyundaiHistory')}
           </Link>
-          <Link
-            className={
-              router.pathname == '/stock' ? 'active font-medium hover:font-medium' : ''
-            }
-            href="/stock"
-          >
+          <Link className={pathname == '/stock' ? activeLink : ''} href="/stock">
             {t('stock')}
           </Link>
-          <Link
-            className={
-              router.pathname == '/services' ? 'active font-medium hover:font-medium' : ''
-            }
-            href="/services"
-          >
+          <Link className={pathname == '/services' ? activeLink : ''} href="/services">
             {t('services')}
           </Link>
         </div>
