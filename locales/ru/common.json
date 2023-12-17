@@ -5,5 +5,19 @@
   "maintenance": "Сервис",
   "hyundaiHistory": "История Hyundai",
   "stock": "Акции",
-  "services": "Услуги"
+  "services": "Услуги",
+  "officialDistributor": "Официальный дистрибьютор Hyundai в Туркменистане",
+  "maintenanceEvent": "Сервисное мероприятие",
+  "signToMaintenance": "Записаться на сервис",
+  "warranty": "Гарантия",
+  "carMaintenance": "Обслуживание",
+  "ToMap": "Карта ТО",
+  "forBuyer": "Покупателю",
+  "testDrive": "Тест-драйв",
+  "socialResponsibility": "Социальная ответственность",
+  "aboutHyundai": "О Hyundai",
+  "media": "Медиа",
+  "news": "Новости",
+  "contacts": "Контакты",
+  "allRightsReserved": "Все права защищены."
 }
