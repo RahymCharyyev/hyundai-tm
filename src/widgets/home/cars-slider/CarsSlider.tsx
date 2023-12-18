@@ -9,6 +9,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
+import { ButtonLink } from '@/shared/ui';
 
 type CarsSliderProps = {
   data: Model[];
@@ -45,13 +46,13 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <Link
-        target="_blank"
+      <ButtonLink
         className="bg-primary text-white py-4 px-5 hover:underline mb-20"
+        target="_blank"
         href="/models"
       >
         {t('moreModels')}
-      </Link>
+      </ButtonLink>
       <hr className="w-full h-px bg-thirdColor mb-8"></hr>
     </>
   );

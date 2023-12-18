@@ -1,5 +1,4 @@
 import { FC } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { News } from '@/types/mainPage';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -9,7 +8,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
+import { ButtonLink } from '@/shared/ui';
 import dayjs from 'dayjs';
+
 
 type NewsSliderProps = {
   data: News[];
@@ -54,13 +55,13 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
               >
                 {news.title}
               </Link>
-              <Link
+              <ButtonLink
                 target="_blank"
                 className="bg-primary text-white py-4 px-5 hover:underline w-48 mb-10"
                 href="/news"
               >
                 {t('moreNews')}
-              </Link>
+              </ButtonLink>
             </div>
           </SwiperSlide>
         ))}
