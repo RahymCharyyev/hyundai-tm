@@ -11,7 +11,6 @@ import 'swiper/css/a11y';
 import { ButtonLink } from '@/shared/ui';
 import dayjs from 'dayjs';
 
-
 type NewsSliderProps = {
   data: News[];
   t: Function;
