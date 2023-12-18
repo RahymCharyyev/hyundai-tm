@@ -8,8 +8,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
-import { getCurrentDate } from '@/shared/utils';
 import { ButtonLink } from '@/shared/ui';
+import dayjs from 'dayjs';
+
 
 type NewsSliderProps = {
   data: News[];
@@ -39,11 +40,11 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
               <div>
                 {news.type == 'global' ? (
                   <span>
-                    {t('global')} | {getCurrentDate(news.createdAt)}
+                    {t('global')} | {dayjs(news.createdAt).format('DD.MM.YYYY')}
                   </span>
                 ) : (
                   <span>
-                    {t('local')} | {getCurrentDate(news.createdAt)}
+                    {t('local')} | {dayjs(news.createdAt).format('DD.MM.YYYY')}
                   </span>
                 )}
               </div>
