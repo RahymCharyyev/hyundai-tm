@@ -11,7 +11,7 @@ export function Header() {
 
   return (
     <header>
-      <div className="h-11 flex items-center bg-secondary">
+      <div className="h-11 flex items-center bg-header">
         <span className="text-primary px-28">
           {t('callCenter')}: &nbsp;
           <Link className="font-bold" href="tel:+993 12 12-12-12">
