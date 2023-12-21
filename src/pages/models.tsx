@@ -46,7 +46,7 @@ export default function Models() {
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsHero t={t} toggleFilter={toggleFilter} showFilter={showFilter} />
       {showFilter && <ModelsFilter data={data.options} t={t} />}
-      <ButtonGroup
+      {/* <ButtonGroup
         buttons={[
           { text: t('all'), onClick: () => handleFrameClick({ id: 0, name: t('all') }) },
           ...data.frameModels.map((frame) => ({
@@ -54,7 +54,7 @@ export default function Models() {
             onClick: () => handleFrameClick(frame),
           })),
         ]}
-      />
+      /> */}
       <div className="mt-16">
         <ModelsList data={data.frameModels} handleOpen={handleOpen} />
       </div>
