@@ -12,7 +12,9 @@ export const ModelsList: FC<ModelsListProps> = ({ handleOpen, data }) => {
     <div className="flex flex-col gap-12">
       {data.map((frame) => (
         <div className="flex flex-wrap" key={frame.id}>
-          <h2 className="text-2xl font-bold">{frame.name}</h2>
+          {frame.models.length > 0 && (
+            <h2 className="text-2xl font-bold">{frame.name}</h2>
+          )}
           {frame.models.map((model) => (
             <div key={model.id} className="">
               <button type="submit" onClick={() => handleOpen(model, frame)}>

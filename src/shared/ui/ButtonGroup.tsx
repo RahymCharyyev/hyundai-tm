@@ -4,6 +4,7 @@ import { Button, ButtonGroup as MTBButtonGroup } from '@material-tailwind/react'
 interface ButtonProps {
   text: string;
   className?: string;
+  onClick: () => void;
 }
 
 interface ButtonGroupProps {
@@ -16,6 +17,7 @@ export const ButtonGroup: React.FC<ButtonGroupProps> = ({ buttons, className }) 
 
   const handleClick = (index: number) => {
     setActiveButton(index);
+    buttons[index].onClick();
   };
 
   return (

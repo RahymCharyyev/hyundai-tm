@@ -38,6 +38,7 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
                 alt={banner.image_ru}
                 width={1860}
                 height={720}
+                priority
               />
               <ButtonLink
                 className="bg-primary text-white py-4 px-5 absolute bottom-6 right-20 hover:underline"

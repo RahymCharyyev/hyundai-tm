@@ -2,10 +2,13 @@ import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 import { ModelsResponse } from '@/types/modelsPage';
 
-export const getModelsPageData = async (params?: {
+interface GetModelsPageDataParams {
   options?: string;
-  frameId?: number;
-}) => {
+  frameId?: number | null;
+  availableOptions?: number | null;
+}
+
+export const getModelsPageData = async (params?: GetModelsPageDataParams) => {
   const { data }: AxiosResponse<ModelsResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/models',
