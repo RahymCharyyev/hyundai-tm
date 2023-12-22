@@ -6,8 +6,17 @@ import React, { FC, useState } from 'react';
 type ModelsFilterProps = {
   data: Option[];
   t: Function;
+  handleOptionClick: (option: { id: number }) => void;
+  refetch: () => void;
+  onRemoveFilter: () => void;
 };
-export const ModelsFilter: FC<ModelsFilterProps> = ({ data, t }) => {
+export const ModelsFilter: FC<ModelsFilterProps> = ({
+  data,
+  t,
+  handleOptionClick,
+  refetch,
+  onRemoveFilter,
+}) => {
   const [value, setValue] = useState(0);
   const [kmValue, setKmValue] = useState(0);
   const [capacityValue, setCapacityValue] = useState(0);
@@ -32,7 +41,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({ data, t }) => {
                 color="blue-gray"
                 className="rounded-none"
                 crossOrigin="true"
-                defaultChecked
+                onChange={() => handleOptionClick(option)}
               />
               <p>{option.name}</p>
             </div>
@@ -69,12 +78,14 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({ data, t }) => {
           <ButtonLink
             href=""
             className="bg-thirdColor text-white py-4 px-5 hover:underline mb-20"
+            onClick={onRemoveFilter}
           >
             {t('removeFilter')}
           </ButtonLink>
           <ButtonLink
             href=""
             className="bg-primary text-white py-4 px-5 hover:underline mb-20"
+            onClick={() => refetch()}
           >
             {t('useFilter')}
           </ButtonLink>

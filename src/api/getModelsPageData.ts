@@ -4,8 +4,6 @@ import { ModelsResponse } from '@/types/modelsPage';
 
 interface GetModelsPageDataParams {
   options?: string;
-  frameId?: number | null;
-  availableOptions?: number | null;
 }
 
 export const getModelsPageData = async (params?: GetModelsPageDataParams) => {

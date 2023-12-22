@@ -22,25 +22,37 @@ export function Header() {
       <div className="flex justify-between items-center h-24 px-28">
         <Image src="/hyundai_blue_logo.png" alt="hyundai logo" width={190} height={30} />
         <div className="flex gap-8">
-          <Link className={pathname == '/' ? activeLink : ''} href="/">
+          <Link className={pathname == '/' ? activeLink : 'hover:font-medium'} href="/">
             {t('main')}
           </Link>
-          <Link className={pathname == '/models' ? activeLink : ''} href="/models">
+          <Link
+            className={pathname == '/models' ? activeLink : 'hover:font-medium'}
+            href="/models"
+          >
             {t('modelsLineup')}
           </Link>
           <Link
-            className={pathname == '/maintenance' ? activeLink : ''}
+            className={pathname == '/maintenance' ? activeLink : 'hover:font-medium'}
             href="/maintenance"
           >
             {t('maintenance')}
           </Link>
-          <Link className={pathname == '/history' ? activeLink : ''} href="/history">
+          <Link
+            className={pathname == '/history' ? activeLink : 'hover:font-medium'}
+            href="/history"
+          >
             {t('hyundaiHistory')}
           </Link>
-          <Link className={pathname == '/stock' ? activeLink : ''} href="/stock">
+          <Link
+            className={pathname == '/stock' ? activeLink : 'hover:font-medium'}
+            href="/stock"
+          >
             {t('stock')}
           </Link>
-          <Link className={pathname == '/services' ? activeLink : ''} href="/services">
+          <Link
+            className={pathname == '/services' ? activeLink : 'hover:font-medium'}
+            href="/services"
+          >
             {t('services')}
           </Link>
         </div>
