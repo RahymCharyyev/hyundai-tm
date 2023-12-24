@@ -8,7 +8,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
-import { ButtonLink } from '@/shared/ui';
 import dayjs from 'dayjs';
 
 type NewsSliderProps = {
@@ -54,13 +53,13 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
               >
                 {news.title}
               </Link>
-              <ButtonLink
+              <Link
                 target="_blank"
                 className="bg-primary text-white py-4 px-5 hover:underline w-48 mb-10"
                 href="/news"
               >
                 {t('moreNews')}
-              </ButtonLink>
+              </Link>
             </div>
           </SwiperSlide>
         ))}

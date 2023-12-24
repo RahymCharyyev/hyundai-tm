@@ -1,30 +1,53 @@
-import { ButtonLink, RangeInput } from '@/shared/ui';
-import { ModelFilter } from '@/types/modelsPage';
-import { Checkbox, Slider } from '@material-tailwind/react';
 import React, { FC, useState } from 'react';
+import { Button, Checkbox } from '@material-tailwind/react';
+import { Option } from '@/types/modelsPage';
+import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { RangeInput } from '@/shared/ui';
 
 type ModelsFilterProps = {
-  data: ModelFilter[];
+  data: Option[];
   t: Function;
+  handleOptionClick: (option: { id: number }) => void;
+  selectedOptions: any;
 };
-export const ModelsFilter: FC<ModelsFilterProps> = ({ data, t }) => {
+export const ModelsFilter: FC<ModelsFilterProps> = ({
+  data,
+  t,
+  handleOptionClick,
+  selectedOptions,
+}) => {
   const [value, setValue] = useState(0);
   const [kmValue, setKmValue] = useState(0);
   const [capacityValue, setCapacityValue] = useState(0);
+  const { changeParams } = useQueryParams();
+
+  const handleSubmit = () => changeParams({ options: selectedOptions.join() });
+  const handleReset = () => changeParams({}, 'all');
+
   return (
     <div className="flex gap-32 bg-secondary px-44 py-10">
-      {data.map((item, index) => (
-        <div key={index} className="flex flex-col items-start">
-          <p className="font-bold">{item.title}</p>
-          {item.options.map((option, optionIndex) => (
-            <div key={optionIndex} className="flex items-center gap-3">
+      {data.map((item) => (
+        <div key={item.id} className="flex flex-col items-start">
+          <p className="font-bold">{item.name}</p>
+          <div className="flex gap-2 items-center">
+            <Checkbox
+              color="blue-gray"
+              className="rounded-none"
+              crossOrigin="true"
+              defaultChecked
+            />
+            <p>{t('all')}</p>
+          </div>
+          {item.availableOptions.map((option) => (
+            <div key={option.id} className="flex items-center gap-3">
               <Checkbox
                 color="blue-gray"
                 className="rounded-none"
                 crossOrigin="true"
-                defaultChecked
+                onChange={() => handleOptionClick(option)}
+                checked={selectedOptions.includes(option.id)}
               />
-              <p>{option}</p>
+              <p>{option.name}</p>
             </div>
           ))}
         </div>
@@ -56,18 +79,18 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({ data, t }) => {
           />
         </div>
         <div className="flex gap-5">
-          <ButtonLink
-            href=""
-            className="bg-thirdColor text-white py-4 px-5 hover:underline mb-20"
+          <Button
+            className="bg-thirdColor text-white py-4 px-5 hover:underline mb-20 rounded-none"
+            onClick={handleReset}
           >
             {t('removeFilter')}
-          </ButtonLink>
-          <ButtonLink
-            href=""
-            className="bg-primary text-white py-4 px-5 hover:underline mb-20"
+          </Button>
+          <Button
+            className="bg-primary text-white py-4 px-5 hover:underline mb-20 rounded-none"
+            onClick={handleSubmit}
           >
             {t('useFilter')}
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </div>

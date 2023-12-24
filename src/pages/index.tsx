@@ -5,6 +5,8 @@ import { getMainPageData } from '@/api/getMainPageData';
 import { MainSlider } from '@/widgets/home/main-slider/MainSlider';
 import { CarsSlider } from '@/widgets/home/cars-slider/CarsSlider';
 import { NewsSlider } from '@/widgets/home/news-slider/NewsSlider';
+import { Spinner } from '@material-tailwind/react';
+import { Loading } from '@/layout/Loading';
 
 export default function Home() {
   const { t } = useTranslation('common');
@@ -13,7 +15,7 @@ export default function Home() {
     queryFn: () => getMainPageData(),
   });
 
-  if (isPending) return 'Loading...';
+  if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
 
   return (

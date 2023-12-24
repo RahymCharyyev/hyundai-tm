@@ -1,12 +1,17 @@
-import { ModelsResponse } from '@/types/modelsPage';
 import type { AxiosResponse } from 'axios';
-import axios from 'axios';
+import { axiosInstance } from './axiosInstance';
+import { ModelsResponse } from '@/types/modelsPage';
 
-export const getModelsPageData = async (): Promise<ModelsResponse> => {
-  const { data }: AxiosResponse<ModelsResponse> = await axios({
+interface GetModelsPageDataParams {
+  options?: string;
+}
+
+export const getModelsPageData = async (params?: GetModelsPageDataParams) => {
+  const { data }: AxiosResponse<ModelsResponse> = await axiosInstance({
     method: 'GET',
-    url: 'filter.json',
+    url: '/pages/models',
+    params: params,
   });
 
-  return data;
+  return data.data;
 };

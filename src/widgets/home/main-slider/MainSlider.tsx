@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import 'swiper/css/a11y';
-import { ButtonLink } from '@/shared/ui';
+import Link from 'next/link';
 
 type MainSliderProps = {
   data: Banner[];
@@ -38,14 +38,15 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
                 alt={banner.image_ru}
                 width={1860}
                 height={720}
+                priority
               />
-              <ButtonLink
+              <Link
                 className="bg-primary text-white py-4 px-5 absolute bottom-6 right-20 hover:underline"
                 target="_blank"
                 href={banner.link}
               >
                 {t('readMore')}
-              </ButtonLink>
+              </Link>
             </div>
           </SwiperSlide>
         ))}
