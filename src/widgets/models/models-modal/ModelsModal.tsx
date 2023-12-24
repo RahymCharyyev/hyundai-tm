@@ -1,9 +1,9 @@
-import { ButtonLink } from '@/shared/ui';
-import { Dialog, IconButton, Option, Select } from '@material-tailwind/react';
+import { Button, Dialog, IconButton, Option, Select } from '@material-tailwind/react';
 import Image from 'next/image';
 import { FC } from 'react';
 import PdfIcon from '../../../../public/pdf_icon.svg';
 import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
+import Link from 'next/link';
 
 type ModelsModalProps = {
   open: boolean;
@@ -33,28 +33,20 @@ export const ModelsModal: FC<ModelsModalProps> = ({
       <div className="flex flex-col items-center justify-center">
         <Image src={model.imagePath} alt={model.name} width={540} height={200} />
         <div className="flex gap-3 items-center">
-          <ButtonLink
+          <Link
             target="_blank"
             className="bg-primary text-white py-4 px-5 hover:underline"
             href={model.link}
           >
             {t('knowMore')}
-          </ButtonLink>
-          <ButtonLink
-            target="_blank"
-            className="bg-primary text-white py-4 px-5 hover:underline"
-            href=""
-          >
+          </Link>
+          <Button className="bg-primary text-white py-5 px-5 hover:underline rounded-none">
             {t('360View')}
-          </ButtonLink>
-          <ButtonLink
-            target="_blank"
-            className="bg-primary text-white py-4 px-8 hover:underline flex gap-2 items-center justify-between"
-            href=""
-          >
+          </Button>
+          <Button className="bg-primary text-white py-4 px-8 hover:underline flex gap-2 items-center justify-between rounded-none">
             {t('eBroshure')}
             <Image src={PdfIcon} alt="pdf icon" />
-          </ButtonLink>
+          </Button>
         </div>
       </div>
       <div className="flex flex-col gap-5">

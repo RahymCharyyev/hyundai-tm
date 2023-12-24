@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Breadcrumbs, ButtonLink } from '@/shared/ui';
-import { Input } from '@material-tailwind/react';
+import { Breadcrumbs } from '@/shared/ui';
+import { Button, Input } from '@material-tailwind/react';
 import Image from 'next/image';
 import FilterIcon from '../../../../public/filter_icon.svg';
 import SearchIcon from '../../../../public/search_icon.svg';
@@ -31,10 +31,9 @@ export const ModelsHero: FC<ModelsHeroProps> = ({ t, toggleFilter, showFilter })
           label={t('vehicleSearch')}
           icon={<Image src={SearchIcon} alt="search icon " />}
         />
-        <ButtonLink
+        <Button
           onClick={toggleFilter}
-          href=""
-          className="flex items-center gap-4 bg-primary text-white py-2 px-5 hover:underline"
+          className="flex items-center gap-2 bg-primary text-white py-2 px-7 pl-3 hover:underline rounded-none"
         >
           {t('filter')}
           {showFilter === true ? (
@@ -42,7 +41,7 @@ export const ModelsHero: FC<ModelsHeroProps> = ({ t, toggleFilter, showFilter })
           ) : (
             <Image src={FilterIcon} alt="filter icon" />
           )}
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );

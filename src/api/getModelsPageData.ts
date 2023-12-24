@@ -10,7 +10,7 @@ export const getModelsPageData = async (params?: GetModelsPageDataParams) => {
   const { data }: AxiosResponse<ModelsResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/models',
-    params: params || {},
+    params: params,
   });
 
   return data.data;

@@ -1,25 +1,28 @@
-import { ButtonLink, RangeInput } from '@/shared/ui';
-import { Option } from '@/types/modelsPage';
-import { Checkbox } from '@material-tailwind/react';
 import React, { FC, useState } from 'react';
+import { Button, Checkbox } from '@material-tailwind/react';
+import { Option } from '@/types/modelsPage';
+import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { RangeInput } from '@/shared/ui';
 
 type ModelsFilterProps = {
   data: Option[];
   t: Function;
   handleOptionClick: (option: { id: number }) => void;
-  refetch: () => void;
-  onRemoveFilter: () => void;
+  selectedOptions: any;
 };
 export const ModelsFilter: FC<ModelsFilterProps> = ({
   data,
   t,
   handleOptionClick,
-  refetch,
-  onRemoveFilter,
+  selectedOptions,
 }) => {
   const [value, setValue] = useState(0);
   const [kmValue, setKmValue] = useState(0);
   const [capacityValue, setCapacityValue] = useState(0);
+  const { changeParams } = useQueryParams();
+
+  const handleSubmit = () => changeParams({ options: selectedOptions.join() });
+  const handleReset = () => changeParams({}, 'all');
 
   return (
     <div className="flex gap-32 bg-secondary px-44 py-10">
@@ -42,6 +45,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
                 className="rounded-none"
                 crossOrigin="true"
                 onChange={() => handleOptionClick(option)}
+                checked={selectedOptions.includes(option.id)}
               />
               <p>{option.name}</p>
             </div>
@@ -75,20 +79,18 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
           />
         </div>
         <div className="flex gap-5">
-          <ButtonLink
-            href=""
-            className="bg-thirdColor text-white py-4 px-5 hover:underline mb-20"
-            onClick={onRemoveFilter}
+          <Button
+            className="bg-thirdColor text-white py-4 px-5 hover:underline mb-20 rounded-none"
+            onClick={handleReset}
           >
             {t('removeFilter')}
-          </ButtonLink>
-          <ButtonLink
-            href=""
-            className="bg-primary text-white py-4 px-5 hover:underline mb-20"
-            onClick={() => refetch()}
+          </Button>
+          <Button
+            className="bg-primary text-white py-4 px-5 hover:underline mb-20 rounded-none"
+            onClick={handleSubmit}
           >
             {t('useFilter')}
-          </ButtonLink>
+          </Button>
         </div>
       </div>
     </div>
