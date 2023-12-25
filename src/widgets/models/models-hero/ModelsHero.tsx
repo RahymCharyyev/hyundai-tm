@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { ChangeEvent, KeyboardEvent, FC } from 'react';
 import { Breadcrumbs } from '@/shared/ui';
 import { Button, Input } from '@material-tailwind/react';
 import Image from 'next/image';
@@ -9,9 +9,19 @@ type ModelsHeroProps = {
   t: Function;
   toggleFilter: () => void;
   showFilter: boolean;
+  searchQuery: string;
+  handleSearchChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleSearchKeyPress: (e: KeyboardEvent<HTMLInputElement>) => void;
 };
 
-export const ModelsHero: FC<ModelsHeroProps> = ({ t, toggleFilter, showFilter }) => {
+export const ModelsHero: FC<ModelsHeroProps> = ({
+  t,
+  toggleFilter,
+  showFilter,
+  searchQuery,
+  handleSearchChange,
+  handleSearchKeyPress,
+}) => {
   return (
     <div className="h-[325px] w-full flex flex-col items-center justify-around bg-cover bg-[url('/bg_for_pages.webp')]">
       <Breadcrumbs
@@ -29,7 +39,10 @@ export const ModelsHero: FC<ModelsHeroProps> = ({ t, toggleFilter, showFilter })
           className="bg-white rounded-none focus:rounded-none focus:outline-0"
           crossOrigin="true"
           label={t('vehicleSearch')}
-          icon={<Image src={SearchIcon} alt="search icon " />}
+          icon={<Image src={SearchIcon} alt="search icon" />}
+          value={searchQuery}
+          onChange={handleSearchChange}
+          onKeyDown={handleSearchKeyPress}
         />
         <Button
           onClick={toggleFilter}

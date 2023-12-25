@@ -20,10 +20,11 @@ export interface FrameModel {
 export interface ModelWithEquipment {
   id: number;
   name: string;
-  image: string;
   link: string;
   imagePath: string;
+  eBrochurePath: string;
   equipments: Equipment[];
+  seat: string | null;
 }
 
 export interface Equipment {

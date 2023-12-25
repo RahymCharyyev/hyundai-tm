@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useMemo, useState, KeyboardEvent } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { Button, ButtonGroup } from '@material-tailwind/react';
@@ -21,12 +21,14 @@ export default function Models() {
   const [selectedFrameIds] = useState<number[]>([]);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const { query, changeParams } = useQueryParams();
+  const [searchQuery, setSearchQuery] = useState('');
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['modelsPage', selectedFrameIds, query.options],
+    queryKey: ['modelsPage', selectedFrameIds, query.options, query.search],
     queryFn: () =>
       getModelsPageData({
         options: query.options as any,
+        search: query.search as string,
       }),
   });
 
@@ -91,9 +93,25 @@ export default function Models() {
       : setSelectedOptions([...selectedOptions, option.id]);
   };
 
+  const handleSearchChange = (e: any) => {
+    setSearchQuery(e.target.value);
+  };
+  const handleSearchKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      changeParams({ search: searchQuery });
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
-      <ModelsHero t={t} toggleFilter={toggleFilter} showFilter={showFilter} />
+      <ModelsHero
+        searchQuery={searchQuery}
+        handleSearchChange={handleSearchChange}
+        handleSearchKeyPress={handleSearchKeyPress}
+        t={t}
+        toggleFilter={toggleFilter}
+        showFilter={showFilter}
+      />
       {showFilter && (
         <ModelsFilter
           data={data.options}
