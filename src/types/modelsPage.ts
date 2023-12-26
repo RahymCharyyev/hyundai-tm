@@ -11,6 +11,13 @@ export interface AvailableOption {
   name: string;
 }
 
+export interface RangedOption {
+  id: number;
+  name: string;
+  from: number;
+  to: number;
+}
+
 export interface FrameModel {
   id: number;
   name: string;
@@ -34,6 +41,6 @@ export interface Equipment {
 
 export type ModelsResponse = BaseResponse<{
   options: Option[];
-  rangedOptions: any[];
+  rangedOptions: RangedOption[];
   frameModels: FrameModel[];
 }>;

@@ -114,7 +114,7 @@ export default function Models() {
       />
       {showFilter && (
         <ModelsFilter
-          data={data.options}
+          data={data}
           t={t}
           handleOptionClick={handleOptionClick}
           selectedOptions={selectedOptions}
