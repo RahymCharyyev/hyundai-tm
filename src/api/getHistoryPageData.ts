@@ -2,7 +2,11 @@ import { DetailedNewsHistory, HistoryResponse } from '@/types/historyPage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-export const getNewsData = async () => {
+interface GetNewsDataParams {
+  search?: string;
+}
+
+export const getNewsData = async (params?: GetNewsDataParams) => {
   const { data }: AxiosResponse<HistoryResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/news',

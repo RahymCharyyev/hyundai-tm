@@ -18,8 +18,11 @@ export default function NewsPage() {
   const [selectedNewsType, setSelectedNewsType] = useState<string | null>('local');
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['historyPage'],
-    queryFn: () => getNewsData(),
+    queryKey: ['historyPage', query.search],
+    queryFn: () =>
+      getNewsData({
+        search: query.search as string,
+      }),
   });
 
   if (isPending) return <Loading />;
@@ -40,7 +43,7 @@ export default function NewsPage() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <HistoryHero
-        showSearch={false}
+        showSearch
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}
         handleSearchKeyPress={handleSearchKeyPress}
