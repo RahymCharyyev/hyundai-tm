@@ -1,5 +1,5 @@
 import { NavLink } from '@/shared/ui/NavLink';
-import { HistoryHero } from '@/widgets/history/history-hero/HistoryHero';
+import { CommonHero } from '@/shared/ui/CommonHero';
 import { ButtonGroup } from '@material-tailwind/react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
@@ -11,7 +11,7 @@ export default function HistoryPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
-      <HistoryHero
+      <CommonHero
         showSearch={false}
         title={t('news')}
         breadcrumbs={[

@@ -1,6 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import useTranslation from 'next-translate/useTranslation';
+import HyundaiWhiteLogo from '@/assets/hyundai_white_logo.png';
+import LocationIcon from '@/assets/location_icon.svg';
+import PhoneIcon from '@/assets/phone_icon.svg';
+import MailIcon from '@/assets/mail_icon.svg';
 
 export function Footer() {
   const { t } = useTranslation('common');
@@ -10,12 +14,7 @@ export function Footer() {
     <footer className="h-[400px] flex flex-col justify-between bg-primary">
       <div className="flex flex-wrap justify-between pt-20 px-28">
         <div className="flex flex-col gap-3 max-w-[250px]">
-          <Image
-            src="/hyundai_white_logo.png"
-            alt="hyundai logo"
-            width={190}
-            height={30}
-          />
+          <Image src={HyundaiWhiteLogo} alt="hyundai logo" width={190} height={30} />
           <span className="text-white">{t('officialDistributor')}</span>
         </div>
         <div className="flex flex-col gap-5">
@@ -24,7 +23,7 @@ export function Footer() {
             {t('maintenanceEvent')}
           </Link>
           <Link className="text-thirdColor hover:text-white" href="/maintenance/sign">
-            {t('signToMaintenance')}
+            {t('maintenanceRegister')}
           </Link>
           <Link className="text-thirdColor hover:text-white" href="/maintenance/warranty">
             {t('warranty')}
@@ -103,21 +102,21 @@ export function Footer() {
             href=""
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
-            <Image src="/location_icon.svg" alt="share logo" width={10} height={15} />
+            <Image src={LocationIcon} alt="share logo" width={10} height={15} />
             58 ул. Г. Кулиева, 744015 Ашхабад, Туркменистан
           </Link>
           <Link
             href="tel:+993 12 75 44 85"
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
-            <Image src="/phone_icon.svg" alt="share logo" width={15} height={14} />
+            <Image src={PhoneIcon} alt="share logo" width={15} height={14} />
             +993 12 75 44 85
           </Link>
           <Link
             href="mailto:hyundai.ashgabat2023@gmail.com"
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
-            <Image src="/mail_icon.svg" alt="share logo" width={15} height={15} />
+            <Image src={MailIcon} alt="share logo" width={15} height={15} />
             hyundai.ashgabat2023@gmail.com
           </Link>
         </div>

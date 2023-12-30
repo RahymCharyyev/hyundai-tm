@@ -1,10 +1,10 @@
 import { Breadcrumbs } from '@/shared/ui';
 import Image from 'next/image';
 import { ChangeEvent, FC, KeyboardEvent } from 'react';
-import SearchIcon from '../../../../public/search_icon.svg';
+import SearchIcon from '@/assets/search_icon.svg';
 import { Input } from '@material-tailwind/react';
 
-type HistoryHeroProps = {
+type CommonHeroProps = {
   t: Function;
   title: string;
   breadcrumbs: { href: string; text: string }[];
@@ -14,7 +14,7 @@ type HistoryHeroProps = {
   showSearch: boolean;
 };
 
-export const HistoryHero: FC<HistoryHeroProps> = ({
+export const CommonHero: FC<CommonHeroProps> = ({
   t,
   title,
   breadcrumbs,

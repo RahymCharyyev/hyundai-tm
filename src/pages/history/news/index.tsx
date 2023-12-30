@@ -2,7 +2,7 @@ import { getNewsData } from '@/api/getHistoryPageData';
 import { Loading } from '@/layout/Loading';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { NavLink } from '@/shared/ui/NavLink';
-import { HistoryHero } from '@/widgets/history/history-hero/HistoryHero';
+import { CommonHero } from '@/shared/ui/CommonHero';
 import { NewsList } from '@/widgets/history/news/NewsList';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
@@ -42,7 +42,7 @@ export default function NewsPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
-      <HistoryHero
+      <CommonHero
         showSearch
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}

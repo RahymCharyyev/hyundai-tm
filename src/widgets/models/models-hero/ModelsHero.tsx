@@ -2,8 +2,8 @@ import { ChangeEvent, KeyboardEvent, FC } from 'react';
 import { Breadcrumbs } from '@/shared/ui';
 import { Button, Input } from '@material-tailwind/react';
 import Image from 'next/image';
-import FilterIcon from '../../../../public/filter_icon.svg';
-import SearchIcon from '../../../../public/search_icon.svg';
+import FilterIcon from '@/assets/filter_icon.svg';
+import SearchIcon from '@/assets/search_icon.svg';
 
 type ModelsHeroProps = {
   t: Function;
