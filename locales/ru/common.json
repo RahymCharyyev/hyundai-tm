@@ -41,5 +41,9 @@
   "modelName": "Название модели:",
   "trip": "Комплектация:",
   "capacity": "Количество мест:",
-  "all": "Все"
+  "all": "Все",
+  "search": "Поиск",
+  "hyundaiTurkmenistan": "Hyundai Turkmenistan",
+  "localNews": "Местные новости",
+  "globalNews": "Глобальные новости"
 }
