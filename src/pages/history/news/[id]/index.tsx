@@ -1,6 +1,6 @@
 import { getNewsDetailsData } from '@/api/getHistoryPageData';
 import { Loading } from '@/layout/Loading';
-import { HistoryHero } from '@/widgets/history/history-hero/HistoryHero';
+import { CommonHero } from '@/shared/ui/CommonHero';
 import { DetailedNews } from '@/widgets/history/news/DetailedNews';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
@@ -21,7 +21,7 @@ export default function DetailedNewsPage() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
-      <HistoryHero
+      <CommonHero
         showSearch={false}
         title={t('news')}
         breadcrumbs={[

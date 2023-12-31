@@ -1,7 +1,7 @@
 import { Button, Dialog, IconButton, Option, Select } from '@material-tailwind/react';
 import Image from 'next/image';
 import { FC } from 'react';
-import PdfIcon from '../../../../public/pdf_icon.svg';
+import PdfIcon from '@/assets/pdf_icon.svg';
 import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
 import Link from 'next/link';
 

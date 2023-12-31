@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumbs as MTBreadcrumbs, Typography } from '@material-tailwind/react';
+import { Breadcrumbs as MTBreadcrumbs } from '@material-tailwind/react';
 import Link from 'next/link';
 
 interface Breadcrumb {
@@ -17,9 +17,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
     <MTBreadcrumbs className={className}>
       {breadcrumbs.map((breadcrumb, index) => (
         <Link href={breadcrumb.href} key={index}>
-          <Typography variant="small" color="blue-gray">
-            {breadcrumb.text}
-          </Typography>
+          <span>{breadcrumb.text}</span>
         </Link>
       ))}
     </MTBreadcrumbs>

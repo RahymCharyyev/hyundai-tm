@@ -3,6 +3,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import useTranslation from 'next-translate/useTranslation';
 import { LanguageSwitcher } from '@/shared/ui';
+import HyundaiBlueLogo from '@/assets/hyundai_blue_logo.png';
+import ShareIcon from '@/assets/share_icon.svg';
+import SearchIcon from '@/assets/search_icon.svg';
 
 export function Header() {
   const { t } = useTranslation('common');
@@ -20,7 +23,7 @@ export function Header() {
         </span>
       </div>
       <div className="flex justify-between items-center h-24 px-28">
-        <Image src="/hyundai_blue_logo.png" alt="hyundai logo" width={190} height={30} />
+        <Image src={HyundaiBlueLogo} alt="hyundai logo" width={190} height={30} />
         <div className="flex gap-8">
           <Link className={pathname == '/' ? activeLink : 'hover:font-medium'} href="/">
             {t('main')}
@@ -58,8 +61,8 @@ export function Header() {
         </div>
         <div className="flex gap-5">
           <LanguageSwitcher />
-          <Image src="/share_icon.svg" alt="share logo" width={20} height={20} />
-          <Image src="/search_icon.svg" alt="search logo" width={20} height={20} />
+          <Image src={ShareIcon} alt="share logo" width={20} height={20} />
+          <Image src={SearchIcon} alt="search logo" width={20} height={20} />
         </div>
       </div>
     </header>
