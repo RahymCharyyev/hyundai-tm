@@ -43,10 +43,14 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           <Button className="bg-primary text-white py-5 px-5 hover:underline rounded-none">
             {t('360View')}
           </Button>
-          <Button className="bg-primary text-white py-4 px-8 hover:underline flex gap-2 items-center justify-between rounded-none">
+          <Link
+            target="_blank"
+            href={model.eBrochurePath}
+            className="bg-primary text-white py-4 px-8 hover:underline flex gap-2 items-center justify-between rounded-none"
+          >
             {t('eBroshure')}
             <Image src={PdfIcon} alt="pdf icon" />
-          </Button>
+          </Link>
         </div>
       </div>
       <div className="flex flex-col gap-5">
@@ -64,7 +68,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           {t('modelName')} <span className="font-normal">{model.name}</span>
         </p>
         <p className="text-black text-base font-bold">
-          {t('trip')}{' '}
+          {t('trip')}
           {selectedModelEquipments.map((equipment) => (
             <span key={equipment.id} className="font-normal">
               {equipment.name}
@@ -72,7 +76,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           ))}
         </p>
         <p className="text-black text-base font-bold">
-          {t('capacity')} <span className="font-normal">5</span>
+          {t('capacity')} <span className="font-normal">{model.seat}</span>
         </p>
       </div>
       <IconButton color="blue-gray" size="sm" variant="text" onClick={handleOpen}>

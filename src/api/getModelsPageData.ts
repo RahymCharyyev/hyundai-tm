@@ -4,6 +4,7 @@ import { ModelsResponse } from '@/types/modelsPage';
 
 interface GetModelsPageDataParams {
   options?: string;
+  search?: string;
 }
 
 export const getModelsPageData = async (params?: GetModelsPageDataParams) => {
