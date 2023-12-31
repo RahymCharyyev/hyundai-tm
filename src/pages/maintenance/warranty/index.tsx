@@ -5,7 +5,7 @@ import { ButtonGroup } from '@material-tailwind/react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 
-export default function MaintenanceRegisterPage() {
+export default function MaintenanceWarrantyPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
 
@@ -15,10 +15,10 @@ export default function MaintenanceRegisterPage() {
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
         showSearch={false}
-        title={t('maintenanceRegister')}
+        title={t('warranty')}
         breadcrumbs={[
           { href: '/', text: t('maintenance') },
-          { href: '/maintenance/register', text: t('maintenanceRegister') },
+          { href: '/maintenance/warranty', text: t('warranty') },
         ]}
         t={t}
       />
@@ -64,7 +64,7 @@ export default function MaintenanceRegisterPage() {
           />
         </div>
         <button
-          className="font-bold bg-primary w-[300px] h-[50px] text-white hover:underline"
+          className="font-bold bg-primary w-[300px] h-[50px] text-white hover:bg-white hover:text-primary hover:border-2 hover:border-primary"
           type="submit"
         >
           {t('sendRequest')}

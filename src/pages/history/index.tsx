@@ -13,10 +13,10 @@ export default function HistoryPage() {
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
         showSearch={false}
-        title={t('news')}
+        title={t('hyundaiTurkmenistan')}
         breadcrumbs={[
-          { href: '/', text: t('main') },
           { href: '/history', text: t('hyundaiHistory') },
+          { href: '/history', text: t('hyundaiTurkmenistan') },
         ]}
         t={t}
       />

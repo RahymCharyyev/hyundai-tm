@@ -1,56 +1,39 @@
-import { getNewsData } from '@/api/getHistoryPageData';
+import { getMediaData } from '@/api/getHistoryPageData';
 import { Loading } from '@/layout/Loading';
-import { useQueryParams } from '@/shared/hooks/useQueryParams';
-import { NavLink } from '@/shared/ui/NavLink';
 import { CommonHero } from '@/shared/ui/CommonHero';
+import { NavLink } from '@/shared/ui/NavLink';
 import { NewsList } from '@/widgets/history/news/NewsList';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 
 export default function NewsPage() {
   const { t } = useTranslation('common');
-  const [searchQuery, setSearchQuery] = useState('');
-  const { query, changeParams } = useQueryParams();
   const { pathname } = useRouter();
-  const [selectedNewsType, setSelectedNewsType] = useState<string | null>('local');
+  const [selectedMediaType, setSelectedMediaType] = useState<string | null>('video');
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['historyPage', query.search],
-    queryFn: () =>
-      getNewsData({
-        search: query.search as string,
-      }),
+    queryKey: ['historyPage'],
+    queryFn: () => getMediaData(),
   });
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
 
-  const handleSearchChange = (e: any) => {
-    setSearchQuery(e.target.value);
-  };
-  const handleSearchKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      changeParams({ search: searchQuery });
-    }
-  };
-  const handleNewsTypeChange = (newsType: string) => {
-    setSelectedNewsType(newsType);
+  const handleMediaTypeChange = (mediaType: string) => {
+    setSelectedMediaType(mediaType);
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
-        showSearch
-        searchQuery={searchQuery}
-        handleSearchChange={handleSearchChange}
-        handleSearchKeyPress={handleSearchKeyPress}
-        title={t('news')}
+        showSearch={false}
+        title={t('media')}
         breadcrumbs={[
           { href: '/history', text: t('hyundaiHistory') },
-          { href: '/history', text: t('news') },
+          { href: '/history/media', text: t('media') },
         ]}
         t={t}
       />
@@ -65,26 +48,26 @@ export default function NewsPage() {
           t={t}
         />
       </ButtonGroup>
-      <ButtonGroup>
+      <ButtonGroup className="mt-8">
         <Button
           className={`border-none rounded-none bg-thirdColor ${
-            selectedNewsType === 'local' ? 'bg-primary' : ''
+            selectedMediaType === 'video' ? 'bg-primary' : ''
           }`}
-          onClick={() => handleNewsTypeChange('local')}
+          onClick={() => handleMediaTypeChange('video')}
         >
-          {t('localNews')}
+          {t('video')}
         </Button>
         <Button
           className={`border-none rounded-none bg-thirdColor ${
-            selectedNewsType === 'global' ? 'bg-primary' : ''
+            selectedMediaType === 'image' ? 'bg-primary' : ''
           }`}
-          onClick={() => handleNewsTypeChange('global')}
+          onClick={() => handleMediaTypeChange('image')}
         >
-          {t('globalNews')}
+          {t('photo')}
         </Button>
       </ButtonGroup>
       <div className="my-10">
-        <NewsList t={t} data={data.rows} selectedNewsType={selectedNewsType} />
+        <NewsList t={t} data={data.rows} selectedNewsType={selectedMediaType} />
       </div>
     </main>
   );

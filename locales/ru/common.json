@@ -45,5 +45,12 @@
   "search": "Поиск",
   "hyundaiTurkmenistan": "Hyundai Turkmenistan",
   "localNews": "Местные новости",
-  "globalNews": "Глобальные новости"
+  "globalNews": "Глобальные новости",
+  "name": "Ваше имя и фамилия",
+  "phone": "Ваш номер телефона",
+  "mail": "Ваш адрес электронной почты",
+  "message": "Ваше сообщение",
+  "sendRequest": "Отправить заявку",
+  "photo": "Фото",
+  "video": "Видео"
 }

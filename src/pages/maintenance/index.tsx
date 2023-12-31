@@ -31,19 +31,14 @@ export default function MaintenancePage() {
           pathname={pathname}
           t={t}
         />
-        <NavLink href="/history/news" text="warranty" pathname={pathname} t={t} />
+        <NavLink href="/maintenance/warranty" text="warranty" pathname={pathname} t={t} />
         <NavLink
-          href="/history/social-responsibility"
+          href="/maintenance/car-maintenance"
           text="carMaintenance"
           pathname={pathname}
           t={t}
         />
-        <NavLink
-          href="/history/social-responsibility"
-          text="ToMap"
-          pathname={pathname}
-          t={t}
-        />
+        <NavLink href="/maintenance/to-map" text="ToMap" pathname={pathname} t={t} />
       </ButtonGroup>
       <div className="relative my-16">
         <Image

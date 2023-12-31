@@ -45,5 +45,12 @@
   "search": "Gözleg",
   "hyundaiTurkmenistan": "Hyundai Turkmenistan",
   "localNews": "Ýerli habarlar",
-  "globalNews": "Dünýäň habarlary"
+  "globalNews": "Dünýäň habarlary",
+  "name": "Siziň adyňyz we familiýaňyz",
+  "phone": "Siziň telefon belgiňiz",
+  "mail": "Siziň elektron salgyňyz",
+  "message": "Siziň habaryňyz",
+  "sendRequest": "Ýüzlenmäni ugratmak",
+  "photo": "Surat",
+  "video": "Wiedo"
 }

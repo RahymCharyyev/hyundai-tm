@@ -23,3 +23,12 @@ export const getNewsDetailsData = async (id: number) => {
 
   return data;
 };
+
+export const getMediaData = async () => {
+  const { data }: AxiosResponse<HistoryResponse> = await axiosInstance({
+    method: 'GET',
+    url: '/pages/media',
+  });
+
+  return data.data;
+};
