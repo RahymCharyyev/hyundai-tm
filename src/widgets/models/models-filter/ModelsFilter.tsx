@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import { Button, Checkbox } from '@material-tailwind/react';
-import { ModelsResponse, Option, RangedOption } from '@/types/modelsPage';
+import { ModelsResponse, RangedOption } from '@/types/modelsPage';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { RangeInput } from '@/shared/ui';
 
