@@ -1,25 +1,26 @@
-import { serviceEvents } from '@/fakeData/serviceEvents';
+import DownloadIcon from '@/assets/download.png';
+import { serviceMap } from '@/fakeData/serviceMap';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
 import { ButtonGroup } from '@material-tailwind/react';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-export default function MaintenancePage() {
+export default function MaintenanceMapPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
-
-  serviceEvents;
+  serviceMap;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
         showSearch={false}
-        title={t('maintenanceEvent')}
+        title={t('maintenanceMap')}
         breadcrumbs={[
-          { href: '/', text: t('maintenance') },
-          { href: '/maintenance', text: t('maintenanceEvent') },
+          { href: '/maintenance', text: t('maintenance') },
+          { href: '/maintenance/map', text: t('maintenanceMap') },
         ]}
         t={t}
       />
@@ -45,28 +46,26 @@ export default function MaintenancePage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="relative my-16">
-        <Image
-          className="mx-auto"
-          alt="maintenance-firstImage"
-          src={serviceEvents.firstImagePath}
-          width={1345}
-          height={520}
-          sizes="100vw"
-        />
-        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white ">
-          <h1 className="font-bold text-5xl max-w-lg">{serviceEvents.title}</h1>
-          <h2 className="font-bold text-3xl max-w-md">{serviceEvents.subtitle}</h2>
-        </div>
-      </div>
-      <Image
-        alt="maintenance-secondImage"
-        src={serviceEvents.secondImagePath}
-        width={1120}
-        height={600}
-        sizes="100vw"
-      />
-      <span className="font-bold text-4xl my-16">{serviceEvents.text}</span>
+      <h1 className="font-bold text-4xl mt-16 text-center">{serviceMap.title}</h1>
+      <table className="w-[800px] text-center border-2 my-8">
+        <tr className="bg-accordionBg border-2">
+          <th className="py-3 border-2">{serviceMap.tableHead.models}</th>
+          <th className="py-3 border-2">{serviceMap.tableHead.map}</th>
+        </tr>
+        {serviceMap.models.map((model, index) => (
+          <tr key={model.id}>
+            <td className="py-3">{model.name}</td>
+            {index === serviceMap.models.length - 1 && (
+              <Link href={serviceMap.downloadLink}>
+                <td className="flex gap-2 items-center justify-center">
+                  <Image src={DownloadIcon} alt="donload" />
+                  {t('download')}
+                </td>
+              </Link>
+            )}
+          </tr>
+        ))}
+      </table>
     </main>
   );
 }

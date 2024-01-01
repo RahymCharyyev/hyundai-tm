@@ -11,7 +11,7 @@
   "maintenanceRegister": "Запись на сервис",
   "warranty": "Гарантия",
   "carMaintenance": "Обслуживание",
-  "ToMap": "Карта ТО",
+  "maintenanceMap": "Карта ТО",
   "forBuyer": "Покупателю",
   "testDrive": "Тест-драйв",
   "socialResponsibility": "Социальная ответственность",
@@ -52,5 +52,9 @@
   "message": "Ваше сообщение",
   "sendRequest": "Отправить заявку",
   "photo": "Фото",
-  "video": "Видео"
+  "video": "Видео",
+  "warrantyCondition": "УСЛОВИЯ ГАРАНТИИ НА НОВЫЙ АВТОМОБИЛЬ HYUNDAI",
+  "technicalMaintenance": "Техническое обслуживание",
+  "technicalMaintenanceTitle": "«Сохраняйте свой ценный автомобиль в течение долгого времени с помощью планового ТО»",
+  "download": "Скачать"
 }
