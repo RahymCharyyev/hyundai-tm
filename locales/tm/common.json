@@ -11,7 +11,7 @@
   "maintenanceRegister": "Serwisa ýazylmak",
   "warranty": "Kepillik",
   "carMaintenance": "Ideg etmek",
-  "ToMap": "Ideg etmegiň kartasy",
+  "maintenanceMap": "Ideg etmegiň kartasy",
   "forBuyer": "Satyn alyja",
   "testDrive": "Test-draýw",
   "socialResponsibility": "Jemgyýetçilik jogapkärçiligi",
@@ -52,5 +52,9 @@
   "message": "Siziň habaryňyz",
   "sendRequest": "Ýüzlenmäni ugratmak",
   "photo": "Surat",
-  "video": "Wiedo"
+  "video": "Wiedo",
+  "warrantyCondition": "Täze HYUNDAI ulag serişdesi üçin kepillik şertleri",
+  "technicalMaintenance": "Tehniki ideg",
+  "technicalMaintenanceTitle": "«Gymmat bahaly ulagyňyzy meýilleşdirilen tehniki hyzmat bilen uzak wagtlap saklaň»",
+  "download": "Ýüklemek"
 }

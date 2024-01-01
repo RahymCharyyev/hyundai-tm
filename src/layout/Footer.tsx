@@ -19,10 +19,10 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-5">
           <h2 className="text-white font-medium">{t('maintenance')}</h2>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance/event">
+          <Link className="text-thirdColor hover:text-white" href="/maintenance">
             {t('maintenanceEvent')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance/sign">
+          <Link className="text-thirdColor hover:text-white" href="/maintenance/register">
             {t('maintenanceRegister')}
           </Link>
           <Link className="text-thirdColor hover:text-white" href="/maintenance/warranty">
@@ -35,7 +35,7 @@ export function Footer() {
             {t('carMaintenance')}
           </Link>
           <Link className="text-thirdColor hover:text-white" href="/maintenance/map">
-            {t('ToMap')}
+            {t('maintenanceMap')}
           </Link>
         </div>
         <div className="flex flex-col gap-5">

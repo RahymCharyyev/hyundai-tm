@@ -1,15 +1,24 @@
-import { serviceRegister } from '@/fakeData/serviceRegister';
+import { serviceWarranty } from '@/fakeData/serviceWarranty';
+import { Icon } from '@/shared/ui/AccordionIcon';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
-import { ButtonGroup } from '@material-tailwind/react';
+import {
+  Accordion,
+  AccordionBody,
+  AccordionHeader,
+  ButtonGroup,
+} from '@material-tailwind/react';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export default function MaintenanceWarrantyPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
+  const [open, setOpen] = useState(null);
+  const handleOpen = (value: any) => setOpen(open === value ? null : value);
 
-  serviceRegister;
+  serviceWarranty;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -17,7 +26,7 @@ export default function MaintenanceWarrantyPage() {
         showSearch={false}
         title={t('warranty')}
         breadcrumbs={[
-          { href: '/', text: t('maintenance') },
+          { href: '/maintenance', text: t('maintenance') },
           { href: '/maintenance/warranty', text: t('warranty') },
         ]}
         t={t}
@@ -37,43 +46,40 @@ export default function MaintenanceWarrantyPage() {
           pathname={pathname}
           t={t}
         />
-        <NavLink href="/maintenance/to-map" text="ToMap" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/map"
+          text="maintenanceMap"
+          pathname={pathname}
+          t={t}
+        />
       </ButtonGroup>
-      <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center">
-        {serviceRegister.title}
-      </h1>
-      <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10">
-          <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3"
-            placeholder={t('name')}
-          />
-          <input
-            className="w-[300px] h-[55px] bg-white px-3 py-3"
-            type="tel"
-            placeholder={t('phone')}
-          />
-          <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3"
-            type="email"
-            placeholder={t('mail')}
-          />
-          <textarea
-            className="w-full bg-white  placeholder:pt-3 px-3 py-3"
-            placeholder={t('message')}
-          />
-        </div>
-        <button
-          className="font-bold bg-primary w-[300px] h-[50px] text-white hover:bg-white hover:text-primary hover:border-2 hover:border-primary"
-          type="submit"
+      <h1 className="font-bold text-4xl my-16 text-center">{t('warrantyCondition')}</h1>
+      {serviceWarranty.map((warranty) => (
+        <Accordion
+          open={open === warranty.id}
+          key={warranty.id}
+          icon={<Icon id={warranty.id} open={open} />}
+          className={`max-w-5xl mx-auto ${
+            open === warranty.id ? 'bg-accordionBg' : 'bg-primary'
+          }`}
         >
-          {t('sendRequest')}
-        </button>
-      </div>
-      <div className="flex gap-[500px] items-end text-xl my-14">
-        <span>{serviceRegister.phoneService}</span>
-        <span>{serviceRegister.phoneSale}</span>
-      </div>
+          <AccordionHeader
+            className={`text-white hover:text-white px-6 ${
+              open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
+            }`}
+            onClick={() => handleOpen(warranty.id)}
+          >
+            {warranty.title}
+          </AccordionHeader>
+          <AccordionBody
+            className={` px-6 ${
+              open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
+            }`}
+          >
+            {warranty.description}
+          </AccordionBody>
+        </Accordion>
+      ))}
     </main>
   );
 }

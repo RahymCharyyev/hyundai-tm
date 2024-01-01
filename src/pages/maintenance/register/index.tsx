@@ -17,7 +17,7 @@ export default function MaintenanceRegisterPage() {
         showSearch={false}
         title={t('maintenanceRegister')}
         breadcrumbs={[
-          { href: '/', text: t('maintenance') },
+          { href: '/maintenance', text: t('maintenance') },
           { href: '/maintenance/register', text: t('maintenanceRegister') },
         ]}
         t={t}
@@ -37,7 +37,12 @@ export default function MaintenanceRegisterPage() {
           pathname={pathname}
           t={t}
         />
-        <NavLink href="/maintenance/to-map" text="ToMap" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/map"
+          text="maintenanceMap"
+          pathname={pathname}
+          t={t}
+        />
       </ButtonGroup>
       <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center">
         {serviceRegister.title}
