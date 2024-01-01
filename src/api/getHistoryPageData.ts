@@ -1,4 +1,4 @@
-import { DetailedNewsHistory, HistoryResponse } from '@/types/historyPage';
+import { ApiResponse, DetailedNewsHistory, HistoryResponse } from '@/types/historyPage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
@@ -25,10 +25,10 @@ export const getNewsDetailsData = async (id: number) => {
 };
 
 export const getMediaData = async () => {
-  const { data }: AxiosResponse<HistoryResponse> = await axiosInstance({
+  const { data }: AxiosResponse<ApiResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/media',
   });
 
-  return data.data;
+  return data;
 };

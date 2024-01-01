@@ -1,15 +1,15 @@
-import { getMediaData } from '@/api/getHistoryPageData';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useQuery } from '@tanstack/react-query';
 import { Loading } from '@/layout/Loading';
+import { getMediaData } from '@/api/getHistoryPageData';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
-import { NewsList } from '@/widgets/history/news/NewsList';
+import { MediaList } from '@/widgets/history/media/MediaList';
 import { Button, ButtonGroup } from '@material-tailwind/react';
-import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
 
-export default function NewsPage() {
+export default function MediaPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
   const [selectedMediaType, setSelectedMediaType] = useState<string | null>('video');
@@ -55,7 +55,7 @@ export default function NewsPage() {
           }`}
           onClick={() => handleMediaTypeChange('video')}
         >
-          {t('video')}
+          {t('video')} ({data.data.videos.count})
         </Button>
         <Button
           className={`border-none rounded-none bg-thirdColor ${
@@ -63,11 +63,11 @@ export default function NewsPage() {
           }`}
           onClick={() => handleMediaTypeChange('image')}
         >
-          {t('photo')}
+          {t('photo')}({data.data.images.count})
         </Button>
       </ButtonGroup>
       <div className="my-10">
-        <NewsList t={t} data={data.rows} selectedNewsType={selectedMediaType} />
+        <MediaList data={data} selectedMediaType={selectedMediaType} />
       </div>
     </main>
   );

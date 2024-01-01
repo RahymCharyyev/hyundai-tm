@@ -25,10 +25,9 @@ export default function DetailedNewsPage() {
         showSearch={false}
         title={t('news')}
         breadcrumbs={[
-          { href: '/', text: t('main') },
           { href: '/history', text: t('hyundaiHistory') },
-          { href: '/history', text: t('news') },
-          { href: '/history', text: `${data.data.title}` },
+          { href: '/history/news', text: t('news') },
+          { href: `/history/news/${data.data.id}`, text: `${data.data.title}` },
         ]}
         t={t}
       />
