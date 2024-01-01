@@ -23,40 +23,43 @@ export interface DetailedNewsHistory {
 }
 
 export type HistoryResponse = BaseResponse<{
-  rows: NewsHistory[];
+  rows?: NewsHistory[];
+  data?: ApiResponse;
 }>;
 
-export interface MediaData {
-  images: Images;
-  videos: Videos;
-}
-
-export interface Images {
-  count: number;
-  rows: ImagesRow[];
-}
-
-export interface Videos {
-  count: number;
-  rows: VideosRow[];
-}
-
-export interface ImagesRow {
+interface MediaImage {
   id: number;
   image: string;
   type: string;
   title: string;
-  link: any;
+  link: null | string;
   imagePath: string;
   posterPath: string;
 }
 
-export interface VideosRow {
+interface MediaVideo {
   id: number;
-  image: any;
+  image: null;
   type: string;
   title: string;
   link: string;
   imagePath: string;
   posterPath: string;
+}
+
+interface ImagesData {
+  count: number;
+  rows: MediaImage[];
+}
+
+interface VideosData {
+  count: number;
+  rows: MediaVideo[];
+}
+
+export interface ApiResponse {
+  data: {
+    images: ImagesData;
+    videos: VideosData;
+  };
 }

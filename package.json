@@ -26,12 +26,13 @@
     "react-dom": "^18",
     "react-hook-form": "^7.48.2",
     "recoil": "^0.7.7",
+    "sharp": "^0.33.1",
     "swiper": "^11.0.5",
     "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@types/node": "^20",
-    "@types/react": "^18",
+    "@types/react": "18.2.42",
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.13.2",
     "autoprefixer": "^10.0.1",

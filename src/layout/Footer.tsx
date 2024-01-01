@@ -46,7 +46,7 @@ export function Footer() {
           <Link className="text-thirdColor hover:text-white" href="/services/test-drive">
             {t('testDrive')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/services/stock">
+          <Link className="text-thirdColor hover:text-white" href="/stock">
             {t('stock')}
           </Link>
           <Link
@@ -64,10 +64,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-5">
           <h2 className="text-white font-medium">{t('aboutHyundai')}</h2>
-          <Link
-            className="text-thirdColor hover:text-white"
-            href="/history/hyundai-turkmenistan"
-          >
+          <Link className="text-thirdColor hover:text-white" href="/history">
             Hyundai Turkmenistan
           </Link>
           <Link className="text-thirdColor hover:text-white" href="/history/media">
@@ -99,7 +96,8 @@ export function Footer() {
             {t('callCenter')}: &nbsp; +993 12 12-12-12
           </Link>
           <Link
-            href=""
+            target="_blank"
+            href="https://maps.app.goo.gl/QJL9GKfyRv3dCb6D9"
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={LocationIcon} alt="share logo" width={10} height={15} />
