@@ -1,12 +1,11 @@
-import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
-import { useQuery } from '@tanstack/react-query';
 import { getMainPageData } from '@/api/getMainPageData';
-import { MainSlider } from '@/widgets/home/main-slider/MainSlider';
-import { CarsSlider } from '@/widgets/home/cars-slider/CarsSlider';
-import { NewsSlider } from '@/widgets/home/news-slider/NewsSlider';
-import { Spinner } from '@material-tailwind/react';
 import { Loading } from '@/layout/Loading';
+import { CarsSlider } from '@/widgets/home/cars-slider/CarsSlider';
+import { MainSlider } from '@/widgets/home/main-slider/MainSlider';
+import { NewsSlider } from '@/widgets/home/news-slider/NewsSlider';
+import { useQuery } from '@tanstack/react-query';
+import useTranslation from 'next-translate/useTranslation';
+import Link from 'next/link';
 
 export default function Home() {
   const { t } = useTranslation('common');

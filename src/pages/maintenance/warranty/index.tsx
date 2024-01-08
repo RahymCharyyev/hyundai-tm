@@ -1,4 +1,5 @@
-import { serviceWarranty } from '@/fakeData/serviceWarranty';
+import { getMaintenanceData } from '@/api/getMaintenancePageData';
+import { Loading } from '@/layout/Loading';
 import { Icon } from '@/shared/ui/AccordionIcon';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
@@ -8,6 +9,7 @@ import {
   AccordionHeader,
   ButtonGroup,
 } from '@material-tailwind/react';
+import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -17,8 +19,18 @@ export default function MaintenanceWarrantyPage() {
   const { pathname } = useRouter();
   const [open, setOpen] = useState(null);
   const handleOpen = (value: any) => setOpen(open === value ? null : value);
+  const router = useRouter();
+  const currentLang = router.locale;
+  const { isPending, error, data } = useQuery({
+    queryKey: ['maintenancePage'],
+    queryFn: () =>
+      getMaintenanceData({
+        lang: currentLang,
+      }),
+  });
 
-  serviceWarranty;
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -54,7 +66,7 @@ export default function MaintenanceWarrantyPage() {
         />
       </ButtonGroup>
       <h1 className="font-bold text-4xl my-16 text-center">{t('warrantyCondition')}</h1>
-      {serviceWarranty.map((warranty) => (
+      {data.guarantees.map((warranty) => (
         <Accordion
           open={open === warranty.id}
           key={warranty.id}
@@ -76,7 +88,7 @@ export default function MaintenanceWarrantyPage() {
               open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
             }`}
           >
-            {warranty.description}
+            {warranty.text}
           </AccordionBody>
         </Accordion>
       ))}

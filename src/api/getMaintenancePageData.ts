@@ -1,16 +1,17 @@
-import { MaintenanceEvents } from '@/types/servicePage';
+import { MaintenanceResponse } from '@/types/servicePage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-interface GetNewsDataParams {
-  search?: string;
+interface GetMaintenancePageParams {
+  lang?: string;
 }
 
-export const getMaintenanceData = async (params?: GetNewsDataParams) => {
-  const { data }: AxiosResponse<MaintenanceEvents> = await axiosInstance({
-    // method: 'GET',
-    // url: '/pages/news',
+export const getMaintenanceData = async (params?: GetMaintenancePageParams) => {
+  const { data }: AxiosResponse<MaintenanceResponse> = await axiosInstance({
+    method: 'GET',
+    url: '/pages/service',
+    params: params,
   });
 
-  return data;
+  return data.data;
 };
