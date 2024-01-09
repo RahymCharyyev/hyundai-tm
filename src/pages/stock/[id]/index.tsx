@@ -23,7 +23,7 @@ export default function DetailedStockPage() {
         ]}
         t={t}
       />
-      <div className="flex flex-col gap-8 items-center max-w-6xl my-16">
+      <div className="flex flex-col gap-8 items-center max-w-6xl my-16 2xl:max-w-4xl">
         <h1 className="font-bold text-4xl">{stockDetailed.title}</h1>
         <Image
           src={stockDetailed.imagePath}

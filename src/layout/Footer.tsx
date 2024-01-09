@@ -11,9 +11,13 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="h-[400px] flex flex-col justify-between bg-primary">
-      <div className="flex flex-wrap justify-between pt-20 px-28">
-        <div className="flex flex-col gap-3 max-w-[250px]">
+    <footer className="h-auto flex flex-col justify-between bg-primary">
+      <div className="hidden flex-col items-center justify-center gap-3 4xl:flex 4xl:pt-20">
+        <Image src={HyundaiWhiteLogo} alt="hyundai logo" width={190} height={30} />
+        <span className="text-white">{t('officialDistributor')}</span>
+      </div>
+      <div className="flex flex-wrap justify-between pt-20 px-28 4xl:pt-8 2xl:justify-center 2xl:gap-10">
+        <div className="flex flex-col gap-3 max-w-[250px] 4xl:hidden">
           <Image src={HyundaiWhiteLogo} alt="hyundai logo" width={190} height={30} />
           <span className="text-white">{t('officialDistributor')}</span>
         </div>
@@ -119,7 +123,7 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="text-center text-white mb-3">
+      <div className="text-center text-white mt-12 mb-3">
         Copyright {currentYear} Hyundai Motor Company. {t('allRightsReserved')}
       </div>
     </footer>

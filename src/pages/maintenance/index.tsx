@@ -60,19 +60,24 @@ export default function MaintenancePage() {
       <div className="relative my-16">
         <Image
           crossOrigin="use-credentials"
-          className="mx-auto"
+          className="mx-auto 3xl:w-[1000px]"
           alt="maintenance-firstImage"
           src={data.event.image1Path}
           width={1345}
           height={520}
           sizes="100vw"
         />
-        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white ">
-          <h1 className="font-bold text-5xl max-w-lg">{data.event.title}</h1>
-          <h2 className="font-bold text-3xl max-w-md">{data.event.text}</h2>
+        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white">
+          <h1 className="font-bold text-5xl max-w-lg 3xl:text-4xl 2xl:!text-3xl 3xl:max-w-[300px]">
+            {data.event.title}
+          </h1>
+          <h2 className="font-bold text-3xl max-w-md 3xl:text-2xl 2xl:!text-xl 3xl:max-w-[300px]">
+            {data.event.text}
+          </h2>
         </div>
       </div>
       <Image
+        className="3xl:w-[800px]"
         crossOrigin="use-credentials"
         alt="maintenance-secondImage"
         src={data.event.image2Path}
@@ -80,7 +85,9 @@ export default function MaintenancePage() {
         height={600}
         sizes="100vw"
       />
-      <span className="font-bold text-4xl my-16">{data.event.contactText}</span>
+      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl">
+        {data.event.contactText}
+      </p>
     </main>
   );
 }

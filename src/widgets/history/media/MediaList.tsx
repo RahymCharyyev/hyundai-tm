@@ -46,7 +46,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
           open={open}
           handler={handleClose}
           size="xs"
-          className="!max-w-[50%] min-w-[50px] flex items-center justify-center"
+          className="!max-w-[50%] !min-w-[50%] flex items-center justify-center"
         >
           <Swiper
             className="text-center"
