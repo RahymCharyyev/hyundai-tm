@@ -22,16 +22,16 @@ export default function Home() {
       <MainSlider data={data.banners} t={t} />
       <CarsSlider data={data.models} t={t} />
       <NewsSlider data={data.news} t={t} />
-      <div className="flex h-[400px] w-full">
+      <div className="flex h-[400px] w-full lg:h-[200px]">
         <Link
           href="/history/media"
-          className="h-full w-full bg-cover text-white text-5xl font-bold bg-[url('/media_bg.webp')] flex items-center justify-center hover:underline"
+          className="h-full w-full bg-cover text-white text-5xl font-bold bg-[url('/media_bg.webp')] flex items-center justify-center hover:underline lg:text-2xl"
         >
           {t('media')}
         </Link>
         <Link
           href="/stock"
-          className="h-full w-full bg-cover text-white text-5xl font-bold bg-[url('/sales_bg.webp')] flex items-center justify-center hover:underline"
+          className="h-full w-full bg-cover text-white text-5xl font-bold bg-[url('/sales_bg.webp')] flex items-center justify-center hover:underline lg:text-2xl"
         >
           {t('stock')}
         </Link>

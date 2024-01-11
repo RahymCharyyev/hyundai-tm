@@ -38,7 +38,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
       <MediaListItem key={media.id} media={media} onClick={() => handleOpen()} />
     ));
   return (
-    <div className="flex flex-wrap gap-12 justify-between max-w-[1000px]">
+    <div className="flex flex-wrap gap-12 justify-between max-w-[1000px] lg:max-w-2xl">
       {selectedMediaType === 'image' && renderMediaList(data?.data.images?.rows || [])}
       {selectedMediaType === 'video' && renderMediaList(data?.data.videos?.rows || [])}
       {(selectedMediaType === 'image' || selectedMediaType === 'video') && (

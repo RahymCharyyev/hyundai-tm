@@ -14,7 +14,7 @@ export const NewsList: FC<NewsListProps> = ({ t, data, selectedNewsType }) => {
     ? data?.filter((news) => news.type === selectedNewsType)
     : data;
   return (
-    <div className="flex flex-wrap gap-12 justify-between max-w-[1000px]">
+    <div className="flex flex-wrap gap-12 justify-between max-w-[1000px] lg:max-w-2xl">
       {filteredNews?.map((news) => (
         <Link
           key={news.id}

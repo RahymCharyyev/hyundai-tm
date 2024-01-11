@@ -18,7 +18,7 @@ type NewsSliderProps = {
 export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
   return (
     <>
-      <h2 className="font-bold text-5xl mb-10">{t('latestNews')}</h2>
+      <h2 className="font-bold text-5xl mb-10 lg:text-3xl">{t('latestNews')}</h2>
       <Swiper
         className="news"
         modules={[Navigation, Pagination, Autoplay, A11y]}
@@ -49,13 +49,13 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
               <Link
                 target="_blank"
                 href={`/news/${news.id}`}
-                className="font-bold text-3xl hover:underline uppercase"
+                className="font-bold text-3xl hover:underline uppercase lg:text-xl lg:w-[500px]"
               >
                 {news.title}
               </Link>
               <Link
                 target="_blank"
-                className="bg-primary text-white py-4 px-5 hover:underline w-48 mb-10"
+                className="bg-primary text-white py-4 px-5 hover:underline mb-10 lg:py-2 lg:px-3 lg:text-sm"
                 href="/news"
               >
                 {t('moreNews')}

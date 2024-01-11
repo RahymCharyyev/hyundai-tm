@@ -21,10 +21,16 @@ export default function StockPage() {
       />
       {stock.map((stock) => (
         <div key={stock.id} className="flex flex-col gap-8 items-center my-16">
-          <Image src={stock.imagePath} alt="stock image" width={1000} height={500} />
+          <Image
+            className="lg:w-[700px] lg:px-10"
+            src={stock.imagePath}
+            alt="stock image"
+            width={1000}
+            height={500}
+          />
           <Link
             href={`/stock/${stock.id}`}
-            className="py-3 px-6 text-white text-center rounded-none bg-primary border-none hover:underline"
+            className="py-3 px-6 text-white text-center rounded-none bg-primary border-none hover:underline lg:px-3 lg:py-1"
           >
             Подробнее
           </Link>

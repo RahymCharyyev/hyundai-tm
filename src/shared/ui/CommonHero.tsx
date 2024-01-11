@@ -28,7 +28,7 @@ export const CommonHero: FC<CommonHeroProps> = ({
   return (
     <div className="h-[180px] w-full flex flex-col items-center justify-evenly bg-cover bg-[url('/bg_for_pages.webp')]">
       <Breadcrumbs breadcrumbs={breadcrumbs} className="bg-opacity-0" />
-      <h1 className="text-5xl font-bold">{title}</h1>
+      <h1 className="text-5xl font-bold lg:text-3xl">{title}</h1>
       <h2 className="font-bold">{subtitle}</h2>
       {showSearch && (
         <div>

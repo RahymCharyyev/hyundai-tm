@@ -22,7 +22,7 @@ export default function HistoryPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
         <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
         <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
@@ -33,20 +33,21 @@ export default function HistoryPage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col gap-4 items-center max-w-5xl my-16">
-        <h1 className="text-4xl font-bold">Hyundai Motor Company</h1>
-        <span>
+      <div className="flex flex-col gap-4 items-center max-w-5xl my-16 lg:max-w-2xl ">
+        <h1 className="text-4xl font-bold lg:text-2xl">Hyundai Motor Company</h1>
+        <span className="lg:text-sm">
           Компания Hyundai Motor признает важность и влияние автомобилей на человечество.
           Мы стремимся играть роль, выходящую за рамки простого производителя, желая стать
           пожизненным спутником клиента.
         </span>
         <Image
+          className="lg:w-[400px]"
           src={HyundaiTurkmenistanImage}
           alt="hyundai Turkmenistan image"
           width={550}
           height={435}
         />
-        <span>
+        <span className="lg:text-sm">
           Мы стараемся держать добрые связи с клиентами, выполняя свое видение стать
           «пожизненным автомобильным партнером и даже больше» и участвовать в «совместной
           работе для лучшего будущего» в составе Hyundai Motor Group. Мы продвигаем
@@ -60,7 +61,7 @@ export default function HistoryPage() {
           будущему», ответственно выполняя свою роль в качестве надежной глобальной
           компании.
         </span>
-        <span>
+        <span className="lg:text-sm">
           Мы считаем, что будущее нашей организации лежит в сердцах и возможностях
           отдельных членов и поможет им развить свой потенциал, создав корпоративную
           культуру, которая уважает талант. Мы уважаем разнообразие культур и обычаев,

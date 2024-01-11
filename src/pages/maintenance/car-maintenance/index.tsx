@@ -44,7 +44,7 @@ export default function MaintenanceWarrantyPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -66,20 +66,22 @@ export default function MaintenanceWarrantyPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl mt-16 text-center">{data.maintenance.title1}</h1>
-      <h2 className="max-w-4xl my-8">{data.maintenance.text}</h2>
-      <h2 className="font-bold text-4xl mb-8">{data.maintenance.title2}</h2>
+      <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl">
+        {data.maintenance.title1}
+      </h1>
+      <h2 className="max-w-4xl my-8 lg:max-w-xl">{data.maintenance.text}</h2>
+      <h2 className="font-bold text-4xl mb-8 lg:text-2xl">{data.maintenance.title2}</h2>
       {data.principles.map((accordion) => (
         <Accordion
           open={open === accordion.id}
           key={accordion.id}
           icon={<Icon id={accordion.id} open={open} />}
-          className={`max-w-5xl mx-auto ${
+          className={`max-w-5xl mx-auto lg:max-w-2xl ${
             open === accordion.id ? 'bg-accordionBg' : 'bg-primary'
           }`}
         >
           <AccordionHeader
-            className={`text-white hover:text-white px-6 ${
+            className={`text-white hover:text-white px-6 lg:text-base ${
               open === accordion.id ? 'bg-accordionBg text-black hover:text-black' : ''
             }`}
             onClick={() => handleOpen(accordion.id)}
@@ -87,7 +89,7 @@ export default function MaintenanceWarrantyPage() {
             {accordion.title}
           </AccordionHeader>
           <AccordionBody
-            className={` px-6 ${
+            className={` px-6 lg:text-sm ${
               open === accordion.id ? 'bg-accordionBg text-black hover:text-black' : ''
             }`}
           >

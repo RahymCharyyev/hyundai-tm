@@ -54,7 +54,7 @@ export default function NewsPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
         <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
         <NavLink href="/history/news" text="news" pathname={pathname} t={t} />

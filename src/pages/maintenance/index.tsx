@@ -35,7 +35,7 @@ export default function MaintenancePage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -60,14 +60,14 @@ export default function MaintenancePage() {
       <div className="relative my-16">
         <Image
           crossOrigin="use-credentials"
-          className="mx-auto 3xl:w-[1000px]"
+          className="mx-auto 3xl:w-[1000px] px-10"
           alt="maintenance-firstImage"
           src={data.event.image1Path}
           width={1345}
           height={520}
           sizes="100vw"
         />
-        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white">
+        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white px-10 lg:top-10">
           <h1 className="font-bold text-5xl max-w-lg 3xl:text-4xl 2xl:!text-3xl 3xl:max-w-[300px]">
             {data.event.title}
           </h1>
@@ -77,7 +77,7 @@ export default function MaintenancePage() {
         </div>
       </div>
       <Image
-        className="3xl:w-[800px]"
+        className="3xl:w-[800px] px-20"
         crossOrigin="use-credentials"
         alt="maintenance-secondImage"
         src={data.event.image2Path}
@@ -85,7 +85,7 @@ export default function MaintenancePage() {
         height={600}
         sizes="100vw"
       />
-      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl">
+      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl">
         {data.event.contactText}
       </p>
     </main>

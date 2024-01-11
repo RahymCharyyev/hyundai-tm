@@ -24,7 +24,7 @@ export default function MaintenanceMapPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -46,23 +46,23 @@ export default function MaintenanceMapPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl mt-16 text-center">{serviceMap.title}</h1>
-      <table className="w-[800px] text-center border-2 my-8">
+      <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl">
+        {serviceMap.title}
+      </h1>
+      <table className="w-[800px] text-center border-2 my-8 lg:w-[600px]">
         <tr className="bg-accordionBg border-2">
-          <th className="py-3 border-2">{serviceMap.tableHead.models}</th>
-          <th className="py-3 border-2">{serviceMap.tableHead.map}</th>
+          <th className="py-3 border-2 lg:text-base">{serviceMap.tableHead.models}</th>
+          <th className="py-3 border-2 lg:text-base">{serviceMap.tableHead.map}</th>
         </tr>
-        {serviceMap.models.map((model, index) => (
+        {serviceMap.models.map((model) => (
           <tr key={model.id}>
             <td className="py-3">{model.name}</td>
-            {index === serviceMap.models.length - 1 && (
-              <Link href={serviceMap.downloadLink}>
-                <td className="flex gap-2 items-center justify-center">
-                  <Image src={DownloadIcon} alt="donload" />
-                  {t('download')}
-                </td>
-              </Link>
-            )}
+            <Link href={serviceMap.downloadLink}>
+              <td className="flex gap-2 items-center justify-center">
+                <Image src={DownloadIcon} alt="donload" />
+                {t('download')}
+              </td>
+            </Link>
           </tr>
         ))}
       </table>

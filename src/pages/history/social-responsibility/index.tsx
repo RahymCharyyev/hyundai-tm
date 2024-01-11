@@ -23,7 +23,7 @@ export default function HistoryResponsibilityPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
         <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
         <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
@@ -34,14 +34,16 @@ export default function HistoryResponsibilityPage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col my-16 max-w-6xl 2xl:max-w-4xl">
-        <span className="mb-8">{serviceResponsibility.text}</span>
-        <h1 className="font-bold text-4xl text-center mb-16">
+      <div className="flex flex-col my-16 max-w-6xl 2xl:max-w-4xl lg:!max-w-2xl">
+        <span className="mb-8 lg:text-sm">{serviceResponsibility.text}</span>
+        <h1 className="font-bold text-4xl text-center mb-16 lg:text-2xl">
           {serviceResponsibility.title}
         </h1>
-        <h2 className="font-bold text-3xl mb-8">{serviceResponsibility.subtitle}</h2>
+        <h2 className="font-bold text-3xl mb-8 lg:text-2xl">
+          {serviceResponsibility.subtitle}
+        </h2>
         {serviceResponsibility.listItems.map((item) => (
-          <ul className="list-disc ml-4" key={item.id}>
+          <ul className="list-disc ml-4 lg:text-sm" key={item.id}>
             <li className="mb-2">{item.listText}</li>
           </ul>
         ))}

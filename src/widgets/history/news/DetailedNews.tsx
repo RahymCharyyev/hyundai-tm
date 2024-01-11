@@ -10,9 +10,9 @@ type DetailedNewsProps = {
 export const DetailedNews: FC<DetailedNewsProps> = ({ t, detailedNews }) => {
   return (
     <div className="flex flex-wrap gap-12 justify-between max-w-[1000px]">
-      <div className="flex flex-col">
+      <div className="flex flex-col xl:w-[800px]">
         <Image
-          className="mb-2"
+          className="mb-2 xl:w-[800px] xl:mx-auto"
           width={1000}
           height={500}
           src={detailedNews.data.imagePath}
