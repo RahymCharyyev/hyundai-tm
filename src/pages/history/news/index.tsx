@@ -69,7 +69,7 @@ export default function NewsPage() {
         <Button
           className={`border-none rounded-none bg-thirdColor ${
             selectedNewsType === 'local' ? 'bg-primary' : ''
-          }`}
+          } lg:px-1 lg:py-1 lg:text-sm md:!text-xs`}
           onClick={() => handleNewsTypeChange('local')}
         >
           {t('localNews')}
@@ -77,7 +77,7 @@ export default function NewsPage() {
         <Button
           className={`border-none rounded-none bg-thirdColor ${
             selectedNewsType === 'global' ? 'bg-primary' : ''
-          }`}
+          } lg:px-1 lg:py-1 lg:text-sm md:!text-xs`}
           onClick={() => handleNewsTypeChange('global')}
         >
           {t('globalNews')}

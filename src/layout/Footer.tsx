@@ -20,9 +20,11 @@ export function Footer() {
           width={190}
           height={30}
         />
-        <span className="text-white lg:text-sm">{t('officialDistributor')}</span>
+        <span className="text-white lg:text-sm text-center">
+          {t('officialDistributor')}
+        </span>
       </div>
-      <div className="flex flex-wrap justify-between pt-20 px-28 4xl:pt-8 2xl:justify-center 2xl:gap-10 lg:px-10 lg:!justify-start">
+      <div className="flex flex-wrap justify-between pt-20 px-28 4xl:pt-8 2xl:justify-center 2xl:gap-10 lg:px-10 lg:!justify-start sm:!px-2">
         <div className="flex flex-col gap-3 max-w-[250px] 4xl:hidden">
           <Image src={HyundaiWhiteLogo} alt="hyundai logo" width={190} height={30} />
           <span className="text-white">{t('officialDistributor')}</span>
@@ -129,7 +131,7 @@ export function Footer() {
           </Link>
         </div>
       </div>
-      <div className="text-center text-white mt-12 mb-3 lg:text-xs lg:mt-6">
+      <div className="text-center text-white mt-12 mb-3 lg:text-xs lg:mt-6 max-w-xs mx-auto sm:px-2">
         Copyright {currentYear} Hyundai Motor Company. {t('allRightsReserved')}
       </div>
     </footer>

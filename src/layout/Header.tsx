@@ -28,7 +28,7 @@ export function Header() {
           </Link>
         </span>
       </div>
-      <div className="flex justify-between items-center h-24 px-28 lg:px-10">
+      <div className="flex justify-between items-center h-24 px-28 lg:px-10 md:flex-wrap xs:!justify-center">
         <Image
           className="lg:w-[120px]"
           src={HyundaiBlueLogo}

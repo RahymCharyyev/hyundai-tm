@@ -67,7 +67,7 @@ export default function MaintenancePage() {
           height={520}
           sizes="100vw"
         />
-        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white px-10 lg:top-10">
+        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white px-10 lg:top-5 lg:gap-2">
           <h1 className="font-bold text-5xl max-w-lg 3xl:text-4xl 2xl:!text-3xl 3xl:max-w-[300px]">
             {data.event.title}
           </h1>
@@ -85,7 +85,10 @@ export default function MaintenancePage() {
         height={600}
         sizes="100vw"
       />
-      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl">
+      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl lg:hidden">
+        {data.event.contactText}
+      </p>
+      <p className="font-bold hidden lg:block  text-center my-4 sm:text-sm">
         {data.event.contactText}
       </p>
     </main>

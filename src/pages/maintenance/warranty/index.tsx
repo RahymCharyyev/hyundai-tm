@@ -65,7 +65,7 @@ export default function MaintenanceWarrantyPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl my-16 text-center lg:text-2xl">
+      <h1 className="font-bold text-4xl my-16 text-center lg:text-2xl sm:!text-lg sm:px-5">
         {t('warrantyCondition')}
       </h1>
       {data.guarantees.map((warranty) => (
@@ -75,12 +75,12 @@ export default function MaintenanceWarrantyPage() {
           icon={<Icon id={warranty.id} open={open} />}
           className={`max-w-5xl mx-auto ${
             open === warranty.id ? 'bg-accordionBg' : 'bg-primary'
-          } lg:max-w-2xl`}
+          } lg:max-w-2xl sm:!max-w-xs`}
         >
           <AccordionHeader
             className={`text-white hover:text-white px-6 ${
               open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
-            } lg:text-base`}
+            } lg:text-base sm:!text-sm`}
             onClick={() => handleOpen(warranty.id)}
           >
             {warranty.title}
@@ -88,7 +88,7 @@ export default function MaintenanceWarrantyPage() {
           <AccordionBody
             className={` px-6 ${
               open === warranty.id ? 'bg-accordionBg text-black hover:text-black ' : ''
-            }lg:text-sm`}
+            }lg:text-sm sm:!text-xs`}
           >
             {warranty.text}
           </AccordionBody>

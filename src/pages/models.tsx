@@ -124,8 +124,8 @@ export default function Models() {
         <Button
           className={
             isFrameInOptions.length === 0
-              ? 'rounded-none bg-primary border-none'
-              : 'rounded-none bg-thirdColor border-none'
+              ? 'rounded-none bg-primary border-none lg:px-2 lg:!py-2 lg:text-sm md:!text-xs'
+              : 'rounded-none bg-thirdColor border-none lg:px-2 lg:!py-2 lg:text-sm md:!text-xs'
           }
           onClick={() => handleFrameClick('all')}
         >
@@ -135,8 +135,8 @@ export default function Models() {
           <Button
             className={
               isFrameInOptions.includes(frame.id)
-                ? 'rounded-none bg-primary border-none'
-                : 'rounded-none bg-thirdColor border-none'
+                ? 'rounded-none bg-primary border-none lg:px-2 lg:!py-2 lg:text-sm md:!text-xs'
+                : 'rounded-none bg-thirdColor border-none lg:px-2 lg:!py-2 lg:text-sm md:!text-xs'
             }
             key={`frame-${frame.id}`}
             onClick={() => handleFrameClick(frame)}

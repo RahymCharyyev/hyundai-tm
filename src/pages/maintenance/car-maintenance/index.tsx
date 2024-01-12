@@ -66,17 +66,21 @@ export default function MaintenanceWarrantyPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl">
+      <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl sm:!text-lg">
         {data.maintenance.title1}
       </h1>
-      <h2 className="max-w-4xl my-8 lg:max-w-xl">{data.maintenance.text}</h2>
-      <h2 className="font-bold text-4xl mb-8 lg:text-2xl">{data.maintenance.title2}</h2>
+      <h2 className="max-w-4xl my-8 lg:max-w-xl sm:!text-sm sm:px-5">
+        {data.maintenance.text}
+      </h2>
+      <h2 className="font-bold text-4xl mb-8 lg:text-2xl sm:!text-sm">
+        {data.maintenance.title2}
+      </h2>
       {data.principles.map((accordion) => (
         <Accordion
           open={open === accordion.id}
           key={accordion.id}
           icon={<Icon id={accordion.id} open={open} />}
-          className={`max-w-5xl mx-auto lg:max-w-2xl ${
+          className={`max-w-5xl mx-auto lg:max-w-2xl sm:!max-w-xs ${
             open === accordion.id ? 'bg-accordionBg' : 'bg-primary'
           }`}
         >

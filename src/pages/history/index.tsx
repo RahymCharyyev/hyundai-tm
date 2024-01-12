@@ -35,19 +35,19 @@ export default function HistoryPage() {
       </ButtonGroup>
       <div className="flex flex-col gap-4 items-center max-w-5xl my-16 lg:max-w-2xl ">
         <h1 className="text-4xl font-bold lg:text-2xl">Hyundai Motor Company</h1>
-        <span className="lg:text-sm">
+        <span className="lg:text-sm lg:px-6">
           Компания Hyundai Motor признает важность и влияние автомобилей на человечество.
           Мы стремимся играть роль, выходящую за рамки простого производителя, желая стать
           пожизненным спутником клиента.
         </span>
         <Image
-          className="lg:w-[400px]"
+          className="lg:w-[400px] lg:px-6"
           src={HyundaiTurkmenistanImage}
           alt="hyundai Turkmenistan image"
           width={550}
           height={435}
         />
-        <span className="lg:text-sm">
+        <span className="lg:text-sm lg:px-6">
           Мы стараемся держать добрые связи с клиентами, выполняя свое видение стать
           «пожизненным автомобильным партнером и даже больше» и участвовать в «совместной
           работе для лучшего будущего» в составе Hyundai Motor Group. Мы продвигаем
@@ -61,7 +61,7 @@ export default function HistoryPage() {
           будущему», ответственно выполняя свою роль в качестве надежной глобальной
           компании.
         </span>
-        <span className="lg:text-sm">
+        <span className="lg:text-sm lg:px-6">
           Мы считаем, что будущее нашей организации лежит в сердцах и возможностях
           отдельных членов и поможет им развить свой потенциал, создав корпоративную
           культуру, которая уважает талант. Мы уважаем разнообразие культур и обычаев,

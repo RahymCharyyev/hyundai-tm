@@ -9,7 +9,7 @@ export const LanguageSwitcher = () => {
     <Menu>
       <MenuHandler className="cursor-pointer">
         <Image
-          className="lg:w-[15px]"
+          className="lg:w-[15px] "
           src={LanguageIcon}
           alt="language select logo"
           width={20}

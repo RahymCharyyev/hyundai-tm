@@ -49,7 +49,7 @@ export default function MaintenanceMapPage() {
       <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl">
         {serviceMap.title}
       </h1>
-      <table className="w-[800px] text-center border-2 my-8 lg:w-[600px]">
+      <table className="w-[800px] text-center border-2 my-8 lg:w-[600px] md:!w-[250px]">
         <tr className="bg-accordionBg border-2">
           <th className="py-3 border-2 lg:text-base">{serviceMap.tableHead.models}</th>
           <th className="py-3 border-2 lg:text-base">{serviceMap.tableHead.map}</th>
@@ -58,7 +58,7 @@ export default function MaintenanceMapPage() {
           <tr key={model.id}>
             <td className="py-3">{model.name}</td>
             <Link href={serviceMap.downloadLink}>
-              <td className="flex gap-2 items-center justify-center">
+              <td className="flex gap-2 py-3 items-center justify-center">
                 <Image src={DownloadIcon} alt="donload" />
                 {t('download')}
               </td>

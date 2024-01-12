@@ -18,9 +18,17 @@ const MediaListItem: FC<{
   media: any;
   onClick: () => void;
 }> = ({ media, onClick }) => (
-  <div className="flex flex-col gap-3 hover:scale-105" onClick={onClick}>
-    <Image src={media.posterPath} alt={media.title} width={300} height={150} />
-    <h2 className="w-[280px] font-bold text-sm">{media.title}</h2>
+  <div className="flex flex-col gap-3 hover:scale-105 " onClick={onClick}>
+    <Image
+      className="sm:w-[150px] sm:mx-auto"
+      src={media.posterPath}
+      alt={media.title}
+      width={300}
+      height={150}
+    />
+    <h2 className="w-[280px] font-bold text-sm sm:w-[150px] sm:mx-auto sm:text-xs">
+      {media.title}
+    </h2>
   </div>
 );
 
@@ -38,7 +46,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
       <MediaListItem key={media.id} media={media} onClick={() => handleOpen()} />
     ));
   return (
-    <div className="flex flex-wrap gap-12 justify-between max-w-[1000px] lg:max-w-2xl">
+    <div className="flex flex-wrap gap-12 justify-center max-w-[1000px] lg:max-w-2xl">
       {selectedMediaType === 'image' && renderMediaList(data?.data.images?.rows || [])}
       {selectedMediaType === 'video' && renderMediaList(data?.data.videos?.rows || [])}
       {(selectedMediaType === 'image' || selectedMediaType === 'video') && (
@@ -46,7 +54,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
           open={open}
           handler={handleClose}
           size="xs"
-          className="!max-w-[50%] !min-w-[50%] flex items-center justify-center"
+          className="!max-w-[50%] !min-w-[50%] flex items-center justify-center sm:!max-w-[80%] sm:!min-w-[80%]"
         >
           <Swiper
             className="text-center"
@@ -68,7 +76,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
                     width={820}
                     height={520}
                   />
-                  <h2 className="font-bold pb-6">{image.title}</h2>
+                  <h2 className="font-bold pb-6 sm:text-xs">{image.title}</h2>
                 </SwiperSlide>
               ))}
             {selectedMediaType === 'video' &&
@@ -82,7 +90,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
                       width={820}
                       height={520}
                     />
-                    <h2 className="font-bold pb-6">{video.title}</h2>
+                    <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
                   </Link>
                 </SwiperSlide>
               ))}

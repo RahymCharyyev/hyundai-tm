@@ -32,7 +32,7 @@ export const ModelsHero: FC<ModelsHeroProps> = ({
         className="bg-opacity-0"
       />
       <h1 className="text-5xl font-bold lg:text-3xl">{t('allVehicles')}</h1>
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-wrap justify-center">
         <Input
           size="lg"
           color="blue-gray"

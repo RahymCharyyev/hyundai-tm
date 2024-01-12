@@ -26,8 +26,12 @@ export default function ServicesPage() {
         <NavLink href="/services/contacts" text="contactUs" pathname={pathname} t={t} />
       </ButtonGroup>
       <div className="flex flex-col items-center 2xl:max-w-5xl">
-        <h1 className="text-4xl font-bold mt-16 lg:text-2xl">{offersTestDrive.title}</h1>
-        <h2 className="text-linkColor font-bold mb-10">{offersTestDrive.subtitle}</h2>
+        <h1 className="text-4xl font-bold mt-16 text-center lg:text-2xl">
+          {offersTestDrive.title}
+        </h1>
+        <h2 className="text-linkColor font-bold mb-10 text-center">
+          {offersTestDrive.subtitle}
+        </h2>
         <Image
           className="mb-10"
           src={offersTestDrive.imagePath}
@@ -35,22 +39,22 @@ export default function ServicesPage() {
           width={500}
           height={300}
         />
-        <h2 className="text-4xl font-bold mb-8 lg:text-2xl">
+        <h2 className="text-4xl font-bold mb-8 lg:text-2xl text-center ">
           {offersTestDrive.formTitle}
         </h2>
         <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4">
+          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 sm:justify-center">
             <input
-              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
               placeholder={t('name')}
             />
             <input
-              className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+              className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
               type="tel"
               placeholder={t('phone')}
             />
             <input
-              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
               type="email"
               placeholder={t('mail')}
             />
@@ -66,7 +70,7 @@ export default function ServicesPage() {
             {t('sendRequest')}
           </button>
         </div>
-        <div className="flex gap-[500px] items-end text-xl my-14 lg:gap-[300px] lg:text-sm">
+        <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
           <span>{offersTestDrive.phoneService}</span>
           <span>{offersTestDrive.phoneSale}</span>
         </div>

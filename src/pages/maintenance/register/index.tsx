@@ -44,7 +44,7 @@ export default function MaintenanceRegisterPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20">
+      <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20 sm:!text-lg">
         {serviceRegister.title}
       </h1>
       <div className="flex flex-col gap-4 items-center bg-secondary py-12">
@@ -75,7 +75,7 @@ export default function MaintenanceRegisterPage() {
           {t('sendRequest')}
         </button>
       </div>
-      <div className="flex gap-[500px] items-end text-xl my-14 lg:gap-[300px] lg:text-sm">
+      <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
         <span>{serviceRegister.phoneService}</span>
         <span>{serviceRegister.phoneSale}</span>
       </div>

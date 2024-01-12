@@ -11,7 +11,7 @@ export const ModelsList: FC<ModelsListProps> = ({ handleOpen, data }) => {
   return (
     <div className="flex flex-col gap-12 lg:px-10">
       {data.map((frame) => (
-        <div className="flex flex-wrap" key={frame.id}>
+        <div className="flex flex-wrap md:flex-col" key={frame.id}>
           {frame.models.length > 0 && (
             <h2 className="text-2xl font-bold lg:text-xl">{frame.name}</h2>
           )}
