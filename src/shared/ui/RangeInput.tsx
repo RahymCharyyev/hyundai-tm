@@ -19,7 +19,7 @@ export const RangeInput: React.FC<RangeInputProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-2">
-      <span className="font-bold">{label}</span>
+      <span className="font-bold lg:text-sm">{label}</span>
       <input
         type="range"
         min={min}
@@ -27,16 +27,16 @@ export const RangeInput: React.FC<RangeInputProps> = ({
         value={value}
         step={step}
         onChange={onChange}
-        className="w-full h-1 bg-primary appearance-none range"
+        className="w-full h-1 bg-primary appearance-none range lg:text-sm"
       />
-      <div className="flex justify-between">
+      <div className="flex justify-between lg:text-sm">
         <div className="flex flex-col items-start">
-          <span>от</span>
-          <span className="bg-white py-1 px-6">{value}</span>
+          <span className="">от</span>
+          <span className="bg-white py-1 px-6 lg:px-2">{value}</span>
         </div>
         <div className="flex flex-col items-end">
           <span>до</span>
-          <span className="bg-white py-1 px-6">{max}</span>
+          <span className="bg-white py-1 px-6 lg:px-2">{max}</span>
         </div>
       </div>
     </div>

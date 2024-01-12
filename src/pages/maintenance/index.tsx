@@ -35,7 +35,7 @@ export default function MaintenancePage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -57,35 +57,36 @@ export default function MaintenancePage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="relative my-16">
+      <div className="flex flex-col items-center gap-10 mt-8">
+        <h1 className="font-bold text-5xl 3xl:text-3xl 2xl:!text-xl text-center">
+          {data.event.title}
+        </h1>
         <Image
           crossOrigin="use-credentials"
-          className="mx-auto 3xl:w-[1000px]"
+          className="mx-auto 3xl:w-[1000px] px-10"
           alt="maintenance-firstImage"
           src={data.event.image1Path}
           width={1345}
           height={520}
           sizes="100vw"
         />
-        <div className="absolute flex flex-col gap-10 top-28 left-10 text-white">
-          <h1 className="font-bold text-5xl max-w-lg 3xl:text-4xl 2xl:!text-3xl 3xl:max-w-[300px]">
-            {data.event.title}
-          </h1>
-          <h2 className="font-bold text-3xl max-w-md 3xl:text-2xl 2xl:!text-xl 3xl:max-w-[300px]">
-            {data.event.text}
-          </h2>
-        </div>
+        <h2 className="font-bold text-3xl 3xl:text-xl 2xl:!text-lg text-center">
+          {data.event.text}
+        </h2>
+        <Image
+          className="3xl:w-[800px] px-20"
+          crossOrigin="use-credentials"
+          alt="maintenance-secondImage"
+          src={data.event.image2Path}
+          width={1120}
+          height={600}
+          sizes="100vw"
+        />
       </div>
-      <Image
-        className="3xl:w-[800px]"
-        crossOrigin="use-credentials"
-        alt="maintenance-secondImage"
-        src={data.event.image2Path}
-        width={1120}
-        height={600}
-        sizes="100vw"
-      />
-      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl">
+      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl lg:hidden">
+        {data.event.contactText}
+      </p>
+      <p className="font-bold hidden lg:block  text-center my-4 sm:text-sm">
         {data.event.contactText}
       </p>
     </main>

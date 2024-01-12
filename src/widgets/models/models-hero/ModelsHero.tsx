@@ -23,7 +23,7 @@ export const ModelsHero: FC<ModelsHeroProps> = ({
   handleSearchKeyPress,
 }) => {
   return (
-    <div className="h-[325px] w-full flex flex-col items-center justify-around bg-cover bg-[url('/bg_for_pages.webp')]">
+    <div className="h-[325px] w-full flex flex-col items-center justify-around bg-cover bg-[url('/bg_for_pages.webp')] lg:h-[200px]">
       <Breadcrumbs
         breadcrumbs={[
           { href: '/', text: t('main') },
@@ -31,8 +31,8 @@ export const ModelsHero: FC<ModelsHeroProps> = ({
         ]}
         className="bg-opacity-0"
       />
-      <h1 className="text-5xl font-bold">{t('allVehicles')}</h1>
-      <div className="flex gap-4">
+      <h1 className="text-5xl font-bold lg:text-3xl">{t('allVehicles')}</h1>
+      <div className="flex gap-4 md:flex-wrap justify-center">
         <Input
           size="lg"
           color="blue-gray"

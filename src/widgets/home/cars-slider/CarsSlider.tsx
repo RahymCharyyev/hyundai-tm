@@ -18,7 +18,7 @@ type CarsSliderProps = {
 export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
   return (
     <>
-      <h2 className="font-bold text-5xl mb-10">{t('models')}</h2>
+      <h2 className="font-bold text-5xl mb-10 lg:text-3xl">{t('models')}</h2>
       <Swiper
         className="model"
         modules={[Navigation, Pagination, Autoplay, A11y]}
@@ -34,11 +34,17 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
       >
         {data.map((model) => (
           <SwiperSlide key={model.id}>
-            <Image src={model.imagePath} alt={model.name} width={1860} height={100} />
+            <Image
+              className="lg:w-72"
+              src={model.imagePath}
+              alt={model.name}
+              width={1860}
+              height={100}
+            />
             <Link
               target="_blank"
               href={model.link}
-              className="font-bold text-3xl hover:underline uppercase mb-20 mt-5"
+              className="font-bold text-3xl hover:underline uppercase mb-20 mt-5 lg:text-xl"
             >
               {model.name}
             </Link>
@@ -46,7 +52,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
         ))}
       </Swiper>
       <Link
-        className="bg-primary text-white py-4 px-5 hover:underline mb-20"
+        className="bg-primary text-white py-4 px-5 hover:underline mb-20 lg:py-2 lg:px-3 lg:text-sm"
         target="_blank"
         href="/models"
       >

@@ -54,7 +54,7 @@ export default function NewsPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
         <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
         <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
@@ -69,7 +69,7 @@ export default function NewsPage() {
         <Button
           className={`border-none rounded-none bg-thirdColor ${
             selectedNewsType === 'local' ? 'bg-primary' : ''
-          }`}
+          } lg:px-1 lg:py-1 lg:text-sm md:!text-xs`}
           onClick={() => handleNewsTypeChange('local')}
         >
           {t('localNews')}
@@ -77,7 +77,7 @@ export default function NewsPage() {
         <Button
           className={`border-none rounded-none bg-thirdColor ${
             selectedNewsType === 'global' ? 'bg-primary' : ''
-          }`}
+          } lg:px-1 lg:py-1 lg:text-sm md:!text-xs`}
           onClick={() => handleNewsTypeChange('global')}
         >
           {t('globalNews')}

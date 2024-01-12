@@ -37,7 +37,7 @@ export default function MediaPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
         <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
         <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
@@ -50,7 +50,7 @@ export default function MediaPage() {
       </ButtonGroup>
       <ButtonGroup className="mt-8">
         <Button
-          className={`border-none rounded-none bg-thirdColor ${
+          className={`border-none rounded-none bg-thirdColor lg:px-2 lg:py-2 lg:text-sm md:!text-xs ${
             selectedMediaType === 'video' ? 'bg-primary' : ''
           }`}
           onClick={() => handleMediaTypeChange('video')}
@@ -58,7 +58,7 @@ export default function MediaPage() {
           {t('video')} ({data.data.videos.count})
         </Button>
         <Button
-          className={`border-none rounded-none bg-thirdColor ${
+          className={`border-none rounded-none bg-thirdColor lg:px-2 lg:py-2 lg:text-sm md:!text-xs ${
             selectedMediaType === 'image' ? 'bg-primary' : ''
           }`}
           onClick={() => handleMediaTypeChange('image')}

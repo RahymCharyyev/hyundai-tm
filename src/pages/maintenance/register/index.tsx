@@ -22,7 +22,7 @@ export default function MaintenanceRegisterPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -44,38 +44,38 @@ export default function MaintenanceRegisterPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center">
+      <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20 sm:!text-lg">
         {serviceRegister.title}
       </h1>
       <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10">
+        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4">
           <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3"
+            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
             placeholder={t('name')}
           />
           <input
-            className="w-[300px] h-[55px] bg-white px-3 py-3"
+            className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
             type="tel"
             placeholder={t('phone')}
           />
           <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3"
+            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
             type="email"
             placeholder={t('mail')}
           />
           <textarea
-            className="w-full bg-white  placeholder:pt-3 px-3 py-3"
+            className="w-full bg-white  placeholder:pt-3 px-3 py-3  lg:text-xs"
             placeholder={t('message')}
           />
         </div>
         <button
-          className="font-bold bg-primary w-[300px] h-[50px] text-white hover:underline"
+          className="font-bold bg-primary w-[300px] h-[50px] lg:w-[150px] lg:text-sm lg:h-[35px] text-white hover:underline"
           type="submit"
         >
           {t('sendRequest')}
         </button>
       </div>
-      <div className="flex gap-[500px] items-end text-xl my-14">
+      <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
         <span>{serviceRegister.phoneService}</span>
         <span>{serviceRegister.phoneSale}</span>
       </div>

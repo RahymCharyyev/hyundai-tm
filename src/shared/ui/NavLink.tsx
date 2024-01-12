@@ -12,7 +12,7 @@ export const NavLink: React.FC<NavLinkProps> = ({ href, text, pathname, t }) => 
     href={href}
     className={`rounded-none bg-${
       pathname === href ? 'primary' : 'thirdColor'
-    } border-none px-6 py-3 text-white hover:shadow-lg hover:shadow-gray-900/20`}
+    } border-none px-6 py-3 text-white hover:shadow-lg hover:shadow-gray-900/20 lg:px-2 lg:py-2 lg:text-sm md:!text-xs`}
   >
     {t(text)}
   </Link>

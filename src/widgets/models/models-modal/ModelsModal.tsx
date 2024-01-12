@@ -31,11 +31,17 @@ export const ModelsModal: FC<ModelsModalProps> = ({
       handler={handleOpen}
     >
       <div className="flex flex-col items-center justify-center">
-        <Image src={model.imagePath} alt={model.name} width={540} height={200} />
+        <Image
+          className="lg:w-[300px]"
+          src={model.imagePath}
+          alt={model.name}
+          width={540}
+          height={200}
+        />
         <div className="flex gap-3 items-center">
           <Link
             target="_blank"
-            className="bg-primary text-white py-4 px-5 hover:underline"
+            className="bg-primary text-white py-4 px-5 hover:underline lg:py-2 lg:px-3 lg:text-sm"
             href={model.link}
           >
             {t('knowMore')}
@@ -43,20 +49,22 @@ export const ModelsModal: FC<ModelsModalProps> = ({
         </div>
       </div>
       <div className="flex flex-col gap-5">
-        <h2 className="text-black text-xl font-bold">{t('chooseTrip')}</h2>
-        <Select label={t('chooseTrip')}>
+        <h2 className="text-black text-xl font-bold lg:text-sm">{t('chooseTrip')}</h2>
+        <Select className="lg:text-sm" label={t('chooseTrip')}>
           {selectedModelEquipments.map((equipment) => (
-            <Option key={equipment.id}>{equipment.name}</Option>
+            <Option className="lg:text-sm" key={equipment.id}>
+              {equipment.name}
+            </Option>
           ))}
         </Select>
-        <h2 className="text-black text-xl font-bold">{t('review')}</h2>
-        <p className="text-black text-base font-bold">
-          {t('category')} <span className="font-normal">{frameName}</span>
+        <h2 className="text-black text-xl font-bold lg:text-sm">{t('review')}</h2>
+        <p className="text-black text-base font-bold lg:text-sm">
+          {t('category')} <span className="font-normal lg:text-sm">{frameName}</span>
         </p>
-        <p className="text-black text-base font-bold">
+        <p className="text-black text-base font-bold lg:text-sm">
           {t('modelName')} <span className="font-normal">{model.name}</span>
         </p>
-        <p className="text-black text-base font-bold">
+        <p className="text-black text-base font-bold lg:text-sm">
           {t('trip')}
           {selectedModelEquipments.map((equipment) => (
             <span key={equipment.id} className="font-normal">
@@ -64,12 +72,12 @@ export const ModelsModal: FC<ModelsModalProps> = ({
             </span>
           ))}
         </p>
-        <p className="text-black text-base font-bold">
+        <p className="text-black text-base font-bold lg:text-sm">
           {t('capacity')} <span className="font-normal">{model.seat}</span>
         </p>
       </div>
       <IconButton color="blue-gray" size="sm" variant="text" onClick={handleOpen}>
-        <span className="text-xl">X</span>
+        <span className="text-xl lg:text-sm">X</span>
       </IconButton>
     </Dialog>
   );

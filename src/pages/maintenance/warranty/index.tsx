@@ -43,7 +43,7 @@ export default function MaintenanceWarrantyPage() {
         ]}
         t={t}
       />
-      <ButtonGroup>
+      <ButtonGroup className="flex flex-wrap items-center justify-center">
         <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
         <NavLink
           href="/maintenance/register"
@@ -65,7 +65,9 @@ export default function MaintenanceWarrantyPage() {
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl my-16 text-center">{t('warrantyCondition')}</h1>
+      <h1 className="font-bold text-4xl my-16 text-center lg:text-2xl sm:!text-lg sm:px-5">
+        {t('warrantyCondition')}
+      </h1>
       {data.guarantees.map((warranty) => (
         <Accordion
           open={open === warranty.id}
@@ -73,20 +75,20 @@ export default function MaintenanceWarrantyPage() {
           icon={<Icon id={warranty.id} open={open} />}
           className={`max-w-5xl mx-auto ${
             open === warranty.id ? 'bg-accordionBg' : 'bg-primary'
-          }`}
+          } lg:max-w-2xl sm:!max-w-xs`}
         >
           <AccordionHeader
             className={`text-white hover:text-white px-6 ${
               open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
-            }`}
+            } lg:text-base sm:!text-sm`}
             onClick={() => handleOpen(warranty.id)}
           >
             {warranty.title}
           </AccordionHeader>
           <AccordionBody
             className={` px-6 ${
-              open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
-            }`}
+              open === warranty.id ? 'bg-accordionBg text-black hover:text-black ' : ''
+            }lg:text-sm sm:!text-xs`}
           >
             {warranty.text}
           </AccordionBody>

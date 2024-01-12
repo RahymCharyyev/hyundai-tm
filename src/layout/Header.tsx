@@ -1,14 +1,14 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
-import { LanguageSwitcher } from '@/shared/ui';
-import HyundaiBlueLogo from '@/assets/hyundai_blue_logo.png';
-import ShareIcon from '@/assets/share_icon.svg';
-import SearchIcon from '@/assets/search_icon.svg';
 import HambugerIcon from '@/assets/hamburger.svg';
+import HyundaiBlueLogo from '@/assets/hyundai_blue_logo.png';
+import SearchIcon from '@/assets/search_icon.svg';
+import ShareIcon from '@/assets/share_icon.svg';
+import { LanguageSwitcher } from '@/shared/ui';
+import { Drawer, IconButton } from '@material-tailwind/react';
+import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Drawer, Button, Typography, IconButton } from '@material-tailwind/react';
 
 export function Header() {
   const { t } = useTranslation('common');
@@ -20,16 +20,22 @@ export function Header() {
 
   return (
     <header>
-      <div className="h-11 flex items-center bg-header">
-        <span className="text-primary px-28">
+      <div className="h-11 flex items-center bg-header lg:text-xs">
+        <span className="text-primary px-28 lg:px-10">
           {t('callCenter')}: &nbsp;
           <Link className="font-bold" href="tel:+993 12 12-12-12">
             +993 12 12-12-12
           </Link>
         </span>
       </div>
-      <div className="flex justify-between items-center h-24 px-28">
-        <Image src={HyundaiBlueLogo} alt="hyundai logo" width={190} height={30} />
+      <div className="flex justify-between items-center h-24 px-28 lg:px-10 md:flex-wrap xs:!justify-center">
+        <Image
+          className="lg:w-[120px]"
+          src={HyundaiBlueLogo}
+          alt="hyundai logo"
+          width={190}
+          height={30}
+        />
         <div className="flex gap-8 2xl:hidden">
           <Link className={pathname == '/' ? activeLink : 'hover:font-medium'} href="/">
             {t('main')}
@@ -67,10 +73,22 @@ export function Header() {
         </div>
         <div className="flex gap-5">
           <LanguageSwitcher />
-          <Image src={ShareIcon} alt="share logo" width={20} height={20} />
-          <Image src={SearchIcon} alt="search logo" width={20} height={20} />
           <Image
-            className="hidden 2xl:block"
+            className="lg:w-[15px]"
+            src={ShareIcon}
+            alt="share logo"
+            width={20}
+            height={20}
+          />
+          <Image
+            className="lg:w-[15px]"
+            src={SearchIcon}
+            alt="search logo"
+            width={20}
+            height={20}
+          />
+          <Image
+            className="hidden 2xl:block lg:w-[15px] "
             src={HambugerIcon}
             alt="hamburger menu"
             onClick={openDrawer}

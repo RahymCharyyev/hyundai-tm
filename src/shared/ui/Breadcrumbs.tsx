@@ -17,7 +17,7 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs, className
     <MTBreadcrumbs className={className}>
       {breadcrumbs.map((breadcrumb, index) => (
         <Link href={breadcrumb.href} key={index}>
-          <span>{breadcrumb.text}</span>
+          {breadcrumb.text}
         </Link>
       ))}
     </MTBreadcrumbs>

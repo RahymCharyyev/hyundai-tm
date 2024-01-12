@@ -9,16 +9,22 @@ type ModelsListProps = {
 
 export const ModelsList: FC<ModelsListProps> = ({ handleOpen, data }) => {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 lg:px-10">
       {data.map((frame) => (
-        <div className="flex flex-wrap" key={frame.id}>
+        <div className="flex flex-wrap md:flex-col" key={frame.id}>
           {frame.models.length > 0 && (
-            <h2 className="text-2xl font-bold">{frame.name}</h2>
+            <h2 className="text-2xl font-bold lg:text-xl">{frame.name}</h2>
           )}
           {frame.models.map((model) => (
             <div key={model.id} className="">
               <button type="submit" onClick={() => handleOpen(model, frame)}>
-                <Image src={model.imagePath} alt={model.name} width={300} height={200} />
+                <Image
+                  className="lg:w-[200px]"
+                  src={model.imagePath}
+                  alt={model.name}
+                  width={300}
+                  height={200}
+                />
                 <div className="font-bold text-lg hover:underline">{model.name}</div>
               </button>
             </div>
