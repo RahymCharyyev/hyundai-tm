@@ -29,7 +29,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
   };
 
   return (
-    <div className="flex gap-32 bg-secondary px-44 py-10 2xl:!px-2 xl:max-w-[800px] xl:flex-col xl:!gap-16 lg:!max-w-[500px] md:w-[400px] xs:!w-[250px]">
+    <div className="flex gap-32 bg-secondary px-44 py-10 2xl:!px-2 xl:max-w-[800px] xl:flex-col xl:!gap-16 lg:!max-w-[500px] md:w-[350px] xs:!w-[250px]">
       <div className="flex gap-12 xl:!gap-0 xl:justify-between md:flex-wrap">
         {data.options.map((item) => (
           <div key={item.id} className="flex flex-col items-start sm:!flex-wrap">

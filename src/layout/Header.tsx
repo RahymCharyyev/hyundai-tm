@@ -29,13 +29,16 @@ export function Header() {
         </span>
       </div>
       <div className="flex justify-between items-center h-24 px-28 lg:px-10 md:flex-wrap xs:!justify-center">
-        <Image
-          className="lg:w-[120px]"
-          src={HyundaiBlueLogo}
-          alt="hyundai logo"
-          width={190}
-          height={30}
-        />
+        <Link href="/">
+          <Image
+            className="lg:w-[120px]"
+            src={HyundaiBlueLogo}
+            alt="hyundai logo"
+            width={190}
+            height={30}
+          />
+        </Link>
+
         <div className="flex gap-8 2xl:hidden">
           <Link className={pathname == '/' ? activeLink : 'hover:font-medium'} href="/">
             {t('main')}
