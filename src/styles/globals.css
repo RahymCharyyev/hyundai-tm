@@ -172,3 +172,20 @@
     --swiper-navigation-size: 20px !important;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .banner {
+    --swiper-pagination-bullet-width: 5px;
+    --swiper-pagination-bullet-height: 5px;
+  }
+  .model {
+    --swiper-pagination-bullet-width: 5px;
+    --swiper-pagination-bullet-height: 5px;
+    height: 200px;
+  }
+
+  .news {
+    --swiper-pagination-bullet-width: 5px;
+    --swiper-pagination-bullet-height: 5px;
+  }
+}

@@ -70,7 +70,7 @@ export default function MaintenancePage() {
           height={520}
           sizes="100vw"
         />
-        <h2 className="font-bold text-3xl 3xl:text-xl 2xl:!text-lg text-center">
+        <h2 className="font-bold text-3xl 3xl:text-xl 2xl:!text-lg text-center px-2">
           {data.event.text}
         </h2>
         <Image
@@ -86,7 +86,7 @@ export default function MaintenancePage() {
       <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl lg:hidden">
         {data.event.contactText}
       </p>
-      <p className="font-bold hidden lg:block  text-center my-4 sm:text-sm">
+      <p className="font-bold hidden lg:block text-center my-4 sm:text-sm px-6">
         {data.event.contactText}
       </p>
     </main>

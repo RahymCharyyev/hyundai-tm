@@ -41,7 +41,7 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
                 priority
               />
               <Link
-                className="bg-primary text-white py-4 px-5 absolute bottom-6 right-20 hover:underline lg:text-sm lg:py-2 lg:px-3 md:!py-1 md:!px-2"
+                className="bg-primary text-white py-4 px-5 absolute bottom-6 right-20 hover:underline lg:text-sm lg:py-2 lg:px-3 md:!py-1 md:!px-2 sm:!text-xs sm:right-6 sm:bottom-2"
                 target="_blank"
                 href={banner.link}
               >

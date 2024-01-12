@@ -48,18 +48,18 @@ export default function MaintenanceRegisterPage() {
         {serviceRegister.title}
       </h1>
       <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4">
+        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 3xl:px-2 sm:justify-center">
           <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
             placeholder={t('name')}
           />
           <input
-            className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+            className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
             type="tel"
             placeholder={t('phone')}
           />
           <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px]"
+            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
             type="email"
             placeholder={t('mail')}
           />

@@ -26,11 +26,11 @@ export const ModelsModal: FC<ModelsModalProps> = ({
   return (
     <Dialog
       size="xs"
-      className="flex justify-around py-5 2xl:min-w-[80%]"
+      className="flex justify-around py-5 2xl:min-w-[80%] sm:flex-col sm:px-6 sm:items-end"
       open={open}
       handler={handleOpen}
     >
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center sm:order-3">
         <Image
           className="lg:w-[300px]"
           src={model.imagePath}
@@ -48,7 +48,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           </Link>
         </div>
       </div>
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 sm:order-2">
         <h2 className="text-black text-xl font-bold lg:text-sm">{t('chooseTrip')}</h2>
         <Select className="lg:text-sm" label={t('chooseTrip')}>
           {selectedModelEquipments.map((equipment) => (
@@ -76,7 +76,13 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           {t('capacity')} <span className="font-normal">{model.seat}</span>
         </p>
       </div>
-      <IconButton color="blue-gray" size="sm" variant="text" onClick={handleOpen}>
+      <IconButton
+        className="sm:order-1"
+        color="blue-gray"
+        size="sm"
+        variant="text"
+        onClick={handleOpen}
+      >
         <span className="text-xl lg:text-sm">X</span>
       </IconButton>
     </Dialog>

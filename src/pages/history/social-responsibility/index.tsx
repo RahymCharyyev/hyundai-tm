@@ -34,7 +34,7 @@ export default function HistoryResponsibilityPage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col my-16 max-w-6xl 2xl:max-w-4xl lg:!max-w-2xl">
+      <div className="flex flex-col my-16 max-w-6xl 2xl:max-w-4xl lg:!max-w-2xl sm:px-6">
         <span className="mb-8 lg:text-sm">{serviceResponsibility.text}</span>
         <h1 className="font-bold text-4xl text-center mb-16 lg:text-2xl">
           {serviceResponsibility.title}

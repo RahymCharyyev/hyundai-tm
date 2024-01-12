@@ -29,7 +29,7 @@ export default function ServicesContactsPage() {
           {offersContacts.title}
         </h1>
         <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 sm:justify-center">
+          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 3xl:px-2 sm:justify-center">
             <input
               className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
               placeholder={t('name')}
@@ -58,7 +58,7 @@ export default function ServicesContactsPage() {
         </div>
         <div className="flex gap-10 justify-between my-16 lg:flex-col lg:items-center px-6">
           <iframe
-            className="sm:w-[250px]"
+            className="sm:w-[250px] sm:h-[250px]"
             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d486.8104361208546!2d31.104625!3d12.550339!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f6fff7552c8a2f9%3A0xa91ad91cf22f5d22!2sHyundai%20Distributor!5e0!3m2!1sen!2sus!4v1704125198161!5m2!1sen!2sus"
             width="470"
             height="500"

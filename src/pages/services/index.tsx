@@ -43,7 +43,7 @@ export default function ServicesPage() {
           {offersTestDrive.formTitle}
         </h2>
         <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 sm:justify-center">
+          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 3xl:px-2 sm:justify-center">
             <input
               className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
               placeholder={t('name')}
