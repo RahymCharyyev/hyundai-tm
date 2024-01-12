@@ -1,7 +1,9 @@
-import { serviceEvents } from '@/fakeData/serviceEvents';
+import { getMaintenanceData } from '@/api/getMaintenancePageData';
+import { Loading } from '@/layout/Loading';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
 import { ButtonGroup } from '@material-tailwind/react';
+import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -9,8 +11,18 @@ import { useRouter } from 'next/router';
 export default function MaintenancePage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
+  const { isPending, error, data } = useQuery({
+    queryKey: ['maintenancePage'],
+    queryFn: () =>
+      getMaintenanceData({
+        lang: currentLang,
+      }),
+  });
 
-  serviceEvents;
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -47,26 +59,28 @@ export default function MaintenancePage() {
       </ButtonGroup>
       <div className="relative my-16">
         <Image
+          crossOrigin="use-credentials"
           className="mx-auto"
           alt="maintenance-firstImage"
-          src={serviceEvents.firstImagePath}
+          src={data.event.image1Path}
           width={1345}
           height={520}
           sizes="100vw"
         />
         <div className="absolute flex flex-col gap-10 top-28 left-10 text-white ">
-          <h1 className="font-bold text-5xl max-w-lg">{serviceEvents.title}</h1>
-          <h2 className="font-bold text-3xl max-w-md">{serviceEvents.subtitle}</h2>
+          <h1 className="font-bold text-5xl max-w-lg">{data.event.title}</h1>
+          <h2 className="font-bold text-3xl max-w-md">{data.event.text}</h2>
         </div>
       </div>
       <Image
+        crossOrigin="use-credentials"
         alt="maintenance-secondImage"
-        src={serviceEvents.secondImagePath}
+        src={data.event.image2Path}
         width={1120}
         height={600}
         sizes="100vw"
       />
-      <span className="font-bold text-4xl my-16">{serviceEvents.text}</span>
+      <span className="font-bold text-4xl my-16">{data.event.contactText}</span>
     </main>
   );
 }

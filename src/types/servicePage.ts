@@ -1,3 +1,37 @@
+export interface BaseResponse<T> {
+  success: boolean;
+  data: T;
+}
+
+export type MaintenanceResponse = BaseResponse<{
+  event: Event;
+  guarantees: Guarantee[];
+  maintenance: Maintenance;
+  principles: Guarantee[];
+}>;
+
+export interface Maintenance {
+  id: number;
+  title1: string;
+  text: string;
+  title2: string;
+}
+
+export interface Guarantee {
+  title: string;
+  text: string;
+  id: number;
+}
+
+export interface Event {
+  id: number;
+  title: string;
+  text: string;
+  contactText: string;
+  image1Path: string;
+  image2Path: string;
+}
+
 export interface MaintenanceEvents {
   firstImagePath: string;
   secondImagePath: string;
