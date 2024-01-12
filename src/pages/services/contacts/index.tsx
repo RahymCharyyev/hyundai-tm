@@ -24,8 +24,8 @@ export default function ServicesContactsPage() {
         <NavLink href="/services" text="testDrive" pathname={pathname} t={t} />
         <NavLink href="/services/contacts" text="contactUs" pathname={pathname} t={t} />
       </ButtonGroup>
-      <div className="flex flex-col items-center">
-        <h1 className="text-4xl font-bold my-16">{offersContacts.title}</h1>
+      <div className="flex flex-col items-center 2xl:max-w-5xl">
+        <h1 className="text-4xl font-bold my-16 text-center">{offersContacts.title}</h1>
         <div className="flex flex-col gap-4 items-center bg-secondary py-12">
           <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10">
             <input

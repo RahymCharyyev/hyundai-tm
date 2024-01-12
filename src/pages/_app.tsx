@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Layout } from '@/layout/Layout';
 import '@/styles/globals.css';
+import { ThemeProvider } from '@material-tailwind/react';
 
 const hyundaiSans = localFont({
   src: [
@@ -50,9 +51,11 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <QueryClientProvider client={queryClient}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <ThemeProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
       </QueryClientProvider>
     </>
   );

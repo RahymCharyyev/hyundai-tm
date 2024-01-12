@@ -25,7 +25,7 @@ export default function ServicesPage() {
         <NavLink href="/services" text="testDrive" pathname={pathname} t={t} />
         <NavLink href="/services/contacts" text="contactUs" pathname={pathname} t={t} />
       </ButtonGroup>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center 2xl:max-w-5xl">
         <h1 className="text-4xl font-bold mt-16">{offersTestDrive.title}</h1>
         <h2 className="text-linkColor font-bold mb-10">{offersTestDrive.subtitle}</h2>
         <Image
@@ -64,7 +64,7 @@ export default function ServicesPage() {
             {t('sendRequest')}
           </button>
         </div>
-        <div className="flex gap-[500px] items-end text-xl my-14">
+        <div className="flex gap-[400px] items-end text-xl my-14">
           <span>{offersTestDrive.phoneService}</span>
           <span>{offersTestDrive.phoneSale}</span>
         </div>

@@ -26,7 +26,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
   return (
     <Dialog
       size="xs"
-      className="flex justify-around py-5"
+      className="flex justify-around py-5 2xl:min-w-[80%]"
       open={open}
       handler={handleOpen}
     >
@@ -39,17 +39,6 @@ export const ModelsModal: FC<ModelsModalProps> = ({
             href={model.link}
           >
             {t('knowMore')}
-          </Link>
-          <Button className="bg-primary text-white py-5 px-5 hover:underline rounded-none">
-            {t('360View')}
-          </Button>
-          <Link
-            target="_blank"
-            href={model.eBrochurePath}
-            className="bg-primary text-white py-4 px-8 hover:underline flex gap-2 items-center justify-between rounded-none"
-          >
-            {t('eBroshure')}
-            <Image src={PdfIcon} alt="pdf icon" />
           </Link>
         </div>
       </div>
