@@ -50,36 +50,3 @@ export interface Model {
   createdAt: string;
   frame: string;
 }
-
-export interface Promotions {
-  id: number;
-  imagePath: string;
-}
-
-export interface DetailedStock {
-  id: number;
-  title: string;
-  imagePath: string;
-  description: string;
-}
-
-export interface OffersTestDrive {
-  title: string;
-  subtitle: string;
-  imagePath: string;
-  formTitle: string;
-  name: string;
-  phone: string;
-  mail: string;
-  message: string;
-  phoneService: string;
-  phoneSale: string;
-}
-
-export interface OffersContacts {
-  title: string;
-  companyName: string;
-  workingDays: string;
-  phoneService: string;
-  phoneSale: string;
-}

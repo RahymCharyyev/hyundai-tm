@@ -1,6 +1,6 @@
-import { ApplicationModel } from '@/types/servicePage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
+import { ApplicationModel } from '@/types/applicationForm';
 
 export const postApplication = async (formData: ApplicationModel, type: string) => {
   try {
