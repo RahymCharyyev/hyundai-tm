@@ -30,10 +30,10 @@ export default function Home() {
           {t('media')}
         </Link>
         <Link
-          href="/stock"
+          href="/promotions"
           className="h-full w-full bg-cover text-white text-5xl font-bold bg-[url('/sales_bg.webp')] flex items-center justify-center hover:underline lg:text-2xl"
         >
-          {t('stock')}
+          {t('promotions')}
         </Link>
       </div>
     </main>

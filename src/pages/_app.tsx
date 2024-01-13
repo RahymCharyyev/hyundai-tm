@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Layout } from '@/layout/Layout';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@material-tailwind/react';
+import HyundaiSeo from '@/shared/seo/hyundaiSeo';
 
 const hyundaiSans = localFont({
   src: [
@@ -51,6 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <QueryClientProvider client={queryClient}>
+        <HyundaiSeo />
         <ThemeProvider>
           <Layout>
             <Component {...pageProps} />

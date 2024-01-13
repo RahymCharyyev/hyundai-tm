@@ -1,14 +1,45 @@
-import { offersContacts } from '@/fakeData/offersContacts';
+import { getContacts } from '@/api/getContacts';
+import { postApplication } from '@/api/postApplication';
+import { Loading } from '@/layout/Loading';
+import ApplicationForm from '@/shared/ui/ApplicationForm';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
+import { ApplicationModel } from '@/types/applicationForm';
 import { ButtonGroup } from '@material-tailwind/react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function ServicesContactsPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
-  offersContacts;
+  const { reset } = useForm<ApplicationModel>();
+  const queryClient = useQueryClient();
+  const { isPending, error, data } = useQuery({
+    queryKey: ['contacts'],
+    queryFn: () => getContacts(),
+  });
+
+  const mutation = useMutation({
+    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'contactUs'),
+    onSuccess: () => {
+      queryClient.invalidateQueries();
+      reset();
+    },
+  });
+
+  const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
+    mutation.mutate(data);
+  };
+
+  if (mutation.isSuccess) return alert('Success');
+  if (mutation.isPending) return <Loading />;
+  if (mutation.isError) return alert('Error');
+
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
@@ -26,36 +57,9 @@ export default function ServicesContactsPage() {
       </ButtonGroup>
       <div className="flex flex-col items-center 2xl:max-w-5xl">
         <h1 className="text-4xl font-bold my-16 text-center lg:text-2xl sm:!text-lg">
-          {offersContacts.title}
+          {t('contactWithUs')}
         </h1>
-        <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-          <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 3xl:px-2 sm:justify-center">
-            <input
-              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-              placeholder={t('name')}
-            />
-            <input
-              className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-              type="tel"
-              placeholder={t('phone')}
-            />
-            <input
-              className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-              type="email"
-              placeholder={t('mail')}
-            />
-            <textarea
-              className="w-full bg-white  placeholder:pt-3 px-3 py-3  lg:text-xs"
-              placeholder={t('message')}
-            />
-          </div>
-          <button
-            className="font-bold bg-primary w-[300px] h-[50px] lg:w-[150px] lg:text-sm lg:h-[35px] text-white hover:underline"
-            type="submit"
-          >
-            {t('sendRequest')}
-          </button>
-        </div>
+        <ApplicationForm onSubmit={onSubmit} />
         <div className="flex gap-10 justify-between my-16 lg:flex-col lg:items-center px-6">
           <iframe
             className="sm:w-[250px] sm:h-[250px]"
@@ -67,10 +71,15 @@ export default function ServicesContactsPage() {
             referrerPolicy="no-referrer-when-downgrade"
           />
           <div className="flex flex-col gap-4 text-xl lg:text-base ">
-            <p>{offersContacts.companyName}</p>
-            <p>{offersContacts.workingDays}</p>
-            <p>{offersContacts.phoneSale}</p>
-            <p>{offersContacts.phoneService}</p>
+            <p>ХО «Mertlik Ruhy»</p>
+            <p>Рабочие дни: Понедельник-Пятница – 09:00-18:00 Суббота – 09:00-13:00</p>
+            <p>
+              {t('phoneService')} &nbsp;
+              {data.data.serviceDepartmentPhone}
+            </p>
+            <p>
+              {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone}
+            </p>
           </div>
         </div>
       </div>

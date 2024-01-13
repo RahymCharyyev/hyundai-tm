@@ -59,7 +59,10 @@ interface VideosData {
 
 export interface ApiResponse {
   data: {
+    id: number;
     images: ImagesData;
     videos: VideosData;
+    hyundaiTurkmenistan: string;
+    socialResponsibility: string;
   };
 }

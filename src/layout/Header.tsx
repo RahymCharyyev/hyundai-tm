@@ -1,16 +1,19 @@
+import { getContacts } from '@/api/getContacts';
 import HambugerIcon from '@/assets/hamburger.svg';
 import HyundaiBlueLogo from '@/assets/hyundai_blue_logo.png';
 import SearchIcon from '@/assets/search_icon.svg';
 import ShareIcon from '@/assets/share_icon.svg';
 import { LanguageSwitcher } from '@/shared/ui';
 import { Drawer, IconButton } from '@material-tailwind/react';
+import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { Loading } from './Loading';
 
-export function Header() {
+export default function Header() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
   const activeLink = 'active font-medium hover:font-medium';
@@ -18,13 +21,21 @@ export function Header() {
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
 
+  const { isPending, error, data } = useQuery({
+    queryKey: ['contactsPage'],
+    queryFn: () => getContacts(),
+  });
+
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
+
   return (
     <header>
       <div className="h-11 flex items-center bg-header lg:text-xs">
         <span className="text-primary px-28 lg:px-10">
           {t('callCenter')}: &nbsp;
           <Link className="font-bold" href="tel:+993 12 12-12-12">
-            +993 12 12-12-12
+            {data.data.callCenter}
           </Link>
         </span>
       </div>
@@ -62,10 +73,10 @@ export function Header() {
             {t('hyundaiHistory')}
           </Link>
           <Link
-            className={pathname == '/stock' ? activeLink : 'hover:font-medium'}
-            href="/stock"
+            className={pathname == '/promotions' ? activeLink : 'hover:font-medium'}
+            href="/promotions"
           >
-            {t('stock')}
+            {t('promotions')}
           </Link>
           <Link
             className={pathname == '/services' ? activeLink : 'hover:font-medium'}
@@ -141,10 +152,10 @@ export function Header() {
                 {t('hyundaiHistory')}
               </Link>
               <Link
-                className={pathname == '/stock' ? activeLink : 'hover:font-medium'}
-                href="/stock"
+                className={pathname == '/promotions' ? activeLink : 'hover:font-medium'}
+                href="/promotions"
               >
-                {t('stock')}
+                {t('promotions')}
               </Link>
               <Link
                 className={pathname == '/services' ? activeLink : 'hover:font-medium'}

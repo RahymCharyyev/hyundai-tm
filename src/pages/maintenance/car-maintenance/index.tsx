@@ -10,9 +10,13 @@ import {
   ButtonGroup,
 } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
+import dayjs from 'dayjs';
 import useTranslation from 'next-translate/useTranslation';
+import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import DownloadIcon from '@/assets/download.png';
 
 export default function MaintenanceWarrantyPage() {
   const { t } = useTranslation('common');
@@ -101,34 +105,34 @@ export default function MaintenanceWarrantyPage() {
           </AccordionBody>
         </Accordion>
       ))}
-      {/* <h2 className="font-bold text-4xl my-8">{maintenance.userGuideTitle}</h2>
-      <table className="w-full text-center border-2 mb-8">
-        <tr className="bg-primary text-white border-2">
-          <th className="py-3 border-2">{maintenance.tableHead.year}</th>
-          <th className="py-3 border-2">{maintenance.tableHead.type}</th>
-          <th className="py-3 border-2">{maintenance.tableHead.state}</th>
-          <th className="py-3 border-2">{maintenance.tableHead.name}</th>
-          <th className="py-3 border-2">{maintenance.tableHead.createdAt}</th>
-          <th className="py-3 border-2">{maintenance.tableHead.downloadLink}</th>
+      <h2 className="font-bold text-4xl my-8">{t('userGuide')}</h2>
+      <table className="text-center border-2 mb-8">
+        <tr className="bg-primary text-white py-3 px-3 border-2">
+          <th className="py-3 px-3 border-2">{t('year')}</th>
+          <th className="py-3 px-3 border-2">{t('type')}</th>
+          <th className="py-3 px-3 border-2">{t('status')}</th>
+          <th className="py-3 px-3 border-2">{t('carName')}</th>
+          <th className="py-3 px-3 border-2">{t('modelDate')}</th>
+          <th className="py-3 px-3 border-2">{t('link')}</th>
         </tr>
-        {maintenance.tableContent.map((table) => (
-          <tr key={table.id} className="hover:bg-accordionBg">
-            <td className="py-3 border-2">{table.year}</td>
-            <td className="py-3 border-2">{table.type}</td>
-            <td className="py-3 border-2">{table.state}</td>
-            <td className="py-3 border-2">{table.name}</td>
+        {data.models.map((model) => (
+          <tr key={model.id} className="hover:bg-accordionBg">
+            <td className="py-3 border-2">{model.year}</td>
+            <td className="py-3 border-2">{model.frame}</td>
+            <td className="py-3 border-2">{model.status}</td>
+            <td className="py-3 border-2">{model.name}</td>
             <td className="py-3 border-2">
-              {dayjs(table.createdAt).format('DD.MM.YYYY')}
+              {dayjs(model.createdAt).format('DD.MM.YYYY')}
             </td>
-            <Link href={table.downloadLink}>
+            <Link href={model.userGuidePath}>
               <td className="border-2 py-3 flex gap-2 items-center justify-center">
-                <Image src={DownloadIcon} alt="donload" />
+                <Image src={DownloadIcon} alt="download" />
                 {t('download')}
               </td>
             </Link>
           </tr>
         ))}
-      </table> */}
+      </table>
     </main>
   );
 }

@@ -58,8 +58,8 @@ export function Footer() {
           <Link className="text-thirdColor hover:text-white" href="/services">
             {t('testDrive')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/stock">
-            {t('stock')}
+          <Link className="text-thirdColor hover:text-white" href="/promotions">
+            {t('promotions')}
           </Link>
           <Link
             className="text-thirdColor hover:text-white"

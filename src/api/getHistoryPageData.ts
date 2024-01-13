@@ -32,3 +32,12 @@ export const getMediaData = async () => {
 
   return data;
 };
+
+export const getHistoryData = async () => {
+  const { data }: AxiosResponse<ApiResponse> = await axiosInstance({
+    method: 'GET',
+    url: '/pages/history',
+  });
+
+  return data;
+};

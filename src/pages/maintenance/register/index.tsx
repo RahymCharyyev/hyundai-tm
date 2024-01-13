@@ -1,15 +1,44 @@
-import { serviceRegister } from '@/fakeData/serviceRegister';
+import { getContacts } from '@/api/getContacts';
+import { postApplication } from '@/api/postApplication';
+import { Loading } from '@/layout/Loading';
+import ApplicationForm from '@/shared/ui/ApplicationForm';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
+import { ApplicationModel } from '@/types/applicationForm';
 import { ButtonGroup } from '@material-tailwind/react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function MaintenanceRegisterPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
+  const { reset } = useForm<ApplicationModel>();
+  const queryClient = useQueryClient();
+  const { isPending, error, data } = useQuery({
+    queryKey: ['contacts'],
+    queryFn: () => getContacts(),
+  });
 
-  serviceRegister;
+  const mutation = useMutation({
+    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'maintenance'),
+    onSuccess: () => {
+      queryClient.invalidateQueries();
+      reset();
+    },
+  });
+
+  const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
+    mutation.mutate(data);
+  };
+
+  if (mutation.isSuccess) return alert('Success');
+  if (mutation.isPending) return <Loading />;
+  if (mutation.isError) return alert('Error');
+
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -45,39 +74,17 @@ export default function MaintenanceRegisterPage() {
         />
       </ButtonGroup>
       <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20 sm:!text-lg">
-        {serviceRegister.title}
+        {t('serviceRegisterTitle')}
       </h1>
-      <div className="flex flex-col gap-4 items-center bg-secondary py-12">
-        <div className="flex gap-y-10 justify-between flex-wrap py-10 px-10 lg:py-2 lg:px-4 3xl:px-2 sm:justify-center">
-          <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-            placeholder={t('name')}
-          />
-          <input
-            className="w-[300px] h-[55px] bg-white px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-            type="tel"
-            placeholder={t('phone')}
-          />
-          <input
-            className="w-[300px] h-[55px] bg-white  px-3 py-3 lg:w-[150px] lg:text-xs lg:h-[35px] sm:!w-[250px]"
-            type="email"
-            placeholder={t('mail')}
-          />
-          <textarea
-            className="w-full bg-white  placeholder:pt-3 px-3 py-3  lg:text-xs"
-            placeholder={t('message')}
-          />
-        </div>
-        <button
-          className="font-bold bg-primary w-[300px] h-[50px] lg:w-[150px] lg:text-sm lg:h-[35px] text-white hover:underline"
-          type="submit"
-        >
-          {t('sendRequest')}
-        </button>
-      </div>
+      <ApplicationForm onSubmit={onSubmit} />
       <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
-        <span>{serviceRegister.phoneService}</span>
-        <span>{serviceRegister.phoneSale}</span>
+        <span>
+          {t('phoneService')} &nbsp;
+          {data.data.serviceDepartmentPhone}
+        </span>
+        <span>
+          {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone}
+        </span>
       </div>
     </main>
   );

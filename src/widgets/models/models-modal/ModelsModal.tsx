@@ -77,6 +77,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
         </p>
       </div>
       <IconButton
+        aria-label="close button"
         className="sm:order-1"
         color="blue-gray"
         size="sm"

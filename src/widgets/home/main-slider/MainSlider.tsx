@@ -45,7 +45,7 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
                 target="_blank"
                 href={banner.link}
               >
-                {t('readMore')}
+                {t('knowMore')}
               </Link>
             </div>
           </SwiperSlide>

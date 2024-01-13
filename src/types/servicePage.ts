@@ -8,6 +8,7 @@ export type MaintenanceResponse = BaseResponse<{
   guarantees: Guarantee[];
   maintenance: Maintenance;
   principles: Guarantee[];
+  models: Model[];
 }>;
 
 export interface Maintenance {
@@ -32,84 +33,25 @@ export interface Event {
   image2Path: string;
 }
 
-export interface MaintenanceEvents {
-  firstImagePath: string;
-  secondImagePath: string;
-  title?: string;
-  subtitle?: string;
-  text?: string;
-}
-
-export interface MaintenanceRegister {
-  title?: string;
+export interface Model {
+  id: number;
   name: string;
-  phone: string;
-  mail: string;
-  message?: string;
-  phoneService: string;
-  phoneSale: string;
+  image: string;
+  link: string;
+  eBrochure: string;
+  userGuide: string;
+  maintainGuide: string;
+  year: number;
+  status: string;
+  imagePath: string;
+  userGuidePath: string;
+  maintainGuidePath: string;
+  eBrochurePath: string;
+  createdAt: string;
+  frame: string;
 }
 
-export interface MaintenanceWarranty {
-  id: number;
-  title: string;
-  description: string;
-}
-
-export interface MaintenanceService {
-  id: number;
-  title: string;
-  description: string;
-  subtitle: string;
-  accordion: {
-    id: number;
-    name: string;
-    text: string;
-  }[];
-  userGuideTitle: string;
-  tableHead: {
-    year: string;
-    type: string;
-    state: string;
-    name: string;
-    createdAt: string;
-    downloadLink: string;
-  };
-  tableContent: {
-    id: number;
-    year: string;
-    type: string;
-    state: string;
-    name: string;
-    createdAt: string;
-    downloadLink: string;
-  }[];
-}
-
-export interface MaintenanceMap {
-  title: string;
-  tableHead: {
-    models: string;
-    map: string;
-  };
-  models: {
-    id: number;
-    name: string;
-  }[];
-  downloadLink: string;
-}
-
-export interface MaintenanceResponsibility {
-  title: string;
-  subtitle: string;
-  text: string;
-  listItems: {
-    id: number;
-    listText: string;
-  }[];
-}
-
-export interface Stock {
+export interface Promotions {
   id: number;
   imagePath: string;
 }
