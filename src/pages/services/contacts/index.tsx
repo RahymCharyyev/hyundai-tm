@@ -5,7 +5,7 @@ import ApplicationForm from '@/shared/ui/ApplicationForm';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
 import { ApplicationModel } from '@/types/applicationForm';
-import { ButtonGroup } from '@material-tailwind/react';
+import { Alert, ButtonGroup } from '@material-tailwind/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
@@ -14,7 +14,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 export default function ServicesContactsPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
-  const { reset } = useForm<ApplicationModel>();
+  const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
@@ -26,16 +26,16 @@ export default function ServicesContactsPage() {
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
+      alert(t('formSuccess'));
+    },
+    onError: () => {
+      alert(t('formError'));
     },
   });
 
   const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
     mutation.mutate(data);
   };
-
-  if (mutation.isSuccess) return alert('Success');
-  if (mutation.isPending) return <Loading />;
-  if (mutation.isError) return alert('Error');
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -59,7 +59,11 @@ export default function ServicesContactsPage() {
         <h1 className="text-4xl font-bold my-16 text-center lg:text-2xl sm:!text-lg">
           {t('contactWithUs')}
         </h1>
-        <ApplicationForm onSubmit={onSubmit} />
+        <ApplicationForm
+          onSubmit={onSubmit}
+          register={register}
+          handleSubmit={handleSubmit}
+        />
         <div className="flex gap-10 justify-between my-16 lg:flex-col lg:items-center px-6">
           <iframe
             className="sm:w-[250px] sm:h-[250px]"

@@ -13,6 +13,7 @@ module.exports = withMT({
         primary: '#002C5F',
         secondary: '#ECECEC',
         thirdColor: '#888888',
+        fourthColor: '#00AAD2',
         linkColor: '#666666',
         activeLink: '#0A0A0A',
         header: '#e4dcd3',

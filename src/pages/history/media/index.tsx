@@ -55,7 +55,7 @@ export default function MediaPage() {
           }`}
           onClick={() => handleMediaTypeChange('video')}
         >
-          {t('video')} ({data.data.videos.count})
+          {t('video')} ({data.data.videos?.count})
         </Button>
         <Button
           className={`border-none rounded-none bg-thirdColor lg:px-2 lg:py-2 lg:text-sm md:!text-xs ${
@@ -63,7 +63,7 @@ export default function MediaPage() {
           }`}
           onClick={() => handleMediaTypeChange('image')}
         >
-          {t('photo')}({data.data.images.count})
+          {t('photo')}({data.data.images?.count})
         </Button>
       </ButtonGroup>
       <div className="my-10">

@@ -1,9 +1,8 @@
-import { Button, Dialog, IconButton, Option, Select } from '@material-tailwind/react';
-import Image from 'next/image';
-import { FC } from 'react';
-import PdfIcon from '@/assets/pdf_icon.svg';
 import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
+import { Dialog, IconButton, Option, Select } from '@material-tailwind/react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { FC } from 'react';
 
 type ModelsModalProps = {
   open: boolean;
@@ -40,9 +39,8 @@ export const ModelsModal: FC<ModelsModalProps> = ({
         />
         <div className="flex gap-3 items-center">
           <Link
-            target="_blank"
             className="bg-primary text-white py-4 px-5 hover:underline lg:py-2 lg:px-3 lg:text-sm"
-            href={model.link}
+            href={`models/${model.id}/main`}
           >
             {t('knowMore')}
           </Link>

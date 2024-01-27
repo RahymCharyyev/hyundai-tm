@@ -14,7 +14,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 export default function MaintenanceRegisterPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
-  const { reset } = useForm<ApplicationModel>();
+  const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
@@ -22,20 +22,19 @@ export default function MaintenanceRegisterPage() {
   });
 
   const mutation = useMutation({
-    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'maintenance'),
+    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'contactUs'),
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
+      alert(t('formSuccess'));
+    },
+    onError: () => {
+      alert(t('formError'));
     },
   });
-
   const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
     mutation.mutate(data);
   };
-
-  if (mutation.isSuccess) return alert('Success');
-  if (mutation.isPending) return <Loading />;
-  if (mutation.isError) return alert('Error');
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -76,7 +75,11 @@ export default function MaintenanceRegisterPage() {
       <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20 sm:!text-lg">
         {t('serviceRegisterTitle')}
       </h1>
-      <ApplicationForm onSubmit={onSubmit} />
+      <ApplicationForm
+        onSubmit={onSubmit}
+        register={register}
+        handleSubmit={handleSubmit}
+      />
       <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
         <span>
           {t('phoneService')} &nbsp;

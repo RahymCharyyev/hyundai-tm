@@ -33,14 +33,14 @@ export default function Models() {
   });
 
   const frameDefaultIds = useMemo(() => {
-    return data?.frameModels.map((frame) => frame.id);
+    return data?.frameModels.map((frame: any) => frame.id);
   }, [data]);
   const isFrameInOptions = useMemo(() => {
     if (query.options && typeof query.options === 'string') {
       const optionsArr = query.options.split(',');
       return optionsArr.reduce((result: any, optionId) => {
         const filtered: any = frameDefaultIds?.filter(
-          (frameId) => String(frameId) === optionId,
+          (frameId: any) => String(frameId) === optionId,
         );
         if (filtered?.length > 0) result.push(filtered[0]);
 
@@ -131,7 +131,7 @@ export default function Models() {
         >
           {t('all')}
         </Button>
-        {data?.frameModels.map((frame) => (
+        {data?.frameModels.map((frame: any) => (
           <Button
             className={
               isFrameInOptions.includes(frame.id)

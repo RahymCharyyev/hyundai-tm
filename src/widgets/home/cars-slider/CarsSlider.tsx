@@ -43,7 +43,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
             />
             <Link
               target="_blank"
-              href={model.link}
+              href={`/models/${model.id}/main`}
               className="font-bold text-3xl hover:underline uppercase mb-20 mt-5 lg:text-xl sm:mb-10"
             >
               {model.name}

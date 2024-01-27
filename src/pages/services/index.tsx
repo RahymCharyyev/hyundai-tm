@@ -1,6 +1,8 @@
 import { getContacts } from '@/api/getContacts';
 import { postApplication } from '@/api/postApplication';
+import TestDriveImage from '@/assets/testDrive.webp';
 import { Loading } from '@/layout/Loading';
+import ApplicationForm from '@/shared/ui/ApplicationForm';
 import { CommonHero } from '@/shared/ui/CommonHero';
 import { NavLink } from '@/shared/ui/NavLink';
 import { ApplicationModel } from '@/types/applicationForm';
@@ -10,13 +12,11 @@ import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import TestDriveImage from '@/assets/testDrive.webp';
-import ApplicationForm from '@/shared/ui/ApplicationForm';
 
 export default function ServicesPage() {
   const { t } = useTranslation('common');
   const { pathname } = useRouter();
-  const { reset } = useForm<ApplicationModel>();
+  const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
@@ -28,16 +28,16 @@ export default function ServicesPage() {
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
+      alert(t('formSuccess'));
+    },
+    onError: () => {
+      alert(t('formError'));
     },
   });
 
   const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
     mutation.mutate(data);
   };
-
-  if (mutation.isSuccess) return alert('Success');
-  if (mutation.isPending) return <Loading />;
-  if (mutation.isError) return alert('Error');
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -74,7 +74,11 @@ export default function ServicesPage() {
         <h2 className="text-4xl font-bold mb-8 lg:text-2xl text-center ">
           {t('testDriveFormTitle')}
         </h2>
-        <ApplicationForm onSubmit={onSubmit} />
+        <ApplicationForm
+          register={register}
+          handleSubmit={handleSubmit}
+          onSubmit={onSubmit}
+        />
         <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
           <span>
             {t('phoneService')} &nbsp;

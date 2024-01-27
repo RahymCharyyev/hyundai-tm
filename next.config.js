@@ -8,8 +8,8 @@ module.exports = withPlugins([nextTranslate], {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'hyundai-api.vercel.app',
+        protocol: 'http',
+        hostname: 'hyundai.com.tm',
       },
     ],
   },

@@ -18,8 +18,6 @@ export default function DetailedStockPage() {
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
 
-  console.log(data);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <CommonHero
