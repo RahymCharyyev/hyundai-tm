@@ -32,6 +32,7 @@ export default function ModelsSafety() {
           { href: `/models/${id}/safety`, text: t('safety') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />

@@ -39,6 +39,7 @@ export default function ModelsInterior() {
           { href: `/models/${id}/interior`, text: t('interior') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />

@@ -32,6 +32,7 @@ export default function ModelsPerformace() {
           { href: `/models/${id}/performance`, text: t('performance') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />
