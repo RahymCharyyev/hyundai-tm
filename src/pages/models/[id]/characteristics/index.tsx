@@ -1,10 +1,13 @@
-import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
+import {
+  getModelsCharactericstics,
+  getModelsDetailsPageData,
+} from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import { Option, Select } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 
 export default function ModelsCharacteristics() {
@@ -19,6 +22,14 @@ export default function ModelsCharacteristics() {
         key: 'safety',
       }),
   });
+  const { data: characteristicsData } = useQuery({
+    queryKey: ['modelsCharacteristics'],
+    queryFn: () =>
+      getModelsCharactericstics({
+        modelId: Number(id),
+      }),
+  });
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
   return (
@@ -27,37 +38,43 @@ export default function ModelsCharacteristics() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/main`, text: 'modelName' },
+          { href: `/models/${id}/feature`, text: 'modelName' },
           { href: `/models/${id}/safety`, text: t('safety') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />
-      <div className="flex flex-col items-center w-full text-center mb-20 py-8">
-        <h2 className="text-3xl font-bold">{data.details[0].title}</h2>
-        <span className="text-xl">{data.details[0].text}</span>
-        <Image
-          className="mb-10"
-          src={data.details[0].imagePath}
-          alt="features images"
-          width={1120}
-          height={600}
-        />
-        <div className="flex flex-wrap justify-between max-w-[1120px]">
-          {data.details.slice(1).map((detail: any) => (
-            <div key={detail.id} className="flex flex-col mb-10">
-              <Image
-                src={detail.imagePath}
-                alt="features images"
-                width={540}
-                height={360}
-              />
-              <h2 className="text-xl font-bold">{detail.title}</h2>
-              <span>{detail.text}</span>
-            </div>
+      <h1 className="font-bold text-3xl my-4">{t('characteristics')}</h1>
+      <div className="max-w-6xl mx-auto">
+        <Select label={t('chooseTrip')}>
+          {characteristicsData?.list?.map((complect) => (
+            <Option key={complect.id}>{complect.name}</Option>
           ))}
-        </div>
+        </Select>
+        {characteristicsData?.details.subs.map((element) => (
+          <div key={element.id} className="flex flex-col  items-center justify-center">
+            <span className="text-2xl font-bold my-8">{element.name}</span>
+            <table className="border-2">
+              {element.details.map((item) => (
+                <>
+                  <thead className="bg-primary text-white" key={item.id}>
+                    <th colSpan={2} className="py-3 px-3">
+                      {item.name}
+                    </th>
+                  </thead>
+                  {item.values.map((value) => (
+                    <tbody key={value.id} className="border-2">
+                      <td className="bg-accordionBg py-5 px-16">{value.name}</td>
+                      <td className="py-5 px-16">{value.value}</td>
+                    </tbody>
+                  ))}
+                </>
+              ))}
+            </table>
+          </div>
+        ))}
       </div>
       <ModelsDetailsNav
         t={t}

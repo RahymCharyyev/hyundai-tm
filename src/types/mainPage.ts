@@ -18,6 +18,7 @@ export interface Model {
   image: string;
   link: string;
   imagePath: string;
+  catalogPath: string;
 }
 
 export interface News {

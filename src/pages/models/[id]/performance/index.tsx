@@ -28,7 +28,7 @@ export default function ModelsPerformace() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/main`, text: 'modelName' },
+          { href: `/models/${id}/feature`, text: 'modelName' },
           { href: `/models/${id}/performance`, text: t('performance') },
         ]}
         data={data.banner}

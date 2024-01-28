@@ -29,10 +29,11 @@ export default function ModelsExterior() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/main`, text: 'modelName' },
+          { href: `/models/${id}/feature`, text: 'modelName' },
           { href: `/models/${id}/exterior`, text: t('exterior') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />
@@ -58,7 +59,7 @@ export default function ModelsExterior() {
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}
-      <ModelsDetailsNav t={t} nextLink="interior" prevLink="main" id={id} />
+      <ModelsDetailsNav t={t} nextLink="interior" prevLink="feature" id={id} />
       <span className="mx-auto max-w-6xl mb-10 text-gray-600">
         {t('modelDetailsInfo')}
       </span>

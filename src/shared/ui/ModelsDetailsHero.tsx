@@ -2,6 +2,7 @@ import DownloadIcon from '@/assets/download.png';
 import RequestIcon from '@/assets/requestIcon.png';
 import TestDriveIcon from '@/assets/testDriveIcon.png';
 import { Breadcrumbs } from '@/shared/ui';
+import { Model } from '@/types/mainPage';
 import { Banner } from '@/types/modelsDetailsPage';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,6 +12,7 @@ import { FC } from 'react';
 type ModelsDetailsHeroProps = {
   breadcrumbs: { href: string; text: string }[];
   data: Banner;
+  model: Model;
   t: Function;
   id: string | undefined | string[];
 };
@@ -20,6 +22,7 @@ export const ModelsDetailsHero: FC<ModelsDetailsHeroProps> = ({
   data,
   t,
   id,
+  model,
 }) => {
   const router = useRouter();
 
@@ -46,14 +49,14 @@ export const ModelsDetailsHero: FC<ModelsDetailsHeroProps> = ({
           </Link>
         </div>
         <div className="flex flex-wrap gap-5 justify-center w-full py-4 text-sm bg-white">
-          <p>ModelName</p>
+          <p className="uppercase font-bold">{model?.name}</p>
           <Link
             className={`hover:text-fourthColor ${
-              router.asPath === `/models/${id}/main` ? 'text-fourthColor' : ''
+              router.asPath === `/models/${id}/feature` ? 'text-fourthColor' : ''
             }`}
-            href={`/models/${id}/main`}
+            href={`/models/${id}/feature`}
           >
-            {t('features')}
+            {t('feature')}
           </Link>
           <Link
             className={`hover:text-fourthColor ${
@@ -105,10 +108,7 @@ export const ModelsDetailsHero: FC<ModelsDetailsHeroProps> = ({
           </Link>
           <div className="flex gap-2 items-center">
             <Image src={DownloadIcon} alt="Download icon" />
-            <Link
-              className="hover:text-fourthColor"
-              href={`/models/${id}/characteristics`}
-            >
+            <Link className="hover:text-fourthColor" href={model?.catalogPath}>
               {t('downloadCatalog')}
             </Link>
           </div>

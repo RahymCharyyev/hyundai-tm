@@ -1,3 +1,5 @@
+import { Model } from './mainPage';
+
 export interface BaseResponse<T> {
   success: boolean;
   data: T;
@@ -25,5 +27,6 @@ export interface Detail {
 
 export type ModelsDetailsResponse = BaseResponse<{
   banner: Banner;
+  model: Model;
   details: Detail[];
 }>;

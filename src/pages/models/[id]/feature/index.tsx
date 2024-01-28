@@ -37,7 +37,7 @@ export default function ModelsMain() {
     queryFn: () =>
       getModelsDetailsPageData({
         modelId: Number(id),
-        key: 'main',
+        key: 'feature',
       }),
   });
 
@@ -50,10 +50,11 @@ export default function ModelsMain() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/main`, text: 'modelName' },
-          { href: `/models/${id}/main`, text: t('features') },
+          { href: `/models/${id}/feature`, text: 'modelName' },
+          { href: `/models/${id}/feature`, text: t('feature') },
         ]}
         data={data.banner}
+        model={data.model}
         t={t}
         id={id}
       />
@@ -97,7 +98,7 @@ export default function ModelsMain() {
       <ModelsDetailsNav
         t={t}
         nextLink="exterior"
-        prevLink="main"
+        prevLink="feature"
         id={id}
         showPrev={false}
       />
