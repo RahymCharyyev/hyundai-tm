@@ -1,23 +1,29 @@
+import { useEffect } from 'react';
 import { JavascriptViewer } from '@3dweb/360javascriptviewer';
-const jsv = new JavascriptViewer({
-  imageUrlFormat: '20180906-0xx-blauw.jpg',
-  totalFrames: 72,
-  reverse: true,
-  autoRotate: 1,
-});
+import Image from 'next/image';
 
-jsv.start();
+interface ProductViewerProps {
+  src: string;
+  imageUrlFormat: string;
+}
 
-const ImageViewer = () => {
+const ProductViewer: React.FC<ProductViewerProps> = ({ src, imageUrlFormat }) => {
+  useEffect(() => {
+    const viewer = new JavascriptViewer({
+      mainHolderId: 'jsv-holder',
+      mainImageId: 'jsv-image',
+      imageUrlFormat: imageUrlFormat,
+      totalFrames: 35,
+    });
+
+    viewer.start();
+  }, [imageUrlFormat]);
+
   return (
     <div id="jsv-holder">
-      <img
-        id="jsv-image"
-        alt="your 360 images"
-        src="https://www.360-javascriptviewer.com/images/blue-shoe-small/20180906-001-blauw.jpg"
-      />
+      <Image width={600} height={400} id="jsv-image" src={src} alt="360 Product Viewer" />
     </div>
   );
 };
 
-export default ImageViewer;
+export default ProductViewer;

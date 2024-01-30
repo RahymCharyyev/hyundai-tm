@@ -3,6 +3,7 @@ import {
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
+import ProductViewer from '@/shared/ui/ImageViewer';
 import ImageViewer from '@/shared/ui/ImageViewer';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
@@ -37,7 +38,6 @@ export default function ModelsExterior() {
   if (error) return 'An error has occurred: ' + error.message;
 
   const imageUrls = models360?.map((url) => url.imagePath);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -52,7 +52,9 @@ export default function ModelsExterior() {
         t={t}
         id={id}
       />
-      <ImageViewer />
+      {imageUrls?.[0] !== undefined && (
+        <ProductViewer imageUrlFormat="white-cream_x.png" src={imageUrls?.[0]} />
+      )}
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}
