@@ -1,12 +1,15 @@
-import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
+import {
+  getModelsDetailsPageData,
+  getModelsImages,
+} from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
+import ImageViewer from '@/shared/ui/ImageViewer';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { React360Viewer } from 'react-360-product-viewer';
 
 export default function ModelsExterior() {
   const { t } = useTranslation('common');
@@ -21,8 +24,20 @@ export default function ModelsExterior() {
       }),
   });
 
+  const { data: models360 } = useQuery({
+    queryKey: ['models-360'],
+    queryFn: () =>
+      getModelsImages({
+        modelId: Number(id),
+        type: '360',
+      }),
+  });
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
+
+  const imageUrls = models360?.map((url) => url.imagePath);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -37,16 +52,7 @@ export default function ModelsExterior() {
         t={t}
         id={id}
       />
-      <React360Viewer
-        imagesBaseUrl="/white-cream"
-        imageFilenamePrefix="white-cream_"
-        imagesCount={35}
-        imagesFiletype="webp"
-        mouseDragSpeed={20}
-        width={1000}
-        height={1000}
-        showRotationIconOnStartup
-      />
+      <ImageViewer />
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}

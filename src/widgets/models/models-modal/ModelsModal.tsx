@@ -40,7 +40,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
         <div className="flex gap-3 items-center">
           <Link
             className="bg-primary text-white py-4 px-5 hover:underline lg:py-2 lg:px-3 lg:text-sm"
-            href={`models/${model.id}/main`}
+            href={`models/${model.id}/feature`}
           >
             {t('knowMore')}
           </Link>

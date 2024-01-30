@@ -2,6 +2,7 @@ import { ModelsDetailsResponse } from '@/types/modelsDetailsPage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 import { ModelsCharacteristics } from '@/types/modelsCharacteristics';
+import { ModelImagesResponse } from '@/types/modelsImages';
 
 interface GetModelsDetailsPageDataParams {
   key?: string;
@@ -10,6 +11,11 @@ interface GetModelsDetailsPageDataParams {
 
 interface GetModelsCharactericsticsParams {
   configurationId?: string;
+  modelId?: number;
+}
+
+interface GetModelsImagesParams {
+  type?: string;
   modelId?: number;
 }
 
@@ -35,4 +41,14 @@ export const getModelsCharactericstics = async (
   });
 
   return data;
+};
+
+export const getModelsImages = async (params?: GetModelsImagesParams) => {
+  const { data }: AxiosResponse<ModelImagesResponse> = await axiosInstance({
+    method: 'GET',
+    url: '/pages/model-details/images',
+    params: params,
+  });
+
+  return data.data;
 };
