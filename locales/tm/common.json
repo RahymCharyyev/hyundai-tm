@@ -86,5 +86,8 @@
   "modelDetailsInfo": "Ýokarda ýerleşdirilen suratlar, hereketlendirijiniň aýratynlyklary we maglumatlar, bu web sahypasynda görkezilenlerden tapawutlanyp biler. Ähli maglumatlar we illýustrasiýalar bu ýerde ýerleşdirilende elýeterli maglumatlara esaslanýar we duýdurmazdan üýtgedilip bilner. Has giňişleýin maglumat üçin biizň ofisimize barmagyňyzy haýyş edýäris.",
   "formSuccess": "Siziň  habaryňyz üstünliki ugradyldy. Biziň işgärimiz ýakyn wagtda Siz bilen habarlaşar",
   "formError": "Habar ugradylanda ýalňyşlyk ýüze çykdy. Az salymdan täzeden synanşyp görüň",
-  "formWaiting": "Habar ugradylýar..."
+  "formWaiting": "Habar ugradylýar...",
+  "360Review": "360° görnüş",
+  "pressAndTurn": "Basyň we aýlaň: doly görnüş üçin",
+  "mouseWheel": "Syçanjygyň tekeri: ýakynlatmak / daşlaşdyrmak"
 }

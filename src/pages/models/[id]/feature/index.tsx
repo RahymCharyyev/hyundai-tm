@@ -1,4 +1,7 @@
-import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
+import {
+  getModelsDetailsPageData,
+  getModelsImages,
+} from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
@@ -6,29 +9,10 @@ import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import ImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 
 export default function ModelsMain() {
-  const imageData = [
-    {
-      imgelink: 'http://hyundai.com.tm/public/palisade_banner.webp',
-    },
-    {
-      imgelink: 'http://hyundai.com.tm/public/sonata_banner.webp',
-    },
-    {
-      imgelink: 'http://hyundai.com.tm/public/palisade_banner.webp',
-    },
-    {
-      imgelink: 'http://hyundai.com.tm/public/palisade_banner.webp',
-    },
-    {
-      imgelink: 'http://hyundai.com.tm/public/palisade_banner.webp',
-    },
-  ];
-  const [active, setActive] = useState(
-    'http://hyundai.com.tm/public/palisade_banner.webp',
-  );
   const { t } = useTranslation('common');
   const router = useRouter();
   const { id } = router.query;
@@ -41,8 +25,27 @@ export default function ModelsMain() {
       }),
   });
 
+  const { data: gallery } = useQuery({
+    queryKey: ['gallery'],
+    queryFn: () =>
+      getModelsImages({
+        modelId: Number(id),
+        type: 'gallery',
+      }),
+  });
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
+
+  type Images = {
+    original: string;
+    thumbnail: string;
+  };
+
+  const images: Images[] = (gallery || []).map((item) => ({
+    original: item.imagePath,
+    thumbnail: item.imagePath,
+  }));
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -50,7 +53,7 @@ export default function ModelsMain() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: 'modelName' },
+          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
           { href: `/models/${id}/feature`, text: t('feature') },
         ]}
         data={data.banner}
@@ -70,31 +73,7 @@ export default function ModelsMain() {
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}
-      <div className="grid gap-4">
-        <div>
-          <Image
-            className="h-auto w-full max-w-full object-cover object-center md:h-[480px]"
-            src={active}
-            alt=""
-            width={500}
-            height={500}
-          />
-        </div>
-        <div className="grid grid-cols-5 gap-4">
-          {imageData?.map(({ imgelink }, index) => (
-            <div key={index}>
-              <Image
-                onClick={() => setActive(imgelink)}
-                src={imgelink}
-                className="h-20 max-w-full cursor-pointer object-cover object-center"
-                alt="gallery-image"
-                width={200}
-                height={200}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+      {gallery?.length !== 0 && <ImageGallery lazyLoad showNav={false} items={images} />}
       <ModelsDetailsNav
         t={t}
         nextLink="exterior"

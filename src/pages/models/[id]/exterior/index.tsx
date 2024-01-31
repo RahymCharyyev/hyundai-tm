@@ -11,6 +11,7 @@ import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { React360Viewer } from 'react-360-product-viewer';
 
 export default function ModelsExterior() {
   const { t } = useTranslation('common');
@@ -44,16 +45,26 @@ export default function ModelsExterior() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: 'modelName' },
-          { href: `/models/${id}/exterior`, text: t('exterior') },
+          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
+          { href: `/models/${id}/feature`, text: t('feature') },
         ]}
         data={data.banner}
         model={data.model}
         t={t}
         id={id}
       />
+      <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">{t('360Review')}</h1>
+      <span className="mb-4">{t('pressAndTurn')}</span>
       {imageUrls?.[0] !== undefined && (
-        <ProductViewer imageUrlFormat="white-cream_x.png" src={imageUrls?.[0]} />
+        <React360Viewer
+          width={800}
+          imageFilenamePrefix="white-cream_"
+          imagesBaseUrl="http://hyundai.com.tm/public"
+          imagesCount={35}
+          imagesFiletype="png"
+          mouseDragSpeed={20}
+        />
+        // <ProductViewer imageUrlFormat="white-cream_x.png" src={imageUrls?.[0]} />
       )}
       {data.details.map((detail: any, index: number) => (
         <div

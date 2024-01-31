@@ -1,15 +1,15 @@
-import { useMemo, useState, KeyboardEvent } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import useTranslation from 'next-translate/useTranslation';
-import { Button, ButtonGroup } from '@material-tailwind/react';
 import { getModelsPageData } from '@/api/getModelsPageData';
-import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
 import { Loading } from '@/layout/Loading';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
 import { ModelsFilter } from '@/widgets/models/models-filter/ModelsFilter';
 import { ModelsHero } from '@/widgets/models/models-hero/ModelsHero';
 import { ModelsList } from '@/widgets/models/models-list/ModelsList';
 import { ModelsModal } from '@/widgets/models/models-modal/ModelsModal';
+import { Button, ButtonGroup } from '@material-tailwind/react';
+import { useQuery } from '@tanstack/react-query';
+import useTranslation from 'next-translate/useTranslation';
+import { KeyboardEvent, useMemo, useState } from 'react';
 
 export default function Models() {
   const [showFilter, setShowFilter] = useState(false);

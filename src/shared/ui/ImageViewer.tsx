@@ -21,7 +21,7 @@ const ProductViewer: React.FC<ProductViewerProps> = ({ src, imageUrlFormat }) =>
 
   return (
     <div id="jsv-holder">
-      <Image width={600} height={400} id="jsv-image" src={src} alt="360 Product Viewer" />
+      <img id="jsv-image" src={src} alt="360 Product Viewer" />
     </div>
   );
 };

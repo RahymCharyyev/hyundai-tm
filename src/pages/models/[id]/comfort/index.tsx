@@ -27,8 +27,8 @@ export default function ModelsComfort() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: 'modelName' },
-          { href: `/models/${id}/safety`, text: t('safety') },
+          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
+          { href: `/models/${id}/feature`, text: t('feature') },
         ]}
         data={data.banner}
         model={data.model}
