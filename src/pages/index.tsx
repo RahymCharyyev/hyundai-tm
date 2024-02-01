@@ -1,6 +1,5 @@
 import { getMainPageData } from '@/api/getMainPageData';
 import { Loading } from '@/layout/Loading';
-import ImageViewer from '@/shared/ui/ImageViewer';
 import { CarsSlider } from '@/widgets/home/cars-slider/CarsSlider';
 import { MainSlider } from '@/widgets/home/main-slider/MainSlider';
 import { NewsSlider } from '@/widgets/home/news-slider/NewsSlider';
