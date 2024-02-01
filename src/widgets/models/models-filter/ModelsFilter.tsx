@@ -21,6 +21,12 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
   const [capacityValue, setCapacityValue] = useState(0);
   const [values, setValues] = useState<{ [key: string]: number }>({});
   const { changeParams } = useQueryParams();
+  const [minValue, set_minValue] = useState(25);
+  const [maxValue, set_maxValue] = useState(75);
+  const handleInput = (e: any) => {
+    set_minValue(e.minValue);
+    set_maxValue(e.maxValue);
+  };
 
   const handleSubmit = () => changeParams({ options: selectedOptions.join() });
   const handleReset = () => changeParams({}, 'all');
@@ -60,20 +66,39 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
       </div>
       <div className="flex flex-col justify-between">
         <div className="flex flex-col gap-5 xl:flex-row xl:flex-wrap xl:justify-between xl:gap-2">
-          {data.rangedOptions?.map((option: RangedOption) => (
-            <div key={option.id}>
-              <RangeInput
-                label={option.name}
-                min={option.from.toString()}
-                max={option.to.toString()}
-                value={values[option.id.toString()] || 0}
-                step="1000"
-                onChange={(e) =>
-                  handleInputChange(option.id, parseInt(e.target.value, 10))
-                }
-              />
-            </div>
-          ))}
+          <RangeInput
+            label={data.rangedOptions[0].name}
+            min={data.rangedOptions[0].from.toString()}
+            max={data.rangedOptions[0].to.toString()}
+            step={1000}
+            minValue={data.rangedOptions[0].from.toString()}
+            maxValue={data.rangedOptions[0].to.toString()}
+            onInput={(e: any) => {
+              handleInput(e);
+            }}
+          />
+          <RangeInput
+            label={data.rangedOptions[1].name}
+            min={data.rangedOptions[1].from.toString()}
+            max={data.rangedOptions[1].to.toString()}
+            step={1}
+            minValue={data.rangedOptions[1].from.toString()}
+            maxValue={data.rangedOptions[1].to.toString()}
+            onInput={(e: any) => {
+              handleInputChange(data.rangedOptions[1].id, parseInt(e.target.value, 10));
+            }}
+          />
+          <RangeInput
+            label={data.rangedOptions[0].name}
+            min={data.rangedOptions[2].from.toString()}
+            max={data.rangedOptions[2].to.toString()}
+            step={1}
+            minValue={data.rangedOptions[2].from.toString()}
+            maxValue={data.rangedOptions[2].to.toString()}
+            onInput={(e: any) => {
+              handleInput(e);
+            }}
+          />
         </div>
         <div className="flex gap-5 xl:justify-center mb-20 xl:mt-10 xl:mb-4">
           <Button

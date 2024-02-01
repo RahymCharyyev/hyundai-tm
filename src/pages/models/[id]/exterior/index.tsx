@@ -3,8 +3,6 @@ import {
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
-import ProductViewer from '@/shared/ui/ImageViewer';
-import ImageViewer from '@/shared/ui/ImageViewer';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
@@ -64,7 +62,6 @@ export default function ModelsExterior() {
           imagesFiletype="png"
           mouseDragSpeed={20}
         />
-        // <ProductViewer imageUrlFormat="white-cream_x.png" src={imageUrls?.[0]} />
       )}
       {data.details.map((detail: any, index: number) => (
         <div

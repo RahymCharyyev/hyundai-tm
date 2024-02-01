@@ -2,18 +2,6 @@
 # yarn lockfile v1
 
 
-"@3dweb/360javascriptviewer@^1.8.37":
-  version "1.8.37"
-  resolved "https://registry.yarnpkg.com/@3dweb/360javascriptviewer/-/360javascriptviewer-1.8.37.tgz#de5cf4a7d43569761fb0c10056ebd4d9e7afffa1"
-  integrity sha512-vu3vft4UYBY31gKbsWxv9OIG8PReNUtRUVYMahD+GhHy6L5thMQHExcRxnngh3kN69I1FRVFHaVR/aKRJ1ZqeA==
-  dependencies:
-    "@panzoom/panzoom" "^4.3.2"
-    "@types/parse-color" "^1.0.0"
-    get-user-locale "^1.4.0"
-    greenlet "^1.1.0"
-    parse-color "^1.0.0"
-    ts-event-bus "^2.1.3"
-
 "@aashutoshrathi/word-wrap@^1.2.3":
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/@aashutoshrathi/word-wrap/-/word-wrap-1.2.6.tgz#bd9154aec9983f77b3a034ecaa015c2e4201f6cf"
@@ -467,11 +455,6 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
-"@panzoom/panzoom@^4.3.2":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@panzoom/panzoom/-/panzoom-4.5.1.tgz#a2fd72b1472389e26d7af45f0b8b73eaa3b415a5"
-  integrity sha512-QOr/t7314XTwgAUDazR+RDcTAWSbkpjDnZJddd9f56jSUA8ptUsyDblAb+sp/O5O1o5Fiu9KpWxVHKuhGUgp5w==
-
 "@photo-sphere-viewer/autorotate-plugin@^5.6.0":
   version "5.6.0"
   resolved "https://registry.yarnpkg.com/@photo-sphere-viewer/autorotate-plugin/-/autorotate-plugin-5.6.0.tgz#03a02e59be1628bd896ad228e303a2e2dac2590d"
@@ -614,11 +597,6 @@
   integrity sha512-GPmeN1C3XAyV5uybAf4cMLWT9fDWcmQhZVtMFu7OR32WjrqGG+Wnk2V1d0bmtUyE/Zy1QJ9BxyiTih9z8Oks8A==
   dependencies:
     undici-types "~5.26.4"
-
-"@types/parse-color@^1.0.0":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@types/parse-color/-/parse-color-1.0.3.tgz#002ab40d4051d443ef352bd9ad10c07454d1d79e"
-  integrity sha512-1zpnjrXCl0KklQOtMDDXhqQN9ouePkt4NBoAJ/dRjyMqWMkegyIqeZUOf3Xq4yaUPPdY8wmR8cye/D9v1kcrsQ==
 
 "@types/prop-types@*":
   version "15.7.11"
@@ -1093,11 +1071,6 @@ color-convert@^2.0.1:
   integrity sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==
   dependencies:
     color-name "~1.1.4"
-
-color-convert@~0.5.0:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-0.5.3.tgz#bdb6c69ce660fadffe0b0007cc447e1b9f7282bd"
-  integrity sha512-RwBeO/B/vZR3dfKL1ye/vx8MHZ40ugzpyfeVG5GsiuGnrlMWe2o8wxBbLCpw9CsxV+wHuzYlCiWnybrIA0ling==
 
 color-name@^1.0.0, color-name@~1.1.4:
   version "1.1.4"
@@ -1814,13 +1787,6 @@ get-tsconfig@^4.5.0:
   dependencies:
     resolve-pkg-maps "^1.0.0"
 
-get-user-locale@^1.4.0:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/get-user-locale/-/get-user-locale-1.5.1.tgz#18a9ba2cfeed0e713ea00968efa75d620523a5ea"
-  integrity sha512-WiNpoFRcHn1qxP9VabQljzGwkAQDrcpqUtaP0rNBEkFxJdh4f3tik6MfZsMYZc+UgQJdGCxWEjL9wnCUlRQXag==
-  dependencies:
-    lodash.memoize "^4.1.1"
-
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-5.1.2.tgz#869832c58034fe68a4093c17dc15e8340d8401c4"
@@ -1900,11 +1866,6 @@ graphemer@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/graphemer/-/graphemer-1.4.0.tgz#fb2f1d55e0e3a1849aeffc90c4fa0dd53a0e66c6"
   integrity sha512-EtKwoO6kxCL9WO5xipiHTZlSzBm7WLT627TqC/uVRd0HKmq8NXyebnNYxDoBi7wt8eTWrUrKXCOVaFq9x1kgag==
-
-greenlet@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/greenlet/-/greenlet-1.1.0.tgz#a35f119abc1ba5af052b61e46b4f1cbd7559de0b"
-  integrity sha512-W/kKzq7ZSF/LFItIjaSaccw8L6js+9SMSS5buXZs/Td7qZAT91Kd0LTxuUjSWDwuyv4MPo/fhZdkRLV1zsuClg==
 
 has-bigints@^1.0.1, has-bigints@^1.0.2:
   version "1.0.2"
@@ -2306,11 +2267,6 @@ locate-path@^6.0.0:
   dependencies:
     p-locate "^5.0.0"
 
-lodash.memoize@^4.1.1:
-  version "4.1.2"
-  resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
-  integrity sha512-t7j+NzmgnQzTAYXcsHYLgimltOV1MXHtlOWf6GjL9Kj8GK5FInw5JotxvbOs+IvV1/Dzo04/fCGfLVs7aXb4Ag==
-
 lodash.merge@^4.6.2:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/lodash.merge/-/lodash.merge-4.6.2.tgz#558aa53b43b661e1925a0afdfa36a9a1085fe57a"
@@ -2422,6 +2378,11 @@ next-compose-plugins@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/next-compose-plugins/-/next-compose-plugins-2.2.1.tgz#020fc53f275a7e719d62521bef4300fbb6fde5ab"
   integrity sha512-OjJ+fV15FXO2uQXQagLD4C0abYErBjyjE0I0FHpOEIB8upw0hg1ldFP6cqHTJBH1cZqy96OeR3u1dJ+Ez2D4Bg==
+
+next-range-slider@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/next-range-slider/-/next-range-slider-1.0.5.tgz#f0843cb8d6e37872c6a6286e7c8b6a1770a88f12"
+  integrity sha512-oI1pApxkpihEqyoMI9k7hppnQUp924J3uVqOgBkQv1glNZ53FYIywpxOe1f/B+onEd7/hhfPID8Vf9rqSU2+xA==
 
 next-seo@^6.4.0:
   version "6.4.0"
@@ -2592,13 +2553,6 @@ parent-module@^1.0.0:
   integrity sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==
   dependencies:
     callsites "^3.0.0"
-
-parse-color@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/parse-color/-/parse-color-1.0.0.tgz#7b748b95a83f03f16a94f535e52d7f3d94658619"
-  integrity sha512-fuDHYgFHJGbpGMgw9skY/bj3HL/Jrn4l/5rSspy00DoT4RyLnDcRvPxdZ+r6OFwIsgAuhDh4I09tAId4mI12bw==
-  dependencies:
-    color-convert "~0.5.0"
 
 path-exists@^4.0.0:
   version "4.0.0"
@@ -3308,11 +3262,6 @@ ts-api-utils@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/ts-api-utils/-/ts-api-utils-1.0.3.tgz#f12c1c781d04427313dbac808f453f050e54a331"
   integrity sha512-wNMeqtMz5NtwpT/UZGY5alT+VoKdSsOOP/kqHFcUW1P/VRhH2wJ48+DN2WwUliNbQ976ETwDL0Ifd2VVvgonvg==
-
-ts-event-bus@^2.1.3:
-  version "2.1.3"
-  resolved "https://registry.yarnpkg.com/ts-event-bus/-/ts-event-bus-2.1.3.tgz#2863ada2cd9c3011790ce4d5a0d81dceaca264e7"
-  integrity sha512-HrAA0uzkRygBh7GgQp9lbo17vCYUbue0nrd0zHeltVvS/hWJBK5kyNcKhdgJUIbWRuKypYRAznhcSXmRzVlSPQ==
 
 ts-interface-checker@^0.1.9:
   version "0.1.13"

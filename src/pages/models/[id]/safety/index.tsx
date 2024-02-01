@@ -1,5 +1,6 @@
 import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
+import GifPlayer from '@/shared/ui/GifPlayer';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
@@ -36,6 +37,7 @@ export default function ModelsSafety() {
         t={t}
         id={id}
       />
+      <GifPlayer />
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}
