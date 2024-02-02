@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 export default function ModelsComfort() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
@@ -17,6 +18,7 @@ export default function ModelsComfort() {
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'safety',
+        lang: currentLang,
       }),
   });
   if (isPending) return <Loading />;

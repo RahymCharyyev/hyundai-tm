@@ -9,6 +9,7 @@ import { ModelsModal } from '@/widgets/models/models-modal/ModelsModal';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
 import { KeyboardEvent, useMemo, useState } from 'react';
 
 export default function Models() {
@@ -22,13 +23,29 @@ export default function Models() {
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const { query, changeParams } = useQueryParams();
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+  const currentLang = router.locale;
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['modelsPage', selectedFrameIds, query.options, query.search],
+    queryKey: [
+      'modelsPage',
+      selectedFrameIds,
+      query.options,
+      query.search,
+      query.boardMin,
+      query.boardMax,
+    ],
     queryFn: () =>
       getModelsPageData({
+        boardMin: query.boardMin as any,
+        boardMax: query.boardMax as any,
+        fuelMin: query.fuelMin as any,
+        fuelMax: query.fuelMax as any,
+        priceMin: query.priceMin as any,
+        priceMax: query.priceMax as any,
         options: query.options as any,
         search: query.search as string,
+        lang: currentLang,
       }),
   });
 

@@ -15,6 +15,7 @@ import 'react-image-gallery/styles/css/image-gallery.css';
 export default function ModelsMain() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
@@ -22,6 +23,7 @@ export default function ModelsMain() {
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'feature',
+        lang: currentLang,
       }),
   });
 
@@ -69,7 +71,10 @@ export default function ModelsMain() {
           }`}
         >
           <h2 className="text-3xl font-bold">{detail.title}</h2>
-          <span className="text-xl">{detail.text}</span>
+          <div
+            className="max-w-6xl my-4"
+            dangerouslySetInnerHTML={{ __html: detail.text }}
+          />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}

@@ -7,16 +7,19 @@ import { ModelImagesResponse } from '@/types/modelsImages';
 interface GetModelsDetailsPageDataParams {
   key?: string;
   modelId?: number;
+  lang?: string;
 }
 
 interface GetModelsCharactericsticsParams {
   configurationId?: string;
   modelId?: number;
+  lang?: string;
 }
 
 interface GetModelsImagesParams {
   type?: string;
   modelId?: number;
+  lang?: string;
 }
 
 export const getModelsDetailsPageData = async (
@@ -25,7 +28,7 @@ export const getModelsDetailsPageData = async (
   const { data }: AxiosResponse<ModelsDetailsResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details',
-    params: params,
+    params,
   });
 
   return data.data;
@@ -37,7 +40,7 @@ export const getModelsCharactericstics = async (
   const { data }: AxiosResponse<ModelsCharacteristics> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details/characteristics',
-    params: params,
+    params,
   });
 
   return data;
@@ -47,7 +50,7 @@ export const getModelsImages = async (params?: GetModelsImagesParams) => {
   const { data }: AxiosResponse<ModelImagesResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details/images',
-    params: params,
+    params,
   });
 
   return data.data;

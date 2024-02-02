@@ -11,12 +11,13 @@ import useTranslation from 'next-translate/useTranslation';
 
 export default function MediaPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const [selectedMediaType, setSelectedMediaType] = useState<string | null>('video');
 
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage'],
-    queryFn: () => getMediaData(),
+    queryFn: () => getMediaData({ lang: currentLang }),
   });
 
   if (isPending) return <Loading />;
@@ -38,13 +39,18 @@ export default function MediaPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
-        <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
-        <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
+        <NavLink
+          href="/history"
+          text="hyundaiTurkmenistan"
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink href="/history/media" text="media" pathname={router.pathname} t={t} />
+        <NavLink href="/history/news" text="news" pathname={router.pathname} t={t} />
         <NavLink
           href="/history/social-responsibility"
           text="socialResponsibility"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
@@ -67,7 +73,9 @@ export default function MediaPage() {
         </Button>
       </ButtonGroup>
       <div className="my-10">
-        <MediaList data={data} selectedMediaType={selectedMediaType} />
+        {data.data !== undefined && (
+          <MediaList data={data} selectedMediaType={selectedMediaType} />
+        )}
       </div>
     </main>
   );

@@ -13,12 +13,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function MaintenanceRegisterPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
-    queryFn: () => getContacts(),
+    queryFn: () => getContacts({ lang: currentLang }),
   });
 
   const mutation = useMutation({
@@ -51,24 +52,34 @@ export default function MaintenanceRegisterPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance"
+          text="maintenanceEvent"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/register"
           text="maintenanceRegister"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
-        <NavLink href="/maintenance/warranty" text="warranty" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/warranty"
+          text="warranty"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/car-maintenance"
           text="carMaintenance"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
         <NavLink
           href="/maintenance/map"
           text="maintenanceMap"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>

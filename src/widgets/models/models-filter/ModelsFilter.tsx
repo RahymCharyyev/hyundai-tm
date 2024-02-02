@@ -1,8 +1,8 @@
-import React, { FC, useState } from 'react';
-import { Button, Checkbox } from '@material-tailwind/react';
-import { ModelsResponse, RangedOption } from '@/types/modelsPage';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
 import { RangeInput } from '@/shared/ui';
+import { ModelsResponse } from '@/types/modelsPage';
+import { Button, Checkbox } from '@material-tailwind/react';
+import { FC, useState } from 'react';
 
 type ModelsFilterProps = {
   data: ModelsResponse['data'];
@@ -16,22 +16,43 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
   handleOptionClick,
   selectedOptions,
 }) => {
-  const [value, setValue] = useState(0);
-  const [kmValue, setKmValue] = useState(0);
-  const [capacityValue, setCapacityValue] = useState(0);
-  const [values, setValues] = useState<{ [key: string]: number }>({});
+  const [board, setBoard] = useState([
+    data.rangedOptions[0].from,
+    data.rangedOptions[0].to,
+  ]);
+  const [fuel, setFuel] = useState([
+    data.rangedOptions[1].from,
+    data.rangedOptions[1].to,
+  ]);
+  const [price, setPrice] = useState([
+    data.rangedOptions[2].from,
+    data.rangedOptions[2].to,
+  ]);
   const { changeParams } = useQueryParams();
-  const [minValue, set_minValue] = useState(25);
-  const [maxValue, set_maxValue] = useState(75);
-  const handleInput = (e: any) => {
-    set_minValue(e.minValue);
-    set_maxValue(e.maxValue);
+
+  const handleSubmit = () => {
+    const params = {
+      boardMin: board[0],
+      boardMax: board[1],
+      fuelMin: fuel[0],
+      fuelMax: fuel[1],
+      priceMin: price[0],
+      priceMax: price[1],
+    };
+
+    const updatedParams = {
+      options: selectedOptions.join(),
+      ...params,
+    };
+
+    changeParams(updatedParams);
   };
 
-  const handleSubmit = () => changeParams({ options: selectedOptions.join() });
-  const handleReset = () => changeParams({}, 'all');
-  const handleInputChange = (id: number, value: number) => {
-    setValues((prevValues) => ({ ...prevValues, [id]: value }));
+  const handleReset = () => {
+    setBoard([data.rangedOptions[0].from, data.rangedOptions[0].to]);
+    setFuel([data.rangedOptions[1].from, data.rangedOptions[1].to]);
+    setPrice([data.rangedOptions[2].from, data.rangedOptions[2].to]);
+    changeParams({}, 'all');
   };
 
   return (
@@ -67,37 +88,28 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
       <div className="flex flex-col justify-between">
         <div className="flex flex-col gap-5 xl:flex-row xl:flex-wrap xl:justify-between xl:gap-2">
           <RangeInput
+            value={board}
             label={data.rangedOptions[0].name}
-            min={data.rangedOptions[0].from.toString()}
-            max={data.rangedOptions[0].to.toString()}
-            step={1000}
-            minValue={data.rangedOptions[0].from.toString()}
-            maxValue={data.rangedOptions[0].to.toString()}
-            onInput={(e: any) => {
-              handleInput(e);
-            }}
+            min={data.rangedOptions[0].from}
+            max={data.rangedOptions[0].to}
+            step={1}
+            onChange={setBoard}
           />
           <RangeInput
+            value={fuel}
             label={data.rangedOptions[1].name}
-            min={data.rangedOptions[1].from.toString()}
-            max={data.rangedOptions[1].to.toString()}
+            min={data.rangedOptions[1].from}
+            max={data.rangedOptions[1].to}
             step={1}
-            minValue={data.rangedOptions[1].from.toString()}
-            maxValue={data.rangedOptions[1].to.toString()}
-            onInput={(e: any) => {
-              handleInputChange(data.rangedOptions[1].id, parseInt(e.target.value, 10));
-            }}
+            onChange={setFuel}
           />
           <RangeInput
-            label={data.rangedOptions[0].name}
-            min={data.rangedOptions[2].from.toString()}
-            max={data.rangedOptions[2].to.toString()}
-            step={1}
-            minValue={data.rangedOptions[2].from.toString()}
-            maxValue={data.rangedOptions[2].to.toString()}
-            onInput={(e: any) => {
-              handleInput(e);
-            }}
+            value={price}
+            label={data.rangedOptions[2].name}
+            min={data.rangedOptions[2].from}
+            max={data.rangedOptions[2].to}
+            step={1000}
+            onChange={setPrice}
           />
         </div>
         <div className="flex gap-5 xl:justify-center mb-20 xl:mt-10 xl:mb-4">

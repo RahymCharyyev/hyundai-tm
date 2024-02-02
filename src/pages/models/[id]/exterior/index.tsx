@@ -14,6 +14,7 @@ import { React360Viewer } from 'react-360-product-viewer';
 export default function ModelsExterior() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
@@ -21,6 +22,7 @@ export default function ModelsExterior() {
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'exterior',
+        lang: currentLang,
       }),
   });
 

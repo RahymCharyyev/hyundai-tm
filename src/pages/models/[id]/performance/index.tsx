@@ -10,6 +10,7 @@ import { useRouter } from 'next/router';
 export default function ModelsPerformace() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
@@ -17,6 +18,7 @@ export default function ModelsPerformace() {
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'performance',
+        lang: currentLang,
       }),
   });
 

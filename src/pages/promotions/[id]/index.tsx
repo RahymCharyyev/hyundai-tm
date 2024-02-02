@@ -9,10 +9,15 @@ import { useRouter } from 'next/router';
 export default function DetailedStockPage() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage', Number(id)],
-    queryFn: () => getPromotionsDetailsData(Number(id)),
+    queryFn: () =>
+      getPromotionsDetailsData({
+        id: Number(id),
+        lang: currentLang,
+      }),
   });
 
   if (isPending) return <Loading />;

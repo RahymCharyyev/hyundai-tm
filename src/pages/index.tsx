@@ -6,12 +6,15 @@ import { NewsSlider } from '@/widgets/home/news-slider/NewsSlider';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function Home() {
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const currentLang = router.locale;
   const { isPending, error, data } = useQuery({
     queryKey: ['mainPage'],
-    queryFn: () => getMainPageData(),
+    queryFn: () => getMainPageData({ lang: currentLang }),
   });
 
   if (isPending) return <Loading />;

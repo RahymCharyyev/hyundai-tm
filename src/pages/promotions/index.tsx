@@ -5,12 +5,15 @@ import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 export default function StockPage() {
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const currentLang = router.locale;
   const { isPending, error, data } = useQuery({
     queryKey: ['promotionsPage'],
-    queryFn: () => getPromotionsData(),
+    queryFn: () => getPromotionsData({ lang: currentLang }),
   });
 
   if (isPending) return <Loading />;

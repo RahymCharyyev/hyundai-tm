@@ -12,12 +12,14 @@ export default function ModelsSafety() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const { id } = router.query;
+  const currentLang = router.locale;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
     queryFn: () =>
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'safety',
+        lang: currentLang,
       }),
   });
 

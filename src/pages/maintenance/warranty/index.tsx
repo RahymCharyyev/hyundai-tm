@@ -16,7 +16,6 @@ import { useState } from 'react';
 
 export default function MaintenanceWarrantyPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
   const [open, setOpen] = useState(null);
   const handleOpen = (value: any) => setOpen(open === value ? null : value);
   const router = useRouter();
@@ -44,24 +43,34 @@ export default function MaintenanceWarrantyPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance"
+          text="maintenanceEvent"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/register"
           text="maintenanceRegister"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
-        <NavLink href="/maintenance/warranty" text="warranty" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/warranty"
+          text="warranty"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/car-maintenance"
           text="carMaintenance"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
         <NavLink
           href="/maintenance/map"
           text="maintenanceMap"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
@@ -86,12 +95,11 @@ export default function MaintenanceWarrantyPage() {
             {warranty.title}
           </AccordionHeader>
           <AccordionBody
+            dangerouslySetInnerHTML={{ __html: warranty.text }}
             className={` px-6 ${
               open === warranty.id ? 'bg-accordionBg text-black hover:text-black ' : ''
             }lg:text-sm sm:!text-xs`}
-          >
-            {warranty.text}
-          </AccordionBody>
+          ></AccordionBody>
         </Accordion>
       ))}
     </main>

@@ -14,13 +14,15 @@ export default function NewsPage() {
   const { t } = useTranslation('common');
   const [searchQuery, setSearchQuery] = useState('');
   const { query, changeParams } = useQueryParams();
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const [selectedNewsType, setSelectedNewsType] = useState<string | null>('local');
 
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage', query.search],
     queryFn: () =>
       getNewsData({
+        lang: currentLang,
         search: query.search as string,
       }),
   });
@@ -55,13 +57,18 @@ export default function NewsPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
-        <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
-        <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
+        <NavLink
+          href="/history"
+          text="hyundaiTurkmenistan"
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink href="/history/media" text="media" pathname={router.pathname} t={t} />
+        <NavLink href="/history/news" text="news" pathname={router.pathname} t={t} />
         <NavLink
           href="/history/social-responsibility"
           text="socialResponsibility"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>

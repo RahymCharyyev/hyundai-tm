@@ -189,3 +189,31 @@
     --swiper-pagination-bullet-height: 5px;
   }
 }
+
+.ql-align-center {
+  text-align: center !important;
+}
+
+.ql-align-left {
+  text-align: left !important;
+}
+
+.ql-align-right {
+  text-align: right !important;
+}
+
+.ql-align-justify {
+  text-align: justify !important;
+}
+
+.ql h1 {
+  font-size: 48px !important;
+}
+
+.ql-size-huge {
+  font-size: 32px !important;
+}
+
+.ql-size-large {
+  font-size: 24px !important;
+}

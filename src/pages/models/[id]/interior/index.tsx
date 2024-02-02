@@ -20,6 +20,7 @@ const ReactPhotoSphereViewer = dynamic(
 export default function ModelsInterior() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
@@ -27,6 +28,7 @@ export default function ModelsInterior() {
       getModelsDetailsPageData({
         modelId: Number(id),
         key: 'interior',
+        lang: currentLang,
       }),
   });
 

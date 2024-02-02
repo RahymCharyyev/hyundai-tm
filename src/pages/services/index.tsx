@@ -15,12 +15,13 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function ServicesPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
-    queryFn: () => getContacts(),
+    queryFn: () => getContacts({ lang: currentLang }),
   });
 
   const mutation = useMutation({
@@ -54,8 +55,13 @@ export default function ServicesPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/services" text="testDrive" pathname={pathname} t={t} />
-        <NavLink href="/services/contacts" text="contactUs" pathname={pathname} t={t} />
+        <NavLink href="/services" text="testDrive" pathname={router.pathname} t={t} />
+        <NavLink
+          href="/services/contacts"
+          text="contactUs"
+          pathname={router.pathname}
+          t={t}
+        />
       </ButtonGroup>
       <div className="flex flex-col items-center 2xl:max-w-5xl">
         <h1 className="text-4xl font-bold mt-16 text-center lg:text-2xl">
