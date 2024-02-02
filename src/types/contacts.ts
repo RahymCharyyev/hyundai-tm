@@ -10,4 +10,9 @@ export interface Contacts {
   salesDepartmentPhone: string;
   email: string;
   address: string;
+  companyName: string;
+  workingDays: string;
+  instagram: string;
+  telegram: string;
+  imo: string;
 }

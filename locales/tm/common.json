@@ -73,5 +73,22 @@
   "testDriveSubtitle": "Türkmenistandaky diller merkezinde synag sürüjisinden peýdalanyň.",
   "testDriveFormTitle": "Synag sürüjisi üçin haýyş ibermek",
   "contactWithUs": "Soraglaryňyz bar bolsa bize ýüz tutup bilersiňiz",
-  "welcome": "Hyundai Türkmenistanyň resmi web sahypasyna hoş geldiňiz"
+  "welcome": "Hyundai Türkmenistanyň resmi web sahypasyna hoş geldiňiz",
+  "feature": "Aýratynlyklary",
+  "exterior": "Eksterýer",
+  "interior": "Interýer",
+  "performance": "Güýji",
+  "safety": "Howpsuzlygy",
+  "comfort": "Rahatlygy",
+  "characteristics": "Görkezijileri",
+  "downloadCatalog": "katalog",
+  "leaveRequest": "Habar goýmak",
+  "modelDetailsInfo": "Ýokarda ýerleşdirilen suratlar, hereketlendirijiniň aýratynlyklary we maglumatlar, bu web sahypasynda görkezilenlerden tapawutlanyp biler. Ähli maglumatlar we illýustrasiýalar bu ýerde ýerleşdirilende elýeterli maglumatlara esaslanýar we duýdurmazdan üýtgedilip bilner. Has giňişleýin maglumat üçin biizň ofisimize barmagyňyzy haýyş edýäris.",
+  "formSuccess": "Siziň  habaryňyz üstünliki ugradyldy. Biziň işgärimiz ýakyn wagtda Siz bilen habarlaşar",
+  "formError": "Habar ugradylanda ýalňyşlyk ýüze çykdy. Az salymdan täzeden synanşyp görüň",
+  "formWaiting": "Habar ugradylýar...",
+  "360Review": "360° görnüş",
+  "pressAndTurn": "Basyň we aýlaň: doly görnüş üçin",
+  "mouseWheel": "Syçanjygyň tekeri: ýakynlatmak / daşlaşdyrmak",
+  "workingDays": "Iş günleri:"
 }

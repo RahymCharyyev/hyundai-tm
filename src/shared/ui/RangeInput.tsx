@@ -1,42 +1,53 @@
+import Slider from 'rc-slider';
+import 'rc-slider/assets/index.css';
 import React from 'react';
 
 interface RangeInputProps {
   label: string;
-  min: string;
-  max: string;
-  value: number;
-  step?: string;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  min: number;
+  max: number;
+  step?: number;
+  onChange: any;
+  value: number[];
 }
 
 export const RangeInput: React.FC<RangeInputProps> = ({
   label,
   min,
-  max,
   value,
+  max,
   step,
   onChange,
 }) => {
   return (
     <div className="flex flex-col gap-2">
       <span className="font-bold lg:text-sm">{label}</span>
-      <input
-        type="range"
+      <Slider
+        value={value}
         min={min}
         max={max}
-        value={value}
         step={step}
+        range
         onChange={onChange}
-        className="w-full h-1 bg-primary appearance-none range lg:text-sm"
+        styles={{
+          rail: {
+            background: '#002C5F',
+            color: '#002C5F',
+          },
+          track: {
+            background: '#002C5F',
+            color: '#002C5F',
+          },
+        }}
       />
       <div className="flex justify-between lg:text-sm">
         <div className="flex flex-col items-start">
           <span className="">от</span>
-          <span className="bg-white py-1 px-6 lg:px-2">{value}</span>
+          <span className="bg-white py-1 px-6 lg:px-2">{value[0]}</span>
         </div>
         <div className="flex flex-col items-end">
           <span>до</span>
-          <span className="bg-white py-1 px-6 lg:px-2">{max}</span>
+          <span className="bg-white py-1 px-6 lg:px-2">{value[1]}</span>
         </div>
       </div>
     </div>

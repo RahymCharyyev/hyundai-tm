@@ -9,16 +9,19 @@ import { useRouter } from 'next/router';
 export default function DetailedStockPage() {
   const { t } = useTranslation('common');
   const router = useRouter();
+  const currentLang = router.locale;
   const { id } = router.query;
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage', Number(id)],
-    queryFn: () => getPromotionsDetailsData(Number(id)),
+    queryFn: () =>
+      getPromotionsDetailsData({
+        id: Number(id),
+        lang: currentLang,
+      }),
   });
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
-
-  console.log(data);
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">

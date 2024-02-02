@@ -15,7 +15,8 @@ import { Loading } from './Loading';
 
 export default function Header() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const activeLink = 'active font-medium hover:font-medium';
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
@@ -23,7 +24,7 @@ export default function Header() {
 
   const { isPending, error, data } = useQuery({
     queryKey: ['contactsPage'],
-    queryFn: () => getContacts(),
+    queryFn: () => getContacts({ lang: currentLang }),
   });
 
   if (isPending) return <Loading />;
@@ -51,35 +52,42 @@ export default function Header() {
         </Link>
 
         <div className="flex gap-8 2xl:hidden">
-          <Link className={pathname == '/' ? activeLink : 'hover:font-medium'} href="/">
+          <Link
+            className={router.pathname == '/' ? activeLink : 'hover:font-medium'}
+            href="/"
+          >
             {t('main')}
           </Link>
           <Link
-            className={pathname == '/models' ? activeLink : 'hover:font-medium'}
+            className={router.pathname == '/models' ? activeLink : 'hover:font-medium'}
             href="/models"
           >
             {t('modelsLineup')}
           </Link>
           <Link
-            className={pathname == '/maintenance' ? activeLink : 'hover:font-medium'}
+            className={
+              router.pathname == '/maintenance' ? activeLink : 'hover:font-medium'
+            }
             href="/maintenance"
           >
             {t('maintenance')}
           </Link>
           <Link
-            className={pathname == '/history' ? activeLink : 'hover:font-medium'}
+            className={router.pathname == '/history' ? activeLink : 'hover:font-medium'}
             href="/history"
           >
             {t('hyundaiHistory')}
           </Link>
           <Link
-            className={pathname == '/promotions' ? activeLink : 'hover:font-medium'}
+            className={
+              router.pathname == '/promotions' ? activeLink : 'hover:font-medium'
+            }
             href="/promotions"
           >
             {t('promotions')}
           </Link>
           <Link
-            className={pathname == '/services' ? activeLink : 'hover:font-medium'}
+            className={router.pathname == '/services' ? activeLink : 'hover:font-medium'}
             href="/services"
           >
             {t('services')}
@@ -128,37 +136,47 @@ export default function Header() {
             </div>
             <div className="flex flex-col gap-10 items-center">
               <Link
-                className={pathname == '/' ? activeLink : 'hover:font-medium'}
+                className={router.pathname == '/' ? activeLink : 'hover:font-medium'}
                 href="/"
               >
                 {t('main')}
               </Link>
               <Link
-                className={pathname == '/models' ? activeLink : 'hover:font-medium'}
+                className={
+                  router.pathname == '/models' ? activeLink : 'hover:font-medium'
+                }
                 href="/models"
               >
                 {t('modelsLineup')}
               </Link>
               <Link
-                className={pathname == '/maintenance' ? activeLink : 'hover:font-medium'}
+                className={
+                  router.pathname == '/maintenance' ? activeLink : 'hover:font-medium'
+                }
                 href="/maintenance"
               >
                 {t('maintenance')}
               </Link>
               <Link
-                className={pathname == '/history' ? activeLink : 'hover:font-medium'}
+                className={
+                  router.pathname == '/history' ? activeLink : 'hover:font-medium'
+                }
                 href="/history"
               >
                 {t('hyundaiHistory')}
               </Link>
               <Link
-                className={pathname == '/promotions' ? activeLink : 'hover:font-medium'}
+                className={
+                  router.pathname == '/promotions' ? activeLink : 'hover:font-medium'
+                }
                 href="/promotions"
               >
                 {t('promotions')}
               </Link>
               <Link
-                className={pathname == '/services' ? activeLink : 'hover:font-medium'}
+                className={
+                  router.pathname == '/services' ? activeLink : 'hover:font-medium'
+                }
                 href="/services"
               >
                 {t('services')}

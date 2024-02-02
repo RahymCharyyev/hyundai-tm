@@ -13,29 +13,29 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function MaintenanceRegisterPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
-  const { reset } = useForm<ApplicationModel>();
+  const router = useRouter();
+  const currentLang = router.locale;
+  const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
-    queryFn: () => getContacts(),
+    queryFn: () => getContacts({ lang: currentLang }),
   });
 
   const mutation = useMutation({
-    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'maintenance'),
+    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'contactUs'),
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
+      alert(t('formSuccess'));
+    },
+    onError: () => {
+      alert(t('formError'));
     },
   });
-
   const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
     mutation.mutate(data);
   };
-
-  if (mutation.isSuccess) return alert('Success');
-  if (mutation.isPending) return <Loading />;
-  if (mutation.isError) return alert('Error');
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -52,31 +52,45 @@ export default function MaintenanceRegisterPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance"
+          text="maintenanceEvent"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/register"
           text="maintenanceRegister"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
-        <NavLink href="/maintenance/warranty" text="warranty" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/warranty"
+          text="warranty"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/car-maintenance"
           text="carMaintenance"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
         <NavLink
           href="/maintenance/map"
           text="maintenanceMap"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
       <h1 className="font-bold text-2xl max-w-[930px] my-16 text-center lg:text-xl lg:px-20 sm:!text-lg">
         {t('serviceRegisterTitle')}
       </h1>
-      <ApplicationForm onSubmit={onSubmit} />
+      <ApplicationForm
+        onSubmit={onSubmit}
+        register={register}
+        handleSubmit={handleSubmit}
+      />
       <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
         <span>
           {t('phoneService')} &nbsp;

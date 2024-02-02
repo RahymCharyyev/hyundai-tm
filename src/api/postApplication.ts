@@ -1,10 +1,10 @@
+import { ApplicationModel } from '@/types/applicationForm';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
-import { ApplicationModel } from '@/types/applicationForm';
 
 export const postApplication = async (formData: ApplicationModel, type: string) => {
   try {
-    const { data }: AxiosResponse<any> = await axiosInstance({
+    const { data }: AxiosResponse<ApplicationModel> = await axiosInstance({
       method: 'POST',
       url: '/pages/application',
       data: { ...formData, type },

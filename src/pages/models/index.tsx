@@ -1,15 +1,16 @@
-import { useMemo, useState, KeyboardEvent } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import useTranslation from 'next-translate/useTranslation';
-import { Button, ButtonGroup } from '@material-tailwind/react';
 import { getModelsPageData } from '@/api/getModelsPageData';
-import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
 import { Loading } from '@/layout/Loading';
 import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
 import { ModelsFilter } from '@/widgets/models/models-filter/ModelsFilter';
 import { ModelsHero } from '@/widgets/models/models-hero/ModelsHero';
 import { ModelsList } from '@/widgets/models/models-list/ModelsList';
 import { ModelsModal } from '@/widgets/models/models-modal/ModelsModal';
+import { Button, ButtonGroup } from '@material-tailwind/react';
+import { useQuery } from '@tanstack/react-query';
+import useTranslation from 'next-translate/useTranslation';
+import { useRouter } from 'next/router';
+import { KeyboardEvent, useMemo, useState } from 'react';
 
 export default function Models() {
   const [showFilter, setShowFilter] = useState(false);
@@ -22,25 +23,41 @@ export default function Models() {
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const { query, changeParams } = useQueryParams();
   const [searchQuery, setSearchQuery] = useState('');
+  const router = useRouter();
+  const currentLang = router.locale;
 
   const { isPending, error, data } = useQuery({
-    queryKey: ['modelsPage', selectedFrameIds, query.options, query.search],
+    queryKey: [
+      'modelsPage',
+      selectedFrameIds,
+      query.options,
+      query.search,
+      query.boardMin,
+      query.boardMax,
+    ],
     queryFn: () =>
       getModelsPageData({
+        boardMin: query.boardMin as any,
+        boardMax: query.boardMax as any,
+        fuelMin: query.fuelMin as any,
+        fuelMax: query.fuelMax as any,
+        priceMin: query.priceMin as any,
+        priceMax: query.priceMax as any,
         options: query.options as any,
         search: query.search as string,
+        lang: currentLang,
       }),
   });
 
   const frameDefaultIds = useMemo(() => {
-    return data?.frameModels.map((frame) => frame.id);
+    return data?.frameModels.map((frame: any) => frame.id);
   }, [data]);
   const isFrameInOptions = useMemo(() => {
     if (query.options && typeof query.options === 'string') {
       const optionsArr = query.options.split(',');
       return optionsArr.reduce((result: any, optionId) => {
         const filtered: any = frameDefaultIds?.filter(
-          (frameId) => String(frameId) === optionId,
+          (frameId: any) => String(frameId) === optionId,
         );
         if (filtered?.length > 0) result.push(filtered[0]);
 
@@ -131,7 +148,7 @@ export default function Models() {
         >
           {t('all')}
         </Button>
-        {data?.frameModels.map((frame) => (
+        {data?.frameModels.map((frame: any) => (
           <Button
             className={
               isFrameInOptions.includes(frame.id)

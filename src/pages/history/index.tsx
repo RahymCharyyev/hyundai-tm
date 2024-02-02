@@ -9,10 +9,11 @@ import { useRouter } from 'next/router';
 
 export default function HistoryPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
+  const router = useRouter();
+  const currentLang = router.locale;
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage'],
-    queryFn: () => getHistoryData(),
+    queryFn: () => getHistoryData({ lang: currentLang }),
   });
 
   if (isPending) return <Loading />;
@@ -29,18 +30,25 @@ export default function HistoryPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/history" text="hyundaiTurkmenistan" pathname={pathname} t={t} />
-        <NavLink href="/history/media" text="media" pathname={pathname} t={t} />
-        <NavLink href="/history/news" text="news" pathname={pathname} t={t} />
+        <NavLink
+          href="/history"
+          text="hyundaiTurkmenistan"
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink href="/history/media" text="media" pathname={router.pathname} t={t} />
+        <NavLink href="/history/news" text="news" pathname={router.pathname} t={t} />
         <NavLink
           href="/history/social-responsibility"
           text="socialResponsibility"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
       <div className="flex flex-col gap-4 items-center max-w-5xl my-16 lg:max-w-2xl ">
-        <div dangerouslySetInnerHTML={{ __html: data.data.hyundaiTurkmenistan }}></div>
+        <div className="ql">
+          <div dangerouslySetInnerHTML={{ __html: data.data.hyundaiTurkmenistan }} />
+        </div>
       </div>
     </main>
   );

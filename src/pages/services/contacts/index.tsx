@@ -13,12 +13,16 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 export default function ServicesContactsPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
-  const { reset } = useForm<ApplicationModel>();
+  const router = useRouter();
+  const currentLang = router.locale;
+  const { register, handleSubmit, reset } = useForm<ApplicationModel>();
   const queryClient = useQueryClient();
   const { isPending, error, data } = useQuery({
     queryKey: ['contacts'],
-    queryFn: () => getContacts(),
+    queryFn: () =>
+      getContacts({
+        lang: currentLang,
+      }),
   });
 
   const mutation = useMutation({
@@ -26,16 +30,16 @@ export default function ServicesContactsPage() {
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
+      alert(t('formSuccess'));
+    },
+    onError: () => {
+      alert(t('formError'));
     },
   });
 
   const onSubmit: SubmitHandler<ApplicationModel> = (data) => {
     mutation.mutate(data);
   };
-
-  if (mutation.isSuccess) return alert('Success');
-  if (mutation.isPending) return <Loading />;
-  if (mutation.isError) return alert('Error');
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -52,14 +56,23 @@ export default function ServicesContactsPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/services" text="testDrive" pathname={pathname} t={t} />
-        <NavLink href="/services/contacts" text="contactUs" pathname={pathname} t={t} />
+        <NavLink href="/services" text="testDrive" pathname={router.pathname} t={t} />
+        <NavLink
+          href="/services/contacts"
+          text="contactUs"
+          pathname={router.pathname}
+          t={t}
+        />
       </ButtonGroup>
       <div className="flex flex-col items-center 2xl:max-w-5xl">
         <h1 className="text-4xl font-bold my-16 text-center lg:text-2xl sm:!text-lg">
           {t('contactWithUs')}
         </h1>
-        <ApplicationForm onSubmit={onSubmit} />
+        <ApplicationForm
+          onSubmit={onSubmit}
+          register={register}
+          handleSubmit={handleSubmit}
+        />
         <div className="flex gap-10 justify-between my-16 lg:flex-col lg:items-center px-6">
           <iframe
             className="sm:w-[250px] sm:h-[250px]"
@@ -71,8 +84,10 @@ export default function ServicesContactsPage() {
             referrerPolicy="no-referrer-when-downgrade"
           />
           <div className="flex flex-col gap-4 text-xl lg:text-base ">
-            <p>ХО «Mertlik Ruhy»</p>
-            <p>Рабочие дни: Понедельник-Пятница – 09:00-18:00 Суббота – 09:00-13:00</p>
+            <p>{data.data.companyName}</p>
+            <p>
+              {t('workingDays')} {data.data.workingDays}
+            </p>
             <p>
               {t('phoneService')} &nbsp;
               {data.data.serviceDepartmentPhone}

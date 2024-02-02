@@ -12,7 +12,6 @@ import { useRouter } from 'next/router';
 
 export default function MaintenanceMapPage() {
   const { t } = useTranslation('common');
-  const { pathname } = useRouter();
   const router = useRouter();
   const currentLang = router.locale;
   const { isPending, error, data } = useQuery({
@@ -38,24 +37,34 @@ export default function MaintenanceMapPage() {
         t={t}
       />
       <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/maintenance" text="maintenanceEvent" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance"
+          text="maintenanceEvent"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/register"
           text="maintenanceRegister"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
-        <NavLink href="/maintenance/warranty" text="warranty" pathname={pathname} t={t} />
+        <NavLink
+          href="/maintenance/warranty"
+          text="warranty"
+          pathname={router.pathname}
+          t={t}
+        />
         <NavLink
           href="/maintenance/car-maintenance"
           text="carMaintenance"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
         <NavLink
           href="/maintenance/map"
           text="maintenanceMap"
-          pathname={pathname}
+          pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>

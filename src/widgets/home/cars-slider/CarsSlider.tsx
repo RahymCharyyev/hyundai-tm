@@ -42,8 +42,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
               height={100}
             />
             <Link
-              target="_blank"
-              href={model.link}
+              href={`/models/${model.id}/feature`}
               className="font-bold text-3xl hover:underline uppercase mb-20 mt-5 lg:text-xl sm:mb-10"
             >
               {model.name}
@@ -53,7 +52,6 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
       </Swiper>
       <Link
         className="bg-primary text-white py-4 px-5 hover:underline mb-20 lg:py-2 lg:px-3 lg:text-sm"
-        target="_blank"
         href="/models"
       >
         {t('moreModels')}
