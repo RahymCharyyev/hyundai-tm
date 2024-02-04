@@ -78,6 +78,7 @@ export default function ModelsMain() {
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}
+      <h2 className="text-center my-4 font-bold text-4xl">{t('gallery')}</h2>
       {gallery?.length !== 0 && <ImageGallery lazyLoad showNav={false} items={images} />}
       <ModelsDetailsNav
         t={t}

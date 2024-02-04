@@ -88,6 +88,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
       <div className="flex flex-col justify-between">
         <div className="flex flex-col gap-5 xl:flex-row xl:flex-wrap xl:justify-between xl:gap-2">
           <RangeInput
+            t={t}
             value={board}
             label={data.rangedOptions[0].name}
             min={data.rangedOptions[0].from}
@@ -96,6 +97,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
             onChange={setBoard}
           />
           <RangeInput
+            t={t}
             value={fuel}
             label={data.rangedOptions[1].name}
             min={data.rangedOptions[1].from}
@@ -104,6 +106,7 @@ export const ModelsFilter: FC<ModelsFilterProps> = ({
             onChange={setFuel}
           />
           <RangeInput
+            t={t}
             value={price}
             label={data.rangedOptions[2].name}
             min={data.rangedOptions[2].from}

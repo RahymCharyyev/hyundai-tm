@@ -9,6 +9,7 @@ interface RangeInputProps {
   step?: number;
   onChange: any;
   value: number[];
+  t: Function;
 }
 
 export const RangeInput: React.FC<RangeInputProps> = ({
@@ -18,6 +19,7 @@ export const RangeInput: React.FC<RangeInputProps> = ({
   max,
   step,
   onChange,
+  t,
 }) => {
   return (
     <div className="flex flex-col gap-2">
@@ -42,11 +44,11 @@ export const RangeInput: React.FC<RangeInputProps> = ({
       />
       <div className="flex justify-between lg:text-sm">
         <div className="flex flex-col items-start">
-          <span className="">от</span>
+          <span className="">{t('from')}</span>
           <span className="bg-white py-1 px-6 lg:px-2">{value[0]}</span>
         </div>
         <div className="flex flex-col items-end">
-          <span>до</span>
+          <span> {t('to')}</span>
           <span className="bg-white py-1 px-6 lg:px-2">{value[1]}</span>
         </div>
       </div>

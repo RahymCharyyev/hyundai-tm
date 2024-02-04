@@ -4,15 +4,70 @@ export interface BaseResponse {
 }
 
 export interface Contacts {
-  callCenter: string;
-  phone: string;
-  serviceDepartmentPhone: string;
-  salesDepartmentPhone: string;
-  email: string;
-  address: string;
-  companyName: string;
-  workingDays: string;
-  instagram: string;
-  telegram: string;
-  imo: string;
+  phone: Phone;
+  serviceDepartmentPhone: ServiceDepartmentPhone;
+  salesDepartmentPhone: SalesDepartmentPhone;
+  email: Email;
+  companyName: CompanyName;
+  workingDays: WorkingDays;
+  address: Address;
+  Instagram: Instagram;
+  Telegram: Telegram;
+  Youtube: Youtube;
+  callCenter: CallCenter;
+}
+
+export interface Phone {
+  value: string;
+  icon: string;
+}
+
+export interface ServiceDepartmentPhone {
+  value: string;
+  icon: string;
+}
+
+export interface SalesDepartmentPhone {
+  value: string;
+  icon: string;
+}
+
+export interface Email {
+  value: string;
+  icon: string;
+}
+
+export interface CompanyName {
+  value: string;
+  icon: string;
+}
+
+export interface WorkingDays {
+  value: string;
+  icon: string;
+}
+
+export interface Address {
+  value: string;
+  icon: string;
+}
+
+export interface Instagram {
+  value: string;
+  icon: string;
+}
+
+export interface Telegram {
+  value: string;
+  icon: string;
+}
+
+export interface Youtube {
+  value: string;
+  icon: any;
+}
+
+export interface CallCenter {
+  value: string;
+  icon: any;
 }

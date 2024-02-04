@@ -1,5 +1,9 @@
-import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
+import {
+  getModelsDetailsPageData,
+  getModelsImages,
+} from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
+import EnginesComponent from '@/shared/ui/Engines';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
@@ -22,6 +26,16 @@ export default function ModelsPerformace() {
       }),
   });
 
+  const { data: engines } = useQuery({
+    queryKey: ['models-engines'],
+    queryFn: () =>
+      getModelsImages({
+        modelId: Number(id),
+        type: 'engine',
+        lang: currentLang,
+      }),
+  });
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
   return (
@@ -31,14 +45,28 @@ export default function ModelsPerformace() {
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
           { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
-          { href: `/models/${id}/feature`, text: t('feature') },
+          { href: `/models/${id}/performance`, text: t('performance') },
         ]}
         data={data.banner}
         model={data.model}
         t={t}
         id={id}
       />
-      {data.details.map((detail: any, index: number) => (
+      <div className="flex flex-col items-center w-full text-center mb-20 py-8 ">
+        <h2 className="text-3xl font-bold"> {data.details[0].title}</h2>
+        <div
+          className="max-w-6xl my-4"
+          dangerouslySetInnerHTML={{ __html: data.details[0].text }}
+        />
+        <Image
+          src={data.details[0].imagePath}
+          alt="features images"
+          width={1120}
+          height={600}
+        />
+      </div>
+      <EnginesComponent engines={engines} t={t} />
+      {data.details.slice(1).map((detail: any, index: number) => (
         <div
           key={detail.id}
           className={`flex flex-col items-center w-full text-center mb-20 py-8 ${
@@ -46,7 +74,10 @@ export default function ModelsPerformace() {
           }`}
         >
           <h2 className="text-3xl font-bold">{detail.title}</h2>
-          <span className="text-xl">{detail.text}</span>
+          <div
+            className="max-w-6xl my-4"
+            dangerouslySetInnerHTML={{ __html: detail.text }}
+          />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}

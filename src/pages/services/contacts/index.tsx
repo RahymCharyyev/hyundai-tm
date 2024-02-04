@@ -84,16 +84,16 @@ export default function ServicesContactsPage() {
             referrerPolicy="no-referrer-when-downgrade"
           />
           <div className="flex flex-col gap-4 text-xl lg:text-base ">
-            <p>{data.data.companyName}</p>
+            <p>{data.data.companyName.value}</p>
             <p>
-              {t('workingDays')} {data.data.workingDays}
+              {t('workingDays')} {data.data.workingDays.value}
             </p>
             <p>
               {t('phoneService')} &nbsp;
-              {data.data.serviceDepartmentPhone}
+              {data.data.serviceDepartmentPhone.value}
             </p>
             <p>
-              {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone}
+              {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone.value}
             </p>
           </div>
         </div>

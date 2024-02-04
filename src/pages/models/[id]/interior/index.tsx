@@ -5,11 +5,12 @@ import {
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import '@photo-sphere-viewer/core/index.css';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import dynamic from 'next/dynamic';
 const ReactPhotoSphereViewer = dynamic(
   () => import('react-photo-sphere-viewer').then((mod) => mod.ReactPhotoSphereViewer),
   {
@@ -40,11 +41,10 @@ export default function ModelsInterior() {
         type: '360-interior',
       }),
   });
+  const interiorPath = interior?.map((image) => image.imagePath.toString());
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
-
-  const interiorPath = interior?.map((image) => image.imagePath.toString());
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -53,7 +53,7 @@ export default function ModelsInterior() {
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
           { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
-          { href: `/models/${id}/feature`, text: t('feature') },
+          { href: `/models/${id}/interior`, text: t('interior') },
         ]}
         data={data.banner}
         model={data.model}
@@ -64,7 +64,13 @@ export default function ModelsInterior() {
       <span className="mb-4">
         {t('pressAndTurn')}, {t('mouseWheel')}
       </span>
-      <ReactPhotoSphereViewer src={interiorPath![0]} height={'50vh'} width={'50%'} />
+      {interiorPath !== undefined && (
+        <ReactPhotoSphereViewer
+          src={interiorPath.toString()}
+          height={'50vh'}
+          width={'50%'}
+        />
+      )}
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}
@@ -73,7 +79,10 @@ export default function ModelsInterior() {
           }`}
         >
           <h2 className="text-3xl font-bold">{detail.title}</h2>
-          <span className="text-xl">{detail.text}</span>
+          <div
+            className="max-w-6xl my-4"
+            dangerouslySetInnerHTML={{ __html: detail.text }}
+          />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}

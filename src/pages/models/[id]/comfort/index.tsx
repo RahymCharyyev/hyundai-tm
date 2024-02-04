@@ -17,7 +17,7 @@ export default function ModelsComfort() {
     queryFn: () =>
       getModelsDetailsPageData({
         modelId: Number(id),
-        key: 'safety',
+        key: 'comfort',
         lang: currentLang,
       }),
   });
@@ -30,7 +30,7 @@ export default function ModelsComfort() {
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
           { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
-          { href: `/models/${id}/feature`, text: t('feature') },
+          { href: `/models/${id}/comfort`, text: t('comfort') },
         ]}
         data={data.banner}
         model={data.model}
@@ -39,7 +39,10 @@ export default function ModelsComfort() {
       />
       <div className="flex flex-col items-center w-full text-center mb-20 py-8">
         <h2 className="text-3xl font-bold">{data.details[0].title}</h2>
-        <span className="text-xl">{data.details[0].text}</span>
+        <div
+          className="max-w-6xl my-4"
+          dangerouslySetInnerHTML={{ __html: data.details[0].text }}
+        />
         <Image
           className="mb-10"
           src={data.details[0].imagePath}
@@ -56,8 +59,11 @@ export default function ModelsComfort() {
                 width={540}
                 height={360}
               />
-              <h2 className="text-xl font-bold">{detail.title}</h2>
-              <span>{detail.text}</span>
+              <h2 className="text-xl font-bold my-2">{detail.title}</h2>
+              <div
+                className="max-w-lg"
+                dangerouslySetInnerHTML={{ __html: detail.text }}
+              />
             </div>
           ))}
         </div>

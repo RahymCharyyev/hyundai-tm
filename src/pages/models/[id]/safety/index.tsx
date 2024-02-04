@@ -1,8 +1,12 @@
-import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
+import {
+  getModelsDetailsPageData,
+  getModelsImages,
+} from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
 import GifPlayer from '@/shared/ui/GifPlayer';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import SmartSenseComponent from '@/shared/ui/SmartSense';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
@@ -23,6 +27,16 @@ export default function ModelsSafety() {
       }),
   });
 
+  const { data: gifs } = useQuery({
+    queryKey: ['models-engines'],
+    queryFn: () =>
+      getModelsImages({
+        modelId: Number(id),
+        type: 'smart-sense',
+        lang: currentLang,
+      }),
+  });
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
   return (
@@ -32,14 +46,14 @@ export default function ModelsSafety() {
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
           { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
-          { href: `/models/${id}/feature`, text: t('feature') },
+          { href: `/models/${id}/safety`, text: t('safety') },
         ]}
         data={data.banner}
         model={data.model}
         t={t}
         id={id}
       />
-      <GifPlayer />
+      <SmartSenseComponent gifs={gifs} t={t} />
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}
@@ -48,7 +62,10 @@ export default function ModelsSafety() {
           }`}
         >
           <h2 className="text-3xl font-bold">{detail.title}</h2>
-          <span className="text-xl">{detail.text}</span>
+          <div
+            className="max-w-6xl my-4"
+            dangerouslySetInnerHTML={{ __html: detail.text }}
+          />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}

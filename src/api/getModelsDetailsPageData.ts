@@ -11,7 +11,7 @@ interface GetModelsDetailsPageDataParams {
 }
 
 interface GetModelsCharactericsticsParams {
-  configurationId?: string;
+  configurationId?: number;
   modelId?: number;
   lang?: string;
 }
