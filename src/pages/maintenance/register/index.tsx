@@ -94,10 +94,10 @@ export default function MaintenanceRegisterPage() {
       <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
         <span>
           {t('phoneService')} &nbsp;
-          {data.data.serviceDepartmentPhone}
+          {data.data.serviceDepartmentPhone.value}
         </span>
         <span>
-          {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone}
+          {t('phoneSale')} &nbsp;{data.data.salesDepartmentPhone.value}
         </span>
       </div>
     </main>

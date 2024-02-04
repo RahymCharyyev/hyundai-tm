@@ -2,6 +2,7 @@ import {
   getModelsDetailsPageData,
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
+import { getModelsImages360 } from '@/api/getModelsImages360';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
@@ -29,16 +30,14 @@ export default function ModelsExterior() {
   const { data: models360 } = useQuery({
     queryKey: ['models-360'],
     queryFn: () =>
-      getModelsImages({
+      getModelsImages360({
         modelId: Number(id),
-        type: '360',
       }),
   });
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
 
-  const imageUrls = models360?.map((url) => url.imagePath);
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -46,7 +45,7 @@ export default function ModelsExterior() {
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
           { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
-          { href: `/models/${id}/feature`, text: t('feature') },
+          { href: `/models/${id}/exterior`, text: t('exterior') },
         ]}
         data={data.banner}
         model={data.model}
@@ -55,13 +54,13 @@ export default function ModelsExterior() {
       />
       <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">{t('360Review')}</h1>
       <span className="mb-4">{t('pressAndTurn')}</span>
-      {imageUrls?.[0] !== undefined && (
+      {models360 !== undefined && (
         <React360Viewer
           width={800}
-          imageFilenamePrefix="white-cream_"
+          imageFilenamePrefix={models360?.prefix}
           imagesBaseUrl="http://hyundai.com.tm/public"
           imagesCount={35}
-          imagesFiletype="png"
+          imagesFiletype={models360.fileType}
           mouseDragSpeed={20}
         />
       )}
@@ -73,7 +72,10 @@ export default function ModelsExterior() {
           }`}
         >
           <h2 className="text-3xl font-bold">{detail.title}</h2>
-          <span className="text-xl">{detail.text}</span>
+          <div
+            className="max-w-6xl my-4"
+            dangerouslySetInnerHTML={{ __html: detail.text }}
+          />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}

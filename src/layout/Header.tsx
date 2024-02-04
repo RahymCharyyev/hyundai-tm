@@ -12,6 +12,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Loading } from './Loading';
+import { SocialLinksSelector } from '@/shared/ui/SocialLinksSelector';
 
 export default function Header() {
   const { t } = useTranslation('common');
@@ -35,8 +36,8 @@ export default function Header() {
       <div className="h-11 flex items-center bg-header lg:text-xs">
         <span className="text-primary px-28 lg:px-10">
           {t('callCenter')}: &nbsp;
-          <Link className="font-bold" href="tel:+993 12 12-12-12">
-            {data.data.callCenter}
+          <Link className="font-bold" href={data.data.callCenter.value}>
+            {data.data.callCenter.value}
           </Link>
         </span>
       </div>
@@ -95,20 +96,21 @@ export default function Header() {
         </div>
         <div className="flex gap-5">
           <LanguageSwitcher />
-          <Image
+          <SocialLinksSelector />
+          {/* <Image
             className="lg:w-[15px]"
             src={ShareIcon}
             alt="share logo"
             width={20}
             height={20}
-          />
-          <Image
+          /> */}
+          {/* <Image
             className="lg:w-[15px]"
             src={SearchIcon}
             alt="search logo"
             width={20}
             height={20}
-          />
+          /> */}
           <Image
             className="hidden 2xl:block lg:w-[15px] "
             src={HambugerIcon}

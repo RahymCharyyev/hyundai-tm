@@ -21,7 +21,9 @@ export const DetailedNews: FC<DetailedNewsProps> = ({ t, detailedNews }) => {
         <span className="mb-10 text-linkColor ">
           {dayjs(detailedNews.data.createdAt).format('DD.MM.YYYY')}
         </span>
-        <div>{detailedNews.data.description}</div>
+        <div className="ql">
+          <div dangerouslySetInnerHTML={{ __html: detailedNews.data.description }} />
+        </div>
       </div>
     </div>
   );

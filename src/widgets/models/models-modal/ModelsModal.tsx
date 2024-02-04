@@ -65,7 +65,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
         <p className="text-black text-base font-bold lg:text-sm">
           {t('trip')}
           {selectedModelEquipments.map((equipment) => (
-            <span key={equipment.id} className="font-normal">
+            <span key={equipment.id} className=" flex flex-col font-normal">
               {equipment.name}
             </span>
           ))}

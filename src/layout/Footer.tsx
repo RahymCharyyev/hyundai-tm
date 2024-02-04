@@ -5,10 +5,24 @@ import HyundaiWhiteLogo from '@/assets/hyundai_white_logo.png';
 import LocationIcon from '@/assets/location_icon.svg';
 import PhoneIcon from '@/assets/phone_icon.svg';
 import MailIcon from '@/assets/mail_icon.svg';
+import { useRouter } from 'next/router';
+import { Loading } from './Loading';
+import { useQuery } from '@tanstack/react-query';
+import { getContacts } from '@/api/getContacts';
 
 export function Footer() {
   const { t } = useTranslation('common');
+  const router = useRouter();
+  const currentLang = router.locale;
   const currentYear = new Date().getFullYear();
+
+  const { isPending, error, data } = useQuery({
+    queryKey: ['contactsPage'],
+    queryFn: () => getContacts({ lang: currentLang }),
+  });
+
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
 
   return (
     <footer className="h-auto flex flex-col justify-between bg-primary">
@@ -113,21 +127,21 @@ export function Footer() {
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={LocationIcon} alt="share logo" width={10} height={15} />
-            58 ул. Г. Кулиева, 744015 Ашхабад, Туркменистан
+            {data.data.address.value}
           </Link>
           <Link
             href="tel:+993 12 75 44 85"
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={PhoneIcon} alt="share logo" width={15} height={14} />
-            +993 12 75 44 85
+            {data.data.phone.value}
           </Link>
           <Link
             href="mailto:hyundai.ashgabat2023@gmail.com"
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={MailIcon} alt="share logo" width={15} height={15} />
-            hyundai.ashgabat2023@gmail.com
+            {data.data.email.value}
           </Link>
         </div>
       </div>
