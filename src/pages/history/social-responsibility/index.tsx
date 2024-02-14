@@ -47,7 +47,7 @@ export default function HistoryResponsibilityPage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="ql max-w-6xl mx-auto my-8">
+      <div className="ql max-w-6xl mx-auto my-8 px-3 sm:text-xs sm:leading-6">
         <div dangerouslySetInnerHTML={{ __html: data.data.socialResponsibility }} />
       </div>
     </main>

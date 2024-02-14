@@ -12,22 +12,25 @@ const SmartSenseComponent = ({ gifs, t }: any) => {
     <>
       <div className="flex flex-col gap-2 items-center justify-center">
         <div className="flex flex-col gap-2 items-center">
-          <h1 className="text-4xl font-bold">Hyundai SmartSense</h1>
-          <h2 className="text-lg">{t('smartSenseDescription')}</h2>
+          <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl">
+            Hyundai SmartSense
+          </h1>
+          <h2 className="text-lg md:px-3 sm:text-sm">{t('smartSenseDescription')}</h2>
         </div>
-        <div className="flex flex-wrap items-center gap-2 justify-between">
-          {gifs?.map((engine: any, index: number) => (
+        <div className="flex flex-wrap sm:px-3 text-center items-center gap-2 justify-between">
+          {gifs?.map((gif: any, index: number) => (
             <Button
-              className="rounded-none w-40"
-              key={engine.id}
+              className="rounded-none w-40 h-20 md:h-24 md:w-32 sm:!w-28 sm:text-xs"
+              key={gif.id}
               onClick={() => handleButtonClick(index)}
             >
-              Blind Spot Detection (BSD)
-              {/* {engine.name} */}
+              {gif.name}
             </Button>
           ))}
         </div>
-
+        <div className="my-4 max-w-3xl mx-auto text-center">
+          {gifs[selectedEngine].description}
+        </div>
         {gifs && (
           <Image
             src={gifs[selectedEngine].imagePath}
@@ -36,10 +39,6 @@ const SmartSenseComponent = ({ gifs, t }: any) => {
             height={250}
           />
         )}
-        <div className="mb-4">
-          BSD detects approaching vehicles or unforeseen objects in the blind spot and
-          triggers a warning light and acoustic alert when changing lanes.
-        </div>
       </div>
     </>
   );

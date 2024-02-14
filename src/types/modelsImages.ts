@@ -9,4 +9,6 @@ export interface ModelImage {
   modelId: number;
   image: string;
   imagePath: string;
+  name?: string;
+  description?: string;
 }

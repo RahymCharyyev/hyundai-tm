@@ -45,7 +45,7 @@ export default function HistoryPage() {
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col gap-4 items-center max-w-5xl my-16 lg:max-w-2xl ">
+      <div className="flex flex-col gap-4 items-center max-w-5xl my-16 lg:max-w-2xl px-2">
         <div className="ql">
           <div dangerouslySetInnerHTML={{ __html: data.data.hyundaiTurkmenistan }} />
         </div>

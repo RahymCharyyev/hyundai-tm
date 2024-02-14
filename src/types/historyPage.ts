@@ -9,6 +9,7 @@ export interface NewsHistory {
   type: string;
   createdAt: string;
   imagePath: string;
+  viewCount?: string;
 }
 
 export interface DetailedNewsHistory {
@@ -19,6 +20,7 @@ export interface DetailedNewsHistory {
     type: string;
     createdAt: string;
     imagePath: string;
+    viewCount?: string;
   };
 }
 

@@ -22,7 +22,7 @@ export const ModelsDetailsNav: FC<ModelsDetailsNavProps> = ({
   t,
 }) => {
   return (
-    <div className="bg-accordionBg w-full py-16 my-16">
+    <div className="bg-accordionBg w-full py-16 my-16 md:px-4 md:my-4">
       <div
         className={` ${
           showPrev && showNext && 'flex justify-between max-w-6xl mx-auto'
@@ -32,21 +32,21 @@ export const ModelsDetailsNav: FC<ModelsDetailsNavProps> = ({
       >
         <Link
           href={`/models/${id}/${prevLink}`}
-          className={`flex items-center gap-4 font-bold text-3xl hover:underline ${
+          className={`flex items-center gap-4 font-bold text-3xl hover:underline md:text-xl sm:!text-lg sm:gap-2 ${
             !showPrev && 'hidden'
           }`}
         >
-          <Image src={PrevArrow} alt="previous icon" />
+          <Image className="md:w-4 sm:!w-[6px]" src={PrevArrow} alt="previous icon" />
           <p>{t(prevLink)}</p>
         </Link>
         <Link
           href={`/models/${id}/${nextLink}`}
-          className={`flex items-center gap-4 font-bold text-3xl hover:underline ${
+          className={`flex items-center gap-4 font-bold text-3xl hover:underline md:text-xl sm:!text-lg sm:gap-2 ${
             !showNext && 'hidden'
           }`}
         >
           <p>{t(nextLink)}</p>
-          <Image src={NextArrow} alt="next icon" />
+          <Image className="md:w-4 sm:!w-[6px]" src={NextArrow} alt="next icon" />
         </Link>
       </div>
     </div>

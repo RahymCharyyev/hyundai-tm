@@ -34,17 +34,17 @@ export const ModelsDetailsHero: FC<ModelsDetailsHeroProps> = ({
         <div className={`flex justify-center gap-14 bg-primary w-full py-4`}>
           <Link
             href="/services"
-            className="flex items-center gap-4 text-white font-bold hover:underline"
+            className="flex items-center gap-4 text-white font-bold hover:underline md:text-sm sm:!text-xs sm:w-[150px]"
           >
-            <Image src={TestDriveIcon} alt="test drive icon" />
+            <Image className="sm:w-6" src={TestDriveIcon} alt="test drive icon" />
             <p>{t('testDriveFormTitle')}</p>
           </Link>
 
           <Link
             href="/services/contacts"
-            className="flex items-center gap-4 text-white font-bold hover:underline"
+            className="flex items-center gap-4 text-white font-bold hover:underline md:text-sm sm:!text-xs"
           >
-            <Image src={RequestIcon} alt="request icon" />
+            <Image className="sm:w-6" src={RequestIcon} alt="request icon" />
             <p>{t('leaveRequest')}</p>
           </Link>
         </div>

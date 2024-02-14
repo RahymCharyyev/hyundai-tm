@@ -11,16 +11,15 @@ const EnginesComponent = ({ engines, t }: any) => {
   return (
     <>
       <div className="flex flex-col gap-8 items-center justify-center">
-        <h1 className="text-4xl font-bold">{t('engine')}</h1>
-        <div className="flex gap-2 justify-between">
+        <h1 className="text-4xl font-bold md:text-2xl sm:!text-xl">{t('engine')}</h1>
+        <div className="flex md:flex-wrap md:justify-center gap-2 justify-between">
           {engines?.map((engine: any, index: number) => (
             <Button
-              className="rounded-none w-64"
+              className="rounded-none w-64 md:w-48 sm:!w-32 sm:text-xs"
               key={engine.id}
               onClick={() => handleButtonClick(index)}
             >
-              2.0 MPi бензин
-              {/* {engine.name} */}
+              {engine.name}
             </Button>
           ))}
         </div>
@@ -33,9 +32,8 @@ const EnginesComponent = ({ engines, t }: any) => {
             height={250}
           />
         )}
-        <div className="mb-4">
-          Максимальная мощность 152 л.с. при 6200 об/мин и максимальный крутящий момент
-          19,6 кг ∙ м при 4000 об/мин.
+        <div className="mb-4 px-3 text-center sm:text-sm">
+          {engines[selectedEngine].description}
         </div>
       </div>
     </>

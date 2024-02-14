@@ -67,20 +67,22 @@ export default function ModelsExterior() {
       {data.details.map((detail: any, index: number) => (
         <div
           key={detail.id}
-          className={`flex flex-col items-center w-full text-center mb-20 py-8 ${
+          className={`flex flex-col items-center w-full text-center mb-20 py-8 md:my-4 ${
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
         >
-          <h2 className="text-3xl font-bold">{detail.title}</h2>
+          <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
+            {detail.title}
+          </h2>
           <div
-            className="max-w-6xl my-4"
+            className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
           <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="interior" prevLink="feature" id={id} />
-      <span className="mx-auto max-w-6xl mb-10 text-gray-600">
+      <span className="mx-auto max-w-6xl mb-10 text-gray-600 md:text-sm md:px-3 sm:!text-xs">
         {t('modelDetailsInfo')}
       </span>
     </main>

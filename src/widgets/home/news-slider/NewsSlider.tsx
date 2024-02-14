@@ -47,8 +47,7 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
                 )}
               </div>
               <Link
-                target="_blank"
-                href={`/news/${news.id}`}
+                href={`/history/news/${news.id}`}
                 className="font-bold text-3xl hover:underline uppercase lg:text-xl lg:w-[500px] md:!text-base md:!w-[250px]"
               >
                 {news.title}
