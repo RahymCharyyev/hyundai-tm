@@ -25,7 +25,9 @@ export const ModelsList: FC<ModelsListProps> = ({ handleOpen, data }) => {
                   width={300}
                   height={200}
                 />
-                <div className="font-bold text-lg hover:underline">{model.name}</div>
+                <div className="font-bold text-lg uppercase hover:underline">
+                  {model.name}
+                </div>
               </button>
             </div>
           ))}

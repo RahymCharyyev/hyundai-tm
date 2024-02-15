@@ -85,6 +85,7 @@ export default function ModelsMain() {
       </h2>
       {gallery?.length !== 0 && (
         <ImageGallery
+          showIndex={true}
           additionalClass="w-[1100px] sm:w-72"
           lazyLoad
           showNav={false}

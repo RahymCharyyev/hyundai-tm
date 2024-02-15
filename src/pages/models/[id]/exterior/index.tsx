@@ -1,15 +1,14 @@
-import {
-  getModelsDetailsPageData,
-  getModelsImages,
-} from '@/api/getModelsDetailsPageData';
+import { getModelsDetailsPageData } from '@/api/getModelsDetailsPageData';
 import { getModelsImages360 } from '@/api/getModelsImages360';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import { Image360 } from '@/types/models360';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import { React360Viewer } from 'react-360-product-viewer';
 
 export default function ModelsExterior() {
@@ -17,6 +16,7 @@ export default function ModelsExterior() {
   const router = useRouter();
   const currentLang = router.locale;
   const { id } = router.query;
+  const [images, setImages] = useState<Image360>();
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
     queryFn: () =>
@@ -35,9 +35,12 @@ export default function ModelsExterior() {
       }),
   });
 
+  useEffect(() => {
+    setImages(models360);
+  }, [models360]);
+
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -54,13 +57,14 @@ export default function ModelsExterior() {
       />
       <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">{t('360Review')}</h1>
       <span className="mb-4">{t('pressAndTurn')}</span>
-      {models360 !== undefined && (
+      {images !== undefined && (
         <React360Viewer
+          showRotationIconOnStartup={true}
           width={800}
-          imageFilenamePrefix={models360?.prefix}
+          imageFilenamePrefix={images?.prefix}
           imagesBaseUrl="http://hyundai.com.tm/public"
-          imagesCount={35}
-          imagesFiletype={models360.fileType}
+          imagesCount={images?.imageCount - 1}
+          imagesFiletype={images?.fileType}
           mouseDragSpeed={20}
         />
       )}
