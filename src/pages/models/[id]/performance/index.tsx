@@ -39,6 +39,8 @@ export default function ModelsPerformace() {
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
 
+  console.log(data?.details?.[0].image);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -61,12 +63,14 @@ export default function ModelsPerformace() {
           className="max-w-6xl my-4 md:px-3 sm:text-sm"
           dangerouslySetInnerHTML={{ __html: data?.details?.[0].text }}
         />
-        <Image
-          src={data?.details?.[0].imagePath}
-          alt="features images"
-          width={1120}
-          height={600}
-        />
+        {data?.details?.[0].image && (
+          <Image
+            src={data?.details?.[0].imagePath}
+            alt="features images"
+            width={1120}
+            height={600}
+          />
+        )}
       </div>
       {engines?.length && <EnginesComponent engines={engines} t={t} />}
       {data?.details?.slice(1).map((detail: any, index: number) => (
@@ -83,12 +87,14 @@ export default function ModelsPerformace() {
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
-          <Image
-            src={detail?.imagePath}
-            alt="features images"
-            width={1120}
-            height={600}
-          />
+          {detail.image && (
+            <Image
+              src={detail?.imagePath}
+              alt="features images"
+              width={1120}
+              height={600}
+            />
+          )}
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="safety" prevLink="interior" id={id} />

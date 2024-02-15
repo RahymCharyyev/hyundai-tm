@@ -22,6 +22,7 @@ export interface Detail {
   modelId: number;
   title: string;
   text: string;
+  image?: string;
   imagePath: string;
 }
 
