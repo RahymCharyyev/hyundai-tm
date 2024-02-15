@@ -51,7 +51,10 @@ export default function ModelsSafety() {
         t={t}
         id={id}
       />
-      {gifs?.length && <SmartSenseComponent gifs={gifs} t={t} />}
+      <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl mb-2">
+        Hyundai SmartSense
+      </h1>
+      {gifs?.length !== 0 && <SmartSenseComponent gifs={gifs} t={t} />}
       {data?.details?.map((detail: any, index: number) => (
         <div
           key={detail?.id}

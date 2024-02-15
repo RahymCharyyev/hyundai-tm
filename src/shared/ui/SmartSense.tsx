@@ -12,9 +12,6 @@ const SmartSenseComponent = ({ gifs, t }: any) => {
     <>
       <div className="flex flex-col gap-2 items-center justify-center">
         <div className="flex flex-col gap-2 items-center">
-          <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl">
-            Hyundai SmartSense
-          </h1>
           <h2 className="text-lg md:px-3 sm:text-sm">{t('smartSenseDescription')}</h2>
         </div>
         <div className="flex flex-wrap sm:px-3 text-center items-center gap-2 justify-between">
