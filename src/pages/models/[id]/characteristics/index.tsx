@@ -47,11 +47,11 @@ export default function ModelsCharacteristics() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
+          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
           { href: `/models/${id}/characteristics`, text: t('characteristics') },
         ]}
-        data={data.banner}
-        model={data.model}
+        data={data?.banner}
+        model={data?.model}
         t={t}
         id={id}
       />
@@ -68,18 +68,18 @@ export default function ModelsCharacteristics() {
               value={selectedConfigId}
             >
               {characteristicsData?.list?.map((complect) => (
-                <option key={complect.id} value={complect.id}>
-                  {complect.name}
+                <option key={complect.id} value={complect?.id}>
+                  {complect?.name}
                 </option>
               ))}
             </select>
           </div>
         )}
-        {characteristicsData?.details.subs.map((element) => (
-          <div key={element.id} className="flex flex-col items-center justify-center">
+        {characteristicsData?.details?.subs.map((element) => (
+          <div key={element?.id} className="flex flex-col items-center justify-center">
             <span className="text-2xl font-bold my-8 sm:text-xl">{element.name}</span>
             <table className="border-2 mx-3">
-              {element.details.map((item, itemIndex) => (
+              {element?.details.map((item, itemIndex) => (
                 <Fragment key={++itemIndex}>
                   <thead className="bg-primary text-white">
                     <tr>
@@ -87,18 +87,18 @@ export default function ModelsCharacteristics() {
                         colSpan={2}
                         className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 md:text-sm sm:text-xs"
                       >
-                        {item.name}
+                        {item?.name}
                       </th>
                     </tr>
                   </thead>
-                  {item.values.map((value) => (
+                  {item?.values.map((value) => (
                     <tbody key={value.id} className="border-2">
                       <tr>
                         <td className="bg-accordionBg py-5 px-16 md:py-2 md:px-2 sm:py-1 sm:px-1 md:text-sm sm:text-xs">
-                          {value.name}
+                          {value?.name}
                         </td>
                         <td className="py-5 px-16 md:py-2 md:px-2 sm:py-1 sm:px-1 md:text-sm sm:text-xs">
-                          {value.value}
+                          {value?.value}
                         </td>
                       </tr>
                     </tbody>

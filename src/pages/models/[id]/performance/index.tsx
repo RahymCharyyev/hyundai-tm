@@ -38,6 +38,7 @@ export default function ModelsPerformace() {
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -54,35 +55,40 @@ export default function ModelsPerformace() {
       />
       <div className="flex flex-col items-center w-full text-center mb-20 py-8 md:my-4">
         <h2 className="text-3xl font-bold md:text-2xl sm:!text-xl">
-          {data.details[0].title}
+          {data?.details?.[0].title}
         </h2>
         <div
           className="max-w-6xl my-4 md:px-3 sm:text-sm"
-          dangerouslySetInnerHTML={{ __html: data.details[0].text }}
+          dangerouslySetInnerHTML={{ __html: data?.details?.[0].text }}
         />
         <Image
-          src={data.details[0].imagePath}
+          src={data?.details?.[0].imagePath}
           alt="features images"
           width={1120}
           height={600}
         />
       </div>
-      <EnginesComponent engines={engines} t={t} />
-      {data.details.slice(1).map((detail: any, index: number) => (
+      {engines?.length && <EnginesComponent engines={engines} t={t} />}
+      {data?.details?.slice(1).map((detail: any, index: number) => (
         <div
-          key={detail.id}
+          key={detail?.id}
           className={`flex flex-col items-center w-full text-center mb-20 py-8 md:my-4 ${
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
         >
           <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
-            {detail.title}
+            {detail?.title}
           </h2>
           <div
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
-          <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
+          <Image
+            src={detail?.imagePath}
+            alt="features images"
+            width={1120}
+            height={600}
+          />
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="safety" prevLink="interior" id={id} />

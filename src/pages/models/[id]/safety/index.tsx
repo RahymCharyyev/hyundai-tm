@@ -3,9 +3,7 @@ import {
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
 import { Loading } from '@/layout/Loading';
-import GifPlayer from '@/shared/ui/GifPlayer';
-import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
-import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import { ModelsDetailsHero, ModelsDetailsNav } from '@/shared/ui';
 import SmartSenseComponent from '@/shared/ui/SmartSense';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
@@ -53,10 +51,10 @@ export default function ModelsSafety() {
         t={t}
         id={id}
       />
-      <SmartSenseComponent gifs={gifs} t={t} />
-      {data.details.map((detail: any, index: number) => (
+      {gifs?.length && <SmartSenseComponent gifs={gifs} t={t} />}
+      {data?.details?.map((detail: any, index: number) => (
         <div
-          key={detail.id}
+          key={detail?.id}
           className={`flex flex-col items-center w-full text-center mb-20 py-8 ${
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
@@ -66,9 +64,14 @@ export default function ModelsSafety() {
           </h2>
           <div
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
-            dangerouslySetInnerHTML={{ __html: detail.text }}
+            dangerouslySetInnerHTML={{ __html: detail?.text }}
           />
-          <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
+          <Image
+            src={detail?.imagePath}
+            alt="features images"
+            width={1120}
+            height={600}
+          />
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="comfort" prevLink="performance" id={id} />

@@ -21,20 +21,20 @@ const SmartSenseComponent = ({ gifs, t }: any) => {
           {gifs?.map((gif: any, index: number) => (
             <Button
               className="rounded-none w-40 h-20 md:h-24 md:w-32 sm:!w-28 sm:text-xs"
-              key={gif.id}
+              key={gif?.id}
               onClick={() => handleButtonClick(index)}
             >
-              {gif.name}
+              {gif?.name}
             </Button>
           ))}
         </div>
         <div className="my-4 max-w-3xl mx-auto text-center">
-          {gifs[selectedEngine].description}
+          {gifs[selectedEngine]?.description}
         </div>
         {gifs && (
           <Image
-            src={gifs[selectedEngine].imagePath}
-            alt={gifs[selectedEngine].image}
+            src={gifs[selectedEngine]?.imagePath}
+            alt={gifs[selectedEngine]?.image}
             width={800}
             height={250}
           />

@@ -16,24 +16,24 @@ const EnginesComponent = ({ engines, t }: any) => {
           {engines?.map((engine: any, index: number) => (
             <Button
               className="rounded-none w-64 md:w-48 sm:!w-32 sm:text-xs"
-              key={engine.id}
+              key={engine?.id}
               onClick={() => handleButtonClick(index)}
             >
-              {engine.name}
+              {engine?.name}
             </Button>
           ))}
         </div>
 
         {engines && (
           <Image
-            src={engines[selectedEngine].imagePath}
-            alt={engines[selectedEngine].image}
+            src={engines[selectedEngine]?.imagePath}
+            alt={engines[selectedEngine]?.image}
             width={800}
             height={250}
           />
         )}
         <div className="mb-4 px-3 text-center sm:text-sm">
-          {engines[selectedEngine].description}
+          {engines[selectedEngine]?.description}
         </div>
       </div>
     </>

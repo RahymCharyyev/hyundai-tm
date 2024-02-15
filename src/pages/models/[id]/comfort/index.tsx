@@ -39,34 +39,34 @@ export default function ModelsComfort() {
       />
       <div className="flex flex-col items-center w-full text-center mb-20 py-8 md:my-4">
         <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
-          {data.details[0].title}
+          {data.details?.[0].title}
         </h2>
         <div
           className="max-w-6xl my-4 md:px-3 sm:text-sm"
-          dangerouslySetInnerHTML={{ __html: data.details[0].text }}
+          dangerouslySetInnerHTML={{ __html: data.details?.[0].text }}
         />
         <Image
           className="mb-10"
-          src={data.details[0].imagePath}
+          src={data?.details?.[0].imagePath}
           alt="features images"
           width={1120}
           height={600}
         />
         <div className="flex flex-wrap justify-between max-w-[1120px]">
-          {data.details.slice(1).map((detail: any) => (
-            <div key={detail.id} className="flex flex-col mb-10">
+          {data?.details?.slice(1).map((detail: any) => (
+            <div key={detail?.id} className="flex flex-col mb-10">
               <Image
-                src={detail.imagePath}
+                src={detail?.imagePath}
                 alt="features images"
                 width={540}
                 height={360}
               />
               <h2 className="text-xl font-bold my-2 md:text-2xl sm:!text-xl">
-                {detail.title}
+                {detail?.title}
               </h2>
               <div
                 className="max-w-lg md:px-3 sm:text-sm"
-                dangerouslySetInnerHTML={{ __html: detail.text }}
+                dangerouslySetInnerHTML={{ __html: detail?.text }}
               />
             </div>
           ))}
