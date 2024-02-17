@@ -8,7 +8,7 @@ import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 
 export default function ModelsCharacteristics() {
   const { t } = useTranslation('common');
@@ -37,6 +37,15 @@ export default function ModelsCharacteristics() {
         lang: currentLang,
       }),
   });
+
+  useEffect(() => {
+    if (
+      characteristicsData &&
+      characteristicsData.list.length > 0 &&
+      selectedConfigId === 1
+    )
+      setSelectedConfigId(characteristicsData.list[0].id);
+  }, [characteristicsData, selectedConfigId]);
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;

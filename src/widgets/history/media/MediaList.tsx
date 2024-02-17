@@ -90,6 +90,7 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
                       width={820}
                       height={520}
                     />
+
                     <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
                   </Link>
                 </SwiperSlide>

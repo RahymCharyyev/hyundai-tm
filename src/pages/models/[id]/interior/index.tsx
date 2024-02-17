@@ -60,16 +60,20 @@ export default function ModelsInterior() {
         t={t}
         id={id}
       />
-      <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">{t('360Review')}</h1>
-      <span className="mb-4 text-center">
-        {t('pressAndTurn')}, {t('mouseWheel')}
-      </span>
-      {interiorPath !== undefined && (
-        <ReactPhotoSphereViewer
-          src={interiorPath.toString()}
-          height={'50vh'}
-          width={'50%'}
-        />
+      {interior?.length !== 0 && interiorPath !== undefined && (
+        <>
+          <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">
+            {t('360Review')}
+          </h1>
+          <span className="mb-4 text-center">
+            {t('pressAndTurn')}, {t('mouseWheel')}
+          </span>
+          <ReactPhotoSphereViewer
+            src={interiorPath.toString()}
+            height="50vh"
+            width="50%"
+          />
+        </>
       )}
       {data.details.map((detail: any, index: number) => (
         <div
@@ -85,7 +89,14 @@ export default function ModelsInterior() {
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
-          <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
+          {detail.image && (
+            <Image
+              src={detail.imagePath}
+              alt="features images"
+              width={1120}
+              height={600}
+            />
+          )}
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="performance" prevLink="exterior" id={id} />

@@ -26,14 +26,14 @@ const EnginesComponent = ({ engines, t }: any) => {
 
         {engines && (
           <Image
-            src={engines[selectedEngine]?.imagePath}
-            alt={engines[selectedEngine]?.image}
+            src={engines?.[selectedEngine]?.imagePath}
+            alt={engines?.[selectedEngine]?.image}
             width={800}
             height={250}
           />
         )}
         <div className="mb-4 px-3 text-center sm:text-sm">
-          {engines[selectedEngine]?.description}
+          {engines?.[selectedEngine]?.description}
         </div>
       </div>
     </>

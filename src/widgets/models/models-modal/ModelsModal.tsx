@@ -60,7 +60,7 @@ export const ModelsModal: FC<ModelsModalProps> = ({
           {t('category')} <span className="font-normal lg:text-sm">{frameName}</span>
         </p>
         <p className="text-black text-base font-bold lg:text-sm">
-          {t('modelName')} <span className="font-normal">{model.name}</span>
+          {t('modelName')} <span className="font-normal uppercase ">{model.name}</span>
         </p>
         <p className="text-black text-base font-bold lg:text-sm">
           {t('trip')}

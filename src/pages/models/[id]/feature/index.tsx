@@ -77,7 +77,14 @@ export default function ModelsMain() {
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
-          <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
+          {detail.image && (
+            <Image
+              src={detail.imagePath}
+              alt="features images"
+              width={1120}
+              height={600}
+            />
+          )}
         </div>
       ))}
       <h2 className="text-center my-4 font-bold text-4xl md:text-2xl sm:!text-xl">

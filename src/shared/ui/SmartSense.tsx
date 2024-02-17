@@ -17,7 +17,7 @@ const SmartSenseComponent = ({ gifs, t }: any) => {
         <div className="flex flex-wrap sm:px-3 text-center items-center gap-2 justify-between">
           {gifs?.map((gif: any, index: number) => (
             <Button
-              className="rounded-none w-40 h-20 md:h-24 md:w-32 sm:!w-28 sm:text-xs"
+              className="rounded-none w-40 h-24 md:h-24 md:w-32 sm:!w-28 sm:text-xs"
               key={gif?.id}
               onClick={() => handleButtonClick(index)}
             >

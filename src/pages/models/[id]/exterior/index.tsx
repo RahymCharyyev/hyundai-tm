@@ -82,7 +82,14 @@ export default function ModelsExterior() {
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
             dangerouslySetInnerHTML={{ __html: detail.text }}
           />
-          <Image src={detail.imagePath} alt="features images" width={1120} height={600} />
+          {detail.image && (
+            <Image
+              src={detail.imagePath}
+              alt="features images"
+              width={1120}
+              height={600}
+            />
+          )}
         </div>
       ))}
       <ModelsDetailsNav t={t} nextLink="interior" prevLink="feature" id={id} />
