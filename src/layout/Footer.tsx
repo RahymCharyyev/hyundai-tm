@@ -117,9 +117,9 @@ export function Footer() {
           <h2 className="text-white font-medium">{t('contacts')}</h2>
           <Link
             className="text-thirdColor font-bold hover:text-white"
-            href="tel:+993 12 12-12-12"
+            href={`tel:${data.data.callCenter.value}`}
           >
-            {t('callCenter')}: &nbsp; +993 12 12-12-12
+            {t('callCenter')}: &nbsp; {data.data.callCenter.value}
           </Link>
           <Link
             target="_blank"
@@ -130,14 +130,14 @@ export function Footer() {
             {data.data.address.value}
           </Link>
           <Link
-            href="tel:+993 12 75 44 85"
+            href={`tel:${data.data.phone.value}`}
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={PhoneIcon} alt="share logo" width={15} height={14} />
             {data.data.phone.value}
           </Link>
           <Link
-            href="mailto:hyundai.ashgabat2023@gmail.com"
+            href={`mailto:${data.data.email.value}`}
             className="flex gap-2 items-center text-thirdColor hover:text-white"
           >
             <Image src={MailIcon} alt="share logo" width={15} height={15} />

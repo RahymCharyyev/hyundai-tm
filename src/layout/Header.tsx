@@ -36,7 +36,7 @@ export default function Header() {
       <div className="h-11 flex items-center bg-header lg:text-xs">
         <span className="text-primary px-28 lg:px-10">
           {t('callCenter')}: &nbsp;
-          <Link className="font-bold" href={data.data.callCenter.value}>
+          <Link href={`tel:${data.data.callCenter.value}`} className="font-bold">
             {data.data.callCenter.value}
           </Link>
         </span>
