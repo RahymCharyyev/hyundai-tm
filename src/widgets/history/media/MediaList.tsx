@@ -82,17 +82,32 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
             {selectedMediaType === 'video' &&
               data?.data.videos?.rows.map((video) => (
                 <SwiperSlide key={video.id}>
-                  <Link href={video.link} target="_blank">
-                    <Image
-                      className="!inline-block pt-6 pb-3"
-                      src={video.posterPath}
-                      alt={video.title}
-                      width={820}
-                      height={520}
-                    />
-
-                    <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
-                  </Link>
+                  {video.link ? (
+                    <Link href={video.link} target="_blank">
+                      <Image
+                        className="!inline-block pt-6 pb-3"
+                        src={video.posterPath}
+                        alt={video.title}
+                        width={820}
+                        height={520}
+                      />
+                      <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
+                    </Link>
+                  ) : (
+                    <>
+                      <video
+                        crossOrigin="anonymous"
+                        className="!inline-block pt-6 pb-3"
+                        width="820"
+                        height="520"
+                        controls
+                      >
+                        <source src={video.imagePath} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                      <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
+                    </>
+                  )}
                 </SwiperSlide>
               ))}
           </Swiper>
