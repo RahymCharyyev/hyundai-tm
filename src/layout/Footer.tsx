@@ -45,44 +45,44 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-5 lg:gap-2 lg:text-sm">
           <h2 className="text-white font-medium">{t('maintenance')}</h2>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance">
+          <Link className="text-header hover:text-white" href="/maintenance">
             {t('maintenanceEvent')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance/register">
+          <Link className="text-header hover:text-white" href="/maintenance/register">
             {t('maintenanceRegister')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance/warranty">
+          <Link className="text-header hover:text-white" href="/maintenance/warranty">
             {t('warranty')}
           </Link>
           <Link
-            className="text-thirdColor hover:text-white"
+            className="text-header hover:text-white"
             href="/maintenance/car-maintenance"
           >
             {t('carMaintenance')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/maintenance/map">
+          <Link className="text-header hover:text-white" href="/maintenance/map">
             {t('maintenanceMap')}
           </Link>
         </div>
         <div className="flex flex-col gap-5  lg:gap-2 lg:text-sm">
           <h2 className="text-white font-medium">{t('forBuyer')}</h2>
-          <Link className="text-thirdColor hover:text-white" href="/models">
+          <Link className="text-header hover:text-white" href="/models">
             {t('modelsLineup')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/services">
+          <Link className="text-header hover:text-white" href="/services">
             {t('testDrive')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/promotions">
+          <Link className="text-header hover:text-white" href="/promotions">
             {t('promotions')}
           </Link>
           <Link
-            className="text-thirdColor hover:text-white"
+            className="text-header hover:text-white"
             href="/maintenance/car-maintenance"
           >
             {t('carMaintenance')}
           </Link>
           <Link
-            className="text-thirdColor hover:text-white"
+            className="text-header hover:text-white"
             href="/history/social-responsibility"
           >
             {t('socialResponsibility')}
@@ -90,23 +90,23 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-5  lg:gap-2 lg:text-sm">
           <h2 className="text-white font-medium">{t('aboutHyundai')}</h2>
-          <Link className="text-thirdColor hover:text-white" href="/history">
+          <Link className="text-header hover:text-white" href="/history">
             Hyundai Turkmenistan
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/history/media">
+          <Link className="text-header hover:text-white" href="/history/media">
             {t('media')}
           </Link>
-          <Link className="text-thirdColor hover:text-white" href="/history/news">
+          <Link className="text-header hover:text-white" href="/history/news">
             {t('news')}
           </Link>
           <Link
-            className="text-thirdColor hover:text-white"
+            className="text-header hover:text-white"
             href="/maintenance/car-maintenance"
           >
             {t('carMaintenance')}
           </Link>
           <Link
-            className="text-thirdColor hover:text-white"
+            className="text-header hover:text-white"
             target="_blank"
             href="https://www.hyundai.com/worldwide/en/"
           >
@@ -116,7 +116,7 @@ export function Footer() {
         <div className="flex flex-col gap-5  lg:gap-2 lg:text-sm">
           <h2 className="text-white font-medium">{t('contacts')}</h2>
           <Link
-            className="text-thirdColor font-bold hover:text-white"
+            className="text-header font-bold hover:text-white"
             href={`tel:${data.data.callCenter.value}`}
           >
             {t('callCenter')}: &nbsp; {data.data.callCenter.value}
@@ -124,21 +124,21 @@ export function Footer() {
           <Link
             target="_blank"
             href="https://maps.app.goo.gl/QJL9GKfyRv3dCb6D9"
-            className="flex gap-2 items-center text-thirdColor hover:text-white"
+            className="flex gap-2 items-center text-header hover:text-white"
           >
             <Image src={LocationIcon} alt="share logo" width={10} height={15} />
             {data.data.address.value}
           </Link>
           <Link
             href={`tel:${data.data.phone.value}`}
-            className="flex gap-2 items-center text-thirdColor hover:text-white"
+            className="flex gap-2 items-center text-header hover:text-white"
           >
             <Image src={PhoneIcon} alt="share logo" width={15} height={14} />
             {data.data.phone.value}
           </Link>
           <Link
             href={`mailto:${data.data.email.value}`}
-            className="flex gap-2 items-center text-thirdColor hover:text-white"
+            className="flex gap-2 items-center text-header hover:text-white"
           >
             <Image src={MailIcon} alt="share logo" width={15} height={15} />
             {data.data.email.value}

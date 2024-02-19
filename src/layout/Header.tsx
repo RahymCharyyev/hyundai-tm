@@ -97,20 +97,6 @@ export default function Header() {
         <div className="flex gap-5">
           <LanguageSwitcher />
           <SocialLinksSelector />
-          {/* <Image
-            className="lg:w-[15px]"
-            src={ShareIcon}
-            alt="share logo"
-            width={20}
-            height={20}
-          /> */}
-          {/* <Image
-            className="lg:w-[15px]"
-            src={SearchIcon}
-            alt="search logo"
-            width={20}
-            height={20}
-          /> */}
           <Image
             className="hidden 2xl:block lg:w-[15px] "
             src={HambugerIcon}
@@ -119,7 +105,12 @@ export default function Header() {
           />
           <Drawer placement="right" open={open} onClose={closeDrawer} className="p-4 ">
             <div className="mb-6 flex  justify-end">
-              <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+              <IconButton
+                aria-label="Close button"
+                variant="text"
+                color="blue-gray"
+                onClick={closeDrawer}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
