@@ -4,6 +4,5 @@ module.exports = {
     'tailwindcss/nesting': {},
     tailwindcss: {},
     autoprefixer: {},
-    safelist: ['html', 'body'],
   },
 };
