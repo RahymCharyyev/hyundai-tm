@@ -56,18 +56,22 @@ export default function ModelsExterior() {
         t={t}
         id={id}
       />
-      <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">{t('360Review')}</h1>
-      <span className="mb-4">{t('pressAndTurn')}</span>
       {images !== undefined && (
-        <React360Viewer
-          showRotationIconOnStartup={true}
-          width={800}
-          imageFilenamePrefix={images?.prefix}
-          imagesBaseUrl="http://hyundai.com.tm/public"
-          imagesCount={images?.imageCount - 1}
-          imagesFiletype={images?.fileType}
-          mouseDragSpeed={20}
-        />
+        <>
+          <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">
+            {t('360Review')}
+          </h1>
+          <span className="mb-4">{t('pressAndTurn')}</span>
+          <React360Viewer
+            showRotationIconOnStartup={true}
+            width={800}
+            imageFilenamePrefix={images?.prefix}
+            imagesBaseUrl="http://hyundai.com.tm/public"
+            imagesCount={images?.imageCount - 1}
+            imagesFiletype={images?.fileType}
+            mouseDragSpeed={20}
+          />
+        </>
       )}
       {data.details.map((detail: any, index: number) => (
         <div
@@ -88,7 +92,6 @@ export default function ModelsExterior() {
               <video
                 autoPlay
                 crossOrigin="anonymous"
-                className="!inline-block pt-6 pb-3"
                 width="1120"
                 height="600"
                 src={detail.imagePath}

@@ -51,10 +51,15 @@ export default function ModelsSafety() {
         t={t}
         id={id}
       />
-      <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl mb-2">
-        Hyundai SmartSense
-      </h1>
-      {gifs?.length !== 0 && <SmartSenseComponent gifs={gifs} t={t} />}
+
+      {gifs?.length !== 0 && (
+        <>
+          <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl mb-2">
+            Hyundai SmartSense
+          </h1>
+          <SmartSenseComponent gifs={gifs} t={t} />
+        </>
+      )}
       {data.details.length !== 0 && (
         <>
           {data?.details?.map((detail: any, index: number) => (
@@ -76,7 +81,6 @@ export default function ModelsSafety() {
                   <video
                     autoPlay
                     crossOrigin="anonymous"
-                    className="!inline-block pt-6 pb-3"
                     width="1120"
                     height="600"
                     src={detail.imagePath}

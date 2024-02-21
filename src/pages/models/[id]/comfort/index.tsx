@@ -50,20 +50,21 @@ export default function ModelsComfort() {
             {data?.details?.[0].image &&
               (data?.details?.[0].imagePath.split('.').at(-1) == 'mp4' ? (
                 <video
+                  className="mb-10"
                   autoPlay
                   crossOrigin="anonymous"
-                  className="!inline-block pt-6 pb-3"
-                  width="1120"
-                  height="600"
+                  width={540}
+                  height={360}
                   src={data?.details?.[0].imagePath}
                   controls={false}
                 />
               ) : (
                 <Image
+                  className="mb-10"
                   src={data?.details?.[0].imagePath}
                   alt="features images"
-                  width={1120}
-                  height={600}
+                  width={540}
+                  height={360}
                 />
               ))}
             <div className="flex flex-wrap gap-4 justify-between max-w-[1120px]">
@@ -74,9 +75,8 @@ export default function ModelsComfort() {
                       <video
                         autoPlay
                         crossOrigin="anonymous"
-                        className="!inline-block pt-6 pb-3"
-                        width="1120"
-                        height="600"
+                        width={540}
+                        height={360}
                         src={detail.imagePath}
                         controls={false}
                       />
@@ -84,8 +84,8 @@ export default function ModelsComfort() {
                       <Image
                         src={detail.imagePath}
                         alt="features images"
-                        width={1120}
-                        height={600}
+                        width={540}
+                        height={360}
                       />
                     ))}
                   <h2 className="text-xl font-bold my-2 md:text-2xl sm:!text-xl">

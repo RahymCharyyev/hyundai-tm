@@ -68,7 +68,6 @@ export default function ModelsPerformace() {
                 <video
                   autoPlay
                   crossOrigin="anonymous"
-                  className="!inline-block pt-6 pb-3"
                   width="1120"
                   height="600"
                   src={data?.details?.[0].imagePath}
@@ -103,7 +102,6 @@ export default function ModelsPerformace() {
                   <video
                     autoPlay
                     crossOrigin="anonymous"
-                    className="!inline-block pt-6 pb-3"
                     width="1120"
                     height="600"
                     src={detail.imagePath}

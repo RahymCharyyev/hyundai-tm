@@ -94,7 +94,6 @@ export default function ModelsInterior() {
               <video
                 autoPlay
                 crossOrigin="anonymous"
-                className="!inline-block pt-6 pb-3"
                 width="1120"
                 height="600"
                 src={detail.imagePath}

@@ -69,11 +69,6 @@ export default function ModelsMain() {
     }
   };
 
-  const image = data.details.map((item) => item.imagePath);
-  // const isImage = image.split('.').at(-1);
-
-  console.log(image);
-
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -107,7 +102,6 @@ export default function ModelsMain() {
               <video
                 autoPlay
                 crossOrigin="anonymous"
-                className="!inline-block pt-6 pb-3"
                 width="1120"
                 height="600"
                 src={detail.imagePath}
