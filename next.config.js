@@ -8,7 +8,7 @@ module.exports = withPlugins([nextTranslate], {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
+        protocol: 'https',
         hostname: 'hyundai.com.tm',
       },
     ],

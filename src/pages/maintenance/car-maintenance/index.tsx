@@ -142,7 +142,9 @@ export default function MaintenanceWarrantyPage() {
             <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1 sm:hidden">
               {model.status}
             </td>
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1">{model.name}</td>
+            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1 uppercase">
+              {model.name}
+            </td>
             <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1">
               {dayjs(model.createdAt).format('DD.MM.YYYY')}
             </td>

@@ -2,13 +2,16 @@ import {
   getModelsDetailsPageData,
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
+import DownloadIcon from '@/assets/download.png';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
 import { useQuery } from '@tanstack/react-query';
+import { saveAs } from 'file-saver';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 
@@ -17,6 +20,7 @@ export default function ModelsMain() {
   const router = useRouter();
   const currentLang = router.locale;
   const { id } = router.query;
+
   const { isPending, error, data } = useQuery({
     queryKey: ['modelsDetailsPage'],
     queryFn: () =>
@@ -36,9 +40,6 @@ export default function ModelsMain() {
       }),
   });
 
-  if (isPending) return <Loading />;
-  if (error) return 'An error has occurred: ' + error.message;
-
   type Images = {
     original: string;
     thumbnail: string;
@@ -48,6 +49,25 @@ export default function ModelsMain() {
     original: item.imagePath,
     thumbnail: item.imagePath,
   }));
+
+  const [downloadUrl, setDownloadUrl] = useState(null);
+
+  if (isPending) return <Loading />;
+  if (error) return 'An error has occurred: ' + error.message;
+
+  const handleAddToState = (value: any) => {
+    setDownloadUrl(value.target.getAttribute('src'));
+  };
+
+  const handleDownload = () => {
+    if (downloadUrl) {
+      saveAs(downloadUrl, 'gallery-image.jpg');
+    } else {
+      if (gallery?.[0].imagePath) {
+        saveAs(gallery?.[0].imagePath, 'gallery-image.jpg');
+      }
+    }
+  };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
@@ -91,13 +111,20 @@ export default function ModelsMain() {
         {t('gallery')}
       </h2>
       {gallery?.length !== 0 && (
-        <ImageGallery
-          showIndex={true}
-          additionalClass="w-[1100px] sm:w-72"
-          lazyLoad
-          showNav={false}
-          items={images}
-        />
+        <div className="flex flex-col items-end">
+          <ImageGallery
+            showIndex={true}
+            additionalClass="w-[1100px] sm:w-72"
+            lazyLoad
+            showNav={false}
+            items={images}
+            onThumbnailClick={(value) => handleAddToState(value)}
+          />
+          <div className="flex gap-2 items-center" onClick={() => handleDownload()}>
+            <Image src={DownloadIcon} alt="Download icon" />
+            <button className="hover:text-fourthColor font-bold">{t('download')}</button>
+          </div>
+        </div>
       )}
       <ModelsDetailsNav
         t={t}

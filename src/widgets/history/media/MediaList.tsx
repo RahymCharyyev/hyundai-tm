@@ -18,7 +18,7 @@ const MediaListItem: FC<{
   media: any;
   onClick: () => void;
 }> = ({ media, onClick }) => (
-  <div className="flex flex-col gap-3 hover:scale-105 " onClick={onClick}>
+  <div className="flex flex-col gap-3 hover:scale-105 cursor-pointer" onClick={onClick}>
     <Image
       className="sm:w-[150px] sm:mx-auto"
       src={media.posterPath}
@@ -34,16 +34,22 @@ const MediaListItem: FC<{
 
 export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => {
+  const [selectedMedia, setSelectedMedia] = useState<any>(null);
+
+  console.log(selectedMedia);
+
+  const handleOpen = (media: any) => {
+    setSelectedMedia(media);
     setOpen(true);
   };
+
   const handleClose = () => {
     setOpen(false);
   };
 
   const renderMediaList = (mediaItems: any[]) =>
     mediaItems.map((media) => (
-      <MediaListItem key={media.id} media={media} onClick={() => handleOpen()} />
+      <MediaListItem key={media.id} media={media} onClick={() => handleOpen(media)} />
     ));
   return (
     <div className="flex flex-wrap gap-12 justify-center max-w-[1000px] lg:max-w-2xl">
@@ -61,55 +67,36 @@ export const MediaList: FC<MediaListProps> = ({ data, selectedMediaType }) => {
             modules={[Navigation, A11y]}
             navigation
             a11y={{ enabled: true }}
-            keyboard={{ enabled: true, pageUpDown: true }}
-            grabCursor={true}
-            loop={true}
-            slidesPerView={1}
+            keyboard={{ enabled: true }}
           >
-            {selectedMediaType === 'image' &&
-              data?.data.images?.rows.map((image) => (
-                <SwiperSlide key={image.id} className="w-full">
-                  <Image
-                    className="!inline-block pt-6 pb-3"
-                    src={image.imagePath}
-                    alt={image.title}
-                    width={820}
-                    height={520}
-                  />
-                  <h2 className="font-bold pb-6 sm:text-xs">{image.title}</h2>
-                </SwiperSlide>
-              ))}
-            {selectedMediaType === 'video' &&
-              data?.data.videos?.rows.map((video) => (
-                <SwiperSlide key={video.id}>
-                  {video.link ? (
-                    <Link href={video.link} target="_blank">
-                      <Image
-                        className="!inline-block pt-6 pb-3"
-                        src={video.posterPath}
-                        alt={video.title}
-                        width={820}
-                        height={520}
-                      />
-                      <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
-                    </Link>
-                  ) : (
-                    <>
-                      <video
-                        crossOrigin="anonymous"
-                        className="!inline-block pt-6 pb-3"
-                        width="820"
-                        height="520"
-                        controls
-                      >
-                        <source src={video.imagePath} type="video/mp4" />
-                        Your browser does not support the video tag.
-                      </video>
-                      <h2 className="font-bold pb-6 sm:text-xs">{video.title}</h2>
-                    </>
-                  )}
-                </SwiperSlide>
-              ))}
+            {selectedMedia && (
+              <SwiperSlide>
+                {selectedMediaType === 'image' ? (
+                  <>
+                    <Image
+                      className="!inline-block pt-6 pb-3"
+                      src={selectedMedia.imagePath}
+                      alt={selectedMedia.title}
+                      width={500}
+                      height={300}
+                    />
+                    <h2 className="font-bold pb-6 sm:text-xs">{selectedMedia.title}</h2>
+                  </>
+                ) : (
+                  <>
+                    <video
+                      crossOrigin="anonymous"
+                      className="!inline-block pt-6 pb-3"
+                      width="820"
+                      height="520"
+                      src={selectedMedia.imagePath}
+                      controls
+                    />
+                    <h2 className="font-bold pb-6 sm:text-xs">{selectedMedia.title}</h2>
+                  </>
+                )}
+              </SwiperSlide>
+            )}
           </Swiper>
         </Dialog>
       )}

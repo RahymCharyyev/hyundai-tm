@@ -131,6 +131,7 @@ export default function Header() {
               <Link
                 className={router.pathname == '/' ? activeLink : 'hover:font-medium'}
                 href="/"
+                onClick={closeDrawer}
               >
                 {t('main')}
               </Link>
@@ -139,6 +140,7 @@ export default function Header() {
                   router.pathname == '/models' ? activeLink : 'hover:font-medium'
                 }
                 href="/models"
+                onClick={closeDrawer}
               >
                 {t('modelsLineup')}
               </Link>
@@ -147,6 +149,7 @@ export default function Header() {
                   router.pathname == '/maintenance' ? activeLink : 'hover:font-medium'
                 }
                 href="/maintenance"
+                onClick={closeDrawer}
               >
                 {t('maintenance')}
               </Link>
@@ -155,6 +158,7 @@ export default function Header() {
                   router.pathname == '/history' ? activeLink : 'hover:font-medium'
                 }
                 href="/history"
+                onClick={closeDrawer}
               >
                 {t('hyundaiHistory')}
               </Link>
@@ -163,6 +167,7 @@ export default function Header() {
                   router.pathname == '/promotions' ? activeLink : 'hover:font-medium'
                 }
                 href="/promotions"
+                onClick={closeDrawer}
               >
                 {t('promotions')}
               </Link>
@@ -171,6 +176,7 @@ export default function Header() {
                   router.pathname == '/services' ? activeLink : 'hover:font-medium'
                 }
                 href="/services"
+                onClick={closeDrawer}
               >
                 {t('services')}
               </Link>
