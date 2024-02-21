@@ -63,14 +63,25 @@ export default function ModelsPerformace() {
               className="max-w-6xl my-4 md:px-3 sm:text-sm"
               dangerouslySetInnerHTML={{ __html: data?.details?.[0].text }}
             />
-            {data?.details?.[0].image && (
-              <Image
-                src={data?.details?.[0].imagePath}
-                alt="features images"
-                width={1120}
-                height={600}
-              />
-            )}
+            {data?.details?.[0].image &&
+              (data?.details?.[0].imagePath.split('.').at(-1) == 'mp4' ? (
+                <video
+                  autoPlay
+                  crossOrigin="anonymous"
+                  className="!inline-block pt-6 pb-3"
+                  width="1120"
+                  height="600"
+                  src={data?.details?.[0].imagePath}
+                  controls={false}
+                />
+              ) : (
+                <Image
+                  src={data?.details?.[0].imagePath}
+                  alt="features images"
+                  width={1120}
+                  height={600}
+                />
+              ))}
           </div>
           {engines?.length !== 0 && <EnginesComponent engines={engines} t={t} />}
           {data?.details?.slice(1).map((detail: any, index: number) => (
@@ -87,14 +98,25 @@ export default function ModelsPerformace() {
                 className="max-w-6xl my-4 md:px-3 sm:text-sm"
                 dangerouslySetInnerHTML={{ __html: detail.text }}
               />
-              {detail.image && (
-                <Image
-                  src={detail?.imagePath}
-                  alt="features images"
-                  width={1120}
-                  height={600}
-                />
-              )}
+              {detail.image &&
+                (detail.imagePath.split('.').at(-1) == 'mp4' ? (
+                  <video
+                    autoPlay
+                    crossOrigin="anonymous"
+                    className="!inline-block pt-6 pb-3"
+                    width="1120"
+                    height="600"
+                    src={detail.imagePath}
+                    controls={false}
+                  />
+                ) : (
+                  <Image
+                    src={detail.imagePath}
+                    alt="features images"
+                    width={1120}
+                    height={600}
+                  />
+                ))}
             </div>
           ))}
         </>
