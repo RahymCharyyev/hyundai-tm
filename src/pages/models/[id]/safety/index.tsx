@@ -37,6 +37,9 @@ export default function ModelsSafety() {
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
+
+  console.log('data', data);
+  console.log('gifs', gifs);
   return (
     <main className="flex min-h-screen flex-col items-center justify-start">
       <ModelsDetailsHero
@@ -60,7 +63,7 @@ export default function ModelsSafety() {
           <SmartSenseComponent gifs={gifs} t={t} />
         </>
       )}
-      {data.details.length !== 0 && (
+      {data?.details?.length !== 0 && (
         <>
           {data?.details?.map((detail: any, index: number) => (
             <div
@@ -70,25 +73,25 @@ export default function ModelsSafety() {
               }`}
             >
               <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
-                {detail.title}
+                {detail?.title}
               </h2>
               <div
                 className="max-w-6xl my-4 md:px-3 sm:text-sm"
                 dangerouslySetInnerHTML={{ __html: detail?.text }}
               />
-              {detail.image &&
-                (detail.imagePath.split('.').at(-1) == 'mp4' ? (
+              {detail?.image &&
+                (detail?.imagePath.split('.').at(-1) == 'mp4' ? (
                   <video
                     autoPlay
                     crossOrigin="anonymous"
                     width="1120"
                     height="600"
-                    src={detail.imagePath}
+                    src={detail?.imagePath}
                     controls={false}
                   />
                 ) : (
                   <Image
-                    src={detail.imagePath}
+                    src={detail?.imagePath}
                     alt="features images"
                     width={1120}
                     height={600}
