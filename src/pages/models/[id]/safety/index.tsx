@@ -46,11 +46,11 @@ export default function ModelsSafety() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
+          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
           { href: `/models/${id}/safety`, text: t('safety') },
         ]}
-        data={data.banner}
-        model={data.model}
+        data={data?.banner}
+        model={data?.model}
         t={t}
         id={id}
       />

@@ -48,11 +48,11 @@ export default function ModelsExterior() {
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data.model.name.toUpperCase()}` },
+          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
           { href: `/models/${id}/exterior`, text: t('exterior') },
         ]}
-        data={data.banner}
-        model={data.model}
+        data={data?.banner}
+        model={data?.model}
         t={t}
         id={id}
       />
@@ -73,33 +73,33 @@ export default function ModelsExterior() {
           />
         </>
       )}
-      {data.details.map((detail: any, index: number) => (
+      {data?.details?.map((detail: any, index: number) => (
         <div
-          key={detail.id}
+          key={detail?.id}
           className={`flex flex-col items-center w-full text-center mb-20 py-8 md:my-4 ${
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
         >
           <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
-            {detail.title}
+            {detail?.title}
           </h2>
           <div
             className="max-w-6xl my-4 md:px-3 sm:text-sm"
-            dangerouslySetInnerHTML={{ __html: detail.text }}
+            dangerouslySetInnerHTML={{ __html: detail?.text }}
           />
-          {detail.image &&
-            (detail.imagePath.split('.').at(-1) == 'mp4' ? (
+          {detail?.image &&
+            (detail?.imagePath.split('.').at(-1) == 'mp4' ? (
               <video
                 autoPlay
                 crossOrigin="anonymous"
                 width="1120"
                 height="600"
-                src={detail.imagePath}
+                src={detail?.imagePath}
                 controls={false}
               />
             ) : (
               <Image
-                src={detail.imagePath}
+                src={detail?.imagePath}
                 alt="features images"
                 width={1120}
                 height={600}

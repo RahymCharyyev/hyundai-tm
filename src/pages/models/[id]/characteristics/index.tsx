@@ -68,7 +68,7 @@ export default function ModelsCharacteristics() {
         {t('characteristics')}
       </h1>
       <div className="max-w-6xl mx-auto">
-        {characteristicsData?.list.length !== 0 && (
+        {characteristicsData?.list?.length !== 0 && (
           <div className="flex gap-2 items-center sm:flex-col">
             <span>{t('chooseTrip')}</span>
             <select
@@ -77,7 +77,7 @@ export default function ModelsCharacteristics() {
               value={selectedConfigId}
             >
               {characteristicsData?.list?.map((complect) => (
-                <option key={complect.id} value={complect?.id}>
+                <option key={complect?.id} value={complect?.id}>
                   {complect?.name}
                 </option>
               ))}
@@ -88,7 +88,7 @@ export default function ModelsCharacteristics() {
           <div key={element?.id} className="flex flex-col items-center justify-center">
             <span className="text-2xl font-bold my-8 sm:text-xl">{element.name}</span>
             <table className="border-2 mx-3">
-              {element?.details.map((item, itemIndex) => (
+              {element?.details?.map((item, itemIndex) => (
                 <Fragment key={++itemIndex}>
                   <thead className="bg-primary text-white">
                     <tr>
@@ -100,7 +100,7 @@ export default function ModelsCharacteristics() {
                       </th>
                     </tr>
                   </thead>
-                  {item?.values.map((value) => (
+                  {item?.values?.map((value) => (
                     <tbody key={value.id} className="border-2">
                       <tr>
                         <td className="bg-accordionBg py-5 px-16 md:py-2 md:px-2 sm:py-1 sm:px-1 md:text-sm sm:text-xs">

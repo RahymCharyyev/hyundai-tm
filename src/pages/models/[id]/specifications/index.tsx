@@ -36,12 +36,12 @@ export default function ModelsSpecification() {
           { href: '/models', text: t('modelsLineup') },
           {
             href: `/models/${id}/specifications`,
-            text: `${data.model.name.toUpperCase()}`,
+            text: `${data?.model?.name?.toUpperCase()}`,
           },
           { href: `/models/${id}/specifications`, text: t('specifications') },
         ]}
-        data={data.banner}
-        model={data.model}
+        data={data?.banner}
+        model={data?.model}
         t={t}
         id={id}
       />
@@ -54,11 +54,11 @@ export default function ModelsSpecification() {
             {t('download')} pdf
           </th>
         </tr>
-        <tr key={data.model.id} className="hover:bg-accordionBg sm:text-xs">
+        <tr key={data?.model?.id} className="hover:bg-accordionBg sm:text-xs">
           <td className="uppercase py-3 border-2 md:px-2 sm:py-1 sm:!px-1">
-            {data.model.name}
+            {data?.model?.name}
           </td>
-          <Link href={data.model.eBrochurePath}>
+          <Link href={data?.model?.eBrochurePath}>
             <td className="border-2 py-3 md:px-2 sm:py-1 flex gap-2 items-center justify-center">
               <Image src={DownloadIcon} alt="download" />
               {t('download')}
