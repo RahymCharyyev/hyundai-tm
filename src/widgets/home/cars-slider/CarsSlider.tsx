@@ -34,10 +34,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
       >
         {data.map((model) => (
           <SwiperSlide key={model.id}>
-            <Link
-              href={`/models/${model.id}/feature`}
-              className="mb-20 mt-5 lg:text-xl md:!text-xs sm:mb-10"
-            >
+            <Link href={`/models/${model.id}/feature`} className="mb-20 mt-5  sm:mb-10">
               <Image
                 className="lg:w-72"
                 src={model.imagePath}
@@ -45,7 +42,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
                 width={1860}
                 height={100}
               />
-              <h2 className="font-bold text-3xl hover:underline uppercase">
+              <h2 className="font-bold text-3xl lg:text-xl md:!text-xs hover:underline uppercase">
                 {model.name}
               </h2>
             </Link>
