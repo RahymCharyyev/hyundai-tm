@@ -60,6 +60,14 @@ export const ModelsDetailsHero: FC<ModelsDetailsHeroProps> = ({
           </Link>
           <Link
             className={`hover:text-fourthColor ${
+              router.asPath === `/models/${id}/specifications` ? 'text-fourthColor' : ''
+            }`}
+            href={`/models/${id}/specifications`}
+          >
+            {t('specifications')}
+          </Link>
+          <Link
+            className={`hover:text-fourthColor ${
               router.asPath === `/models/${id}/exterior` ? 'text-fourthColor' : ''
             }`}
             href={`/models/${id}/exterior`}

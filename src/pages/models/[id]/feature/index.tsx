@@ -138,7 +138,7 @@ export default function ModelsMain() {
       )}
       <ModelsDetailsNav
         t={t}
-        nextLink="exterior"
+        nextLink="specifications"
         prevLink="feature"
         id={id}
         showPrev={false}

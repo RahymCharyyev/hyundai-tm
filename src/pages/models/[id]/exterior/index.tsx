@@ -107,7 +107,7 @@ export default function ModelsExterior() {
             ))}
         </div>
       ))}
-      <ModelsDetailsNav t={t} nextLink="interior" prevLink="feature" id={id} />
+      <ModelsDetailsNav t={t} nextLink="interior" prevLink="specifications" id={id} />
       <span className="mx-auto max-w-6xl mb-10 text-gray-600 md:text-sm md:px-3 sm:!text-xs">
         {t('modelDetailsInfo')}
       </span>

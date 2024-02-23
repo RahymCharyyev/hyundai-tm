@@ -17,8 +17,14 @@ export interface Model {
   name: string;
   image: string;
   link: string;
-  imagePath: string;
+  createdAt: string;
+  status: string;
+  year: number;
   catalogPath: string;
+  imagePath: string;
+  eBrochurePath: string;
+  maintainGuidePath: string;
+  userGuidePath: string;
 }
 
 export interface News {

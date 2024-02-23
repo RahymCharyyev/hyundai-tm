@@ -55,3 +55,15 @@ export const getModelsImages = async (params?: GetModelsImagesParams) => {
 
   return data.data;
 };
+
+export const getModelsDetailsSpecificationsData = async (
+  params?: GetModelsDetailsPageDataParams,
+) => {
+  const { data }: AxiosResponse<ModelsDetailsResponse> = await axiosInstance({
+    method: 'GET',
+    url: '/pages/model-details/specification',
+    params,
+  });
+
+  return data.data;
+};
