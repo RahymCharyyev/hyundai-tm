@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import { Loading } from './Loading';
 import { useQuery } from '@tanstack/react-query';
 import { getContacts } from '@/api/getContacts';
-import EmeliAkylLogo from '@/assets/emeli_akyl_logo.png';
 
 export function Footer() {
   const { t } = useTranslation('common');
@@ -148,10 +147,6 @@ export function Footer() {
       </div>
       <div className="flex flex-col gap-2 items-center justify-center text-center text-white mt-12 mb-3 lg:text-xs lg:mt-6 max-w-xs mx-auto sm:px-2">
         <span>Copyright {currentYear} Hyundai Motor Company.</span>
-        <span className="flex gap-2 items-center">
-          Powered by
-          <Image src={EmeliAkylLogo} width={100} height={10} alt="Emeli Akyl logo" />
-        </span>
         <span>{t('allRightsReserved')}</span>
       </div>
     </footer>
