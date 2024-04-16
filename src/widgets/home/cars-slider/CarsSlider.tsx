@@ -38,7 +38,7 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
               <Image
                 className="lg:w-72"
                 src={model.imagePath}
-                alt={model.name}
+                alt={`Image of Hyundai ${model.name}`}
                 width={1860}
                 height={100}
               />

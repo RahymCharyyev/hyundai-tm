@@ -32,7 +32,7 @@ export function Footer() {
           src={HyundaiWhiteLogo}
           alt="hyundai logo"
           width={190}
-          height={30}
+          height={26}
         />
         <span className="text-white lg:text-sm text-center">
           {t('officialDistributor')}
