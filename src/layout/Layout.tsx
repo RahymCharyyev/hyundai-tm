@@ -6,7 +6,7 @@ interface IProps {
   children: ReactNode;
 }
 export const Layout = ({ children }: IProps) => {
-  console.log('Developed by RC and Numa')
+  console.log('Developed by RC and Numa');
   return (
     <>
       <Header />
