@@ -3,22 +3,19 @@ import { getModelsImages360 } from '@/api/getModelsImages360';
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
-import { Image360 } from '@/types/models360';
+import CloudImageView from '@/widgets/models/models-360/CloudImageView';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { React360Viewer } from 'react-360-product-viewer';
 
 export default function ModelsExterior() {
   const { t } = useTranslation('common');
   const router = useRouter();
   const currentLang = router.locale;
   const { id } = router.query;
-  const [images, setImages] = useState<Image360>();
   const { isPending, error, data } = useQuery({
-    queryKey: ['modelsDetailsPage'],
+    queryKey: ['modelsDetailsPage', id],
     queryFn: () =>
       getModelsDetailsPageData({
         modelId: Number(id),
@@ -28,16 +25,12 @@ export default function ModelsExterior() {
   });
 
   const { data: models360 } = useQuery({
-    queryKey: ['models-360'],
+    queryKey: ['models-360', id],
     queryFn: () =>
       getModelsImages360({
         modelId: Number(id),
       }),
   });
-
-  useEffect(() => {
-    setImages(models360);
-  }, [models360]);
 
   if (isPending) return <Loading />;
   if (error) return 'An error has occurred: ' + error.message;
@@ -56,21 +49,20 @@ export default function ModelsExterior() {
         t={t}
         id={id}
       />
-      {images !== undefined && (
+      {models360 !== undefined && (
         <>
           <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">
             {t('360Review')}
           </h1>
           <span className="mb-4">{t('pressAndTurn')}</span>
-          <React360Viewer
-            showRotationIconOnStartup={true}
-            width={800}
-            imageFilenamePrefix={images?.prefix}
-            imagesBaseUrl="http://hyundai.com.tm/public"
-            imagesCount={images?.imageCount - 1}
-            imagesFiletype={images?.fileType}
-            mouseDragSpeed={20}
-          />
+          <div className="w-[1000px] h-[500px] 2xl:w-[800px] 2xl:h-[400px] lg:w-[600px] lg:h-[250px] md:w-[450px] sm:w-[250px] sm:h-[250px] xs:w-[250px] xs:h-[200px]">
+            <CloudImageView
+              folder="http://hyundai.com.tm/public/"
+              prefix={models360?.prefix}
+              imageCount={models360?.imageCount - 1}
+              fileType={models360?.fileType}
+            />
+          </div>
         </>
       )}
       {data?.details?.map((detail: any, index: number) => (

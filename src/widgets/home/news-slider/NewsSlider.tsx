@@ -55,7 +55,7 @@ export const NewsSlider: FC<NewsSliderProps> = ({ data, t }) => {
               <Link
                 target="_blank"
                 className="bg-primary text-white py-4 px-5 hover:underline mb-10 lg:py-2 lg:px-3 lg:text-sm"
-                href="/news"
+                href="/history/news"
               >
                 {t('moreNews')}
               </Link>
