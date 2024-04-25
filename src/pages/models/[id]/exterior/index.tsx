@@ -55,7 +55,23 @@ export default function ModelsExterior() {
             {t('360Review')}
           </h1>
           <span className="mb-4">{t('pressAndTurn')}</span>
-          <div className="w-[1000px] h-[500px] 2xl:w-[800px] 2xl:h-[400px] lg:w-[600px] lg:h-[250px] md:w-[450px] sm:w-[250px] sm:h-[250px] xs:w-[250px] xs:h-[200px]">
+          <div className="w-[1000px] h-[500px] 2xl:w-[800px] 2xl:h-[400px] !lg:w-[600px] !lg:h-[250px] md:hidden">
+            <CloudImageView
+              folder="http://hyundai.com.tm/public/"
+              prefix={models360?.prefix}
+              imageCount={models360?.imageCount - 1}
+              fileType={models360?.fileType}
+            />
+          </div>
+          <div className="hidden md:block md:w-[450px] md:h-[300px] !sm:w-[250px] sm:h-[250px] xs:hidden">
+            <CloudImageView
+              folder="http://hyundai.com.tm/public/"
+              prefix={models360?.prefix}
+              imageCount={models360?.imageCount - 1}
+              fileType={models360?.fileType}
+            />
+          </div>
+          <div className="hidden xs:block xs:w-[250px] xs:h-[200px]">
             <CloudImageView
               folder="http://hyundai.com.tm/public/"
               prefix={models360?.prefix}
