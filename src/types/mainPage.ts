@@ -25,6 +25,12 @@ export interface Model {
   eBrochurePath: string;
   maintainGuidePath: string;
   userGuidePath: string;
+  characteristics: Characteristic[];
+}
+
+export interface Characteristic {
+  name: string;
+  brochure?: string;
 }
 
 export interface News {
