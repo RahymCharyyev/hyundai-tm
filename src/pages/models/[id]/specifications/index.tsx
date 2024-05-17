@@ -56,19 +56,20 @@ export default function ModelsSpecification() {
             {t('download')} pdf
           </th>
         </tr>
-        {data.model.characteristics.map((e) => (
-          <tr key={data?.model?.id} className="hover:bg-accordionBg sm:text-xs">
-            <td className="border-2 py-3 md:px-2 sm:py-1">{e.name}</td>
-            {e?.brochure && (
-              <Link href={e?.brochure}>
-                <td className="border-2 py-3 md:px-2 sm:py-1 flex gap-2 items-center justify-center">
-                  <Image src={DownloadIcon} alt="download" />
-                  {t('download')}
-                </td>
-              </Link>
-            )}
-          </tr>
-        ))}
+        {data.model.characteristics.map(
+          (e) =>
+            e?.brochure && (
+              <tr key={data?.model?.id} className="hover:bg-accordionBg sm:text-xs">
+                <td className="border-2 py-3 md:px-2 sm:py-1">{e.name}</td>
+                <Link href={e?.brochure}>
+                  <td className="border-2 py-3 md:px-2 sm:py-1 flex gap-2 items-center justify-center">
+                    <Image src={DownloadIcon} alt="download" />
+                    {t('download')}
+                  </td>
+                </Link>
+              </tr>
+            ),
+        )}
       </table>
       <ModelsDetailsNav
         t={t}
