@@ -40,6 +40,10 @@ const HyundaiSeo = () => {
           name: 'google-site-verification',
           content: 'qoxVRjSL2347fV_2z7XjWQxprYRmYi_aLIU4l7sIMXc',
         },
+        {
+          name: 'yandex-verification',
+          content: 'a4d5db88e6f53891',
+        },
       ]}
       openGraph={{
         type: 'website',
