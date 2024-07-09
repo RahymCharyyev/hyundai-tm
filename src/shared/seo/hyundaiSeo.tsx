@@ -36,6 +36,10 @@ const HyundaiSeo = () => {
         { name: 'msapplication-TileImage', content: '/favicon-144x144.png' },
         { name: 'msapplication-config', content: '/browserconfig.xml' },
         { name: 'theme-color', content: '#ffffff' },
+        {
+          name: 'google-site-verification',
+          content: 'qoxVRjSL2347fV_2z7XjWQxprYRmYi_aLIU4l7sIMXc',
+        },
       ]}
       openGraph={{
         type: 'website',
