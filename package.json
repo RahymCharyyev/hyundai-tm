@@ -5,11 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
-    "format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "tsc:check": "tsc --noEmit --project \"./tsconfig.json\"",
-    "prepare": "husky install"
+    "start": "next start"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
