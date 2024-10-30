@@ -1,15 +1,15 @@
-import type { AppProps } from 'next/app';
-import localFont from 'next/font/local';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import * as ga from '@/google-analytics';
 import { Layout } from '@/layout/Layout';
+import HyundaiSeo from '@/shared/seo/hyundaiSeo';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@material-tailwind/react';
-import HyundaiSeo from '@/shared/seo/hyundaiSeo';
-import Script from 'next/script';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
-import * as ga from '@/google-analytics';
 import '@photo-sphere-viewer/core/index.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { AppProps } from 'next/app';
+import localFont from 'next/font/local';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
+import { useEffect } from 'react';
 
 const hyundaiSans = localFont({
   src: [
