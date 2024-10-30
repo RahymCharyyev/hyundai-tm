@@ -1,14 +1,15 @@
-import type { AppProps } from 'next/app';
-import localFont from 'next/font/local';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import * as ga from '@/google-analytics';
 import { Layout } from '@/layout/Layout';
+import HyundaiSeo from '@/shared/seo/hyundaiSeo';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@material-tailwind/react';
-import HyundaiSeo from '@/shared/seo/hyundaiSeo';
-import Script from 'next/script';
+import '@photo-sphere-viewer/core/index.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import type { AppProps } from 'next/app';
+import localFont from 'next/font/local';
 import { useRouter } from 'next/router';
+import Script from 'next/script';
 import { useEffect } from 'react';
-import * as ga from '@/google-analytics';
 
 const hyundaiSans = localFont({
   src: [
@@ -70,9 +71,9 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ID}`}
-        strategy="afterInteractive"
+        strategy='afterInteractive'
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id='google-analytics' strategy='afterInteractive'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

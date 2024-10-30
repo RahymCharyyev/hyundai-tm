@@ -5,17 +5,19 @@ import {
 import { Loading } from '@/layout/Loading';
 import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
 import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
-import '@photo-sphere-viewer/core/index.css';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 const ReactPhotoSphereViewer = dynamic(
-  () => import('react-photo-sphere-viewer').then((mod) => mod.ReactPhotoSphereViewer),
+  () =>
+    import('react-photo-sphere-viewer').then(
+      (mod) => mod.ReactPhotoSphereViewer
+    ),
   {
     ssr: false,
-  },
+  }
 );
 
 export default function ModelsInterior() {
@@ -47,12 +49,15 @@ export default function ModelsInterior() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <ModelsDetailsHero
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
+          {
+            href: `/models/${id}/feature`,
+            text: `${data?.model?.name?.toUpperCase()}`,
+          },
           { href: `/models/${id}/interior`, text: t('interior') },
         ]}
         data={data?.banner}
@@ -62,16 +67,16 @@ export default function ModelsInterior() {
       />
       {interior?.length !== 0 && interiorPath !== undefined && (
         <>
-          <h1 className="font-bold text-3xl md:text-xl sm:!text-lg mb-4">
+          <h1 className='font-bold text-3xl md:text-xl sm:!text-lg mb-4'>
             {t('360Review')}
           </h1>
-          <span className="mb-4 text-center">
+          <span className='mb-4 text-center'>
             {t('pressAndTurn')}, {t('mouseWheel')}
           </span>
           <ReactPhotoSphereViewer
             src={interiorPath?.toString()}
-            height="50vh"
-            width="50%"
+            height='50vh'
+            width='50%'
           />
         </>
       )}
@@ -82,35 +87,40 @@ export default function ModelsInterior() {
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
         >
-          <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
+          <h2 className='text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl'>
             {detail?.title}
           </h2>
           <div
-            className="max-w-6xl my-4 md:px-3 sm:text-sm"
+            className='max-w-6xl my-4 md:px-3 sm:text-sm'
             dangerouslySetInnerHTML={{ __html: detail?.text }}
           />
           {detail?.image &&
             (detail?.imagePath.split('.').at(-1) == 'mp4' ? (
               <video
                 autoPlay
-                crossOrigin="anonymous"
-                width="1120"
-                height="600"
+                crossOrigin='anonymous'
+                width='1120'
+                height='600'
                 src={detail?.imagePath}
                 controls={false}
               />
             ) : (
               <Image
                 src={detail?.imagePath}
-                alt="features images"
+                alt='features images'
                 width={1120}
                 height={600}
               />
             ))}
         </div>
       ))}
-      <ModelsDetailsNav t={t} nextLink="performance" prevLink="exterior" id={id} />
-      <span className="mx-auto max-w-6xl  text-gray-600 mb-10 md:text-sm md:px-3 sm:!text-xs">
+      <ModelsDetailsNav
+        t={t}
+        nextLink='performance'
+        prevLink='exterior'
+        id={id}
+      />
+      <span className='mx-auto max-w-6xl  text-gray-600 mb-10 md:text-sm md:px-3 sm:!text-xs'>
         {t('modelDetailsInfo')}
       </span>
     </main>
