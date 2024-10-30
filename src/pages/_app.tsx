@@ -9,6 +9,7 @@ import Script from 'next/script';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import * as ga from '@/google-analytics';
+import '@photo-sphere-viewer/core/index.css';
 
 const hyundaiSans = localFont({
   src: [
@@ -70,9 +71,9 @@ export default function App({ Component, pageProps }: AppProps) {
       `}</style>
       <Script
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ID}`}
-        strategy="afterInteractive"
+        strategy='afterInteractive'
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id='google-analytics' strategy='afterInteractive'>
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

@@ -1,8 +1,12 @@
-/** @type {import('next').NextConfig} */
 const withPlugins = require('next-compose-plugins');
 const nextTranslate = require('next-translate-plugin');
+const withTM = require('next-transpile-modules')([
+  '@photo-sphere-viewer/core',
+  'react-photo-sphere-viewer',
+]);
 
-module.exports = withPlugins([nextTranslate], {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
   i18n: {},
   images: {
@@ -13,4 +17,6 @@ module.exports = withPlugins([nextTranslate], {
       },
     ],
   },
-});
+};
+
+module.exports = withPlugins([nextTranslate, withTM], nextConfig);
