@@ -2,9 +2,8 @@ import {
   getModelsDetailsPageData,
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
-import { Loading } from '@/layout/Loading';
-import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
-import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import { ModelsDetailsHero, ModelsDetailsNav } from '@/components';
+import { Loading } from '@/components/layout/Loading';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';

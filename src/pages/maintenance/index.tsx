@@ -1,7 +1,6 @@
 import { getMaintenanceData } from '@/api/getMaintenancePageData';
-import { Loading } from '@/layout/Loading';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { NavLink } from '@/shared/ui/NavLink';
+import { CommonHero, NavLink } from '@/components';
+import { Loading } from '@/components/layout/Loading';
 import { ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
@@ -24,7 +23,7 @@ export default function MaintenancePage() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch={false}
         title={t('maintenanceEvent')}
@@ -34,68 +33,68 @@ export default function MaintenancePage() {
         ]}
         t={t}
       />
-      <ButtonGroup className="flex flex-wrap items-center justify-center">
+      <ButtonGroup className='flex flex-wrap items-center justify-center'>
         <NavLink
-          href="/maintenance"
-          text="maintenanceEvent"
+          href='/maintenance'
+          text='maintenanceEvent'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/register"
-          text="maintenanceRegister"
+          href='/maintenance/register'
+          text='maintenanceRegister'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/warranty"
-          text="warranty"
+          href='/maintenance/warranty'
+          text='warranty'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/car-maintenance"
-          text="carMaintenance"
+          href='/maintenance/car-maintenance'
+          text='carMaintenance'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/map"
-          text="maintenanceMap"
+          href='/maintenance/map'
+          text='maintenanceMap'
           pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col items-center gap-10 mt-8">
-        <h1 className="font-bold text-5xl 3xl:text-3xl 2xl:!text-xl text-center">
+      <div className='flex flex-col items-center gap-10 mt-8'>
+        <h1 className='font-bold text-5xl 3xl:text-3xl 2xl:!text-xl text-center'>
           {data.event.title}
         </h1>
         <Image
-          crossOrigin="use-credentials"
-          className="mx-auto 3xl:w-[1000px] px-10"
-          alt="maintenance-firstImage"
+          crossOrigin='use-credentials'
+          className='mx-auto 3xl:w-[1000px] px-10'
+          alt='maintenance-firstImage'
           src={data.event.image1Path}
           width={1345}
           height={520}
-          sizes="100vw"
+          sizes='100vw'
         />
-        <h2 className="font-bold text-3xl 3xl:text-xl 2xl:!text-lg text-center px-2">
+        <h2 className='font-bold text-3xl 3xl:text-xl 2xl:!text-lg text-center px-2'>
           {data.event.text}
         </h2>
         <Image
-          className="3xl:w-[800px] px-20"
-          crossOrigin="use-credentials"
-          alt="maintenance-secondImage"
+          className='3xl:w-[800px] px-20'
+          crossOrigin='use-credentials'
+          alt='maintenance-secondImage'
           src={data.event.image2Path}
           width={1120}
           height={600}
-          sizes="100vw"
+          sizes='100vw'
         />
       </div>
-      <p className="font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl lg:hidden">
+      <p className='font-bold text-4xl my-16 3xl:text-3xl 2xl:!text-2xl lg:!text-xl lg:hidden'>
         {data.event.contactText}
       </p>
-      <p className="font-bold hidden lg:block text-center my-4 sm:text-sm px-6">
+      <p className='font-bold hidden lg:block text-center my-4 sm:text-sm px-6'>
         {data.event.contactText}
       </p>
     </main>

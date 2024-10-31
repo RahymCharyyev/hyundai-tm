@@ -1,8 +1,7 @@
 import { getMaintenanceData } from '@/api/getMaintenancePageData';
-import { Loading } from '@/layout/Loading';
-import { Icon } from '@/shared/ui/AccordionIcon';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { NavLink } from '@/shared/ui/NavLink';
+import DownloadIcon from '@/assets/download.png';
+import { CommonHero, Icon, NavLink } from '@/components';
+import { Loading } from '@/components/layout/Loading';
 import {
   Accordion,
   AccordionBody,
@@ -16,7 +15,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import DownloadIcon from '@/assets/download.png';
 
 export default function MaintenanceWarrantyPage() {
   const { t } = useTranslation('common');
@@ -36,7 +34,7 @@ export default function MaintenanceWarrantyPage() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch={false}
         title={t('technicalMaintenance')}
@@ -47,45 +45,45 @@ export default function MaintenanceWarrantyPage() {
         ]}
         t={t}
       />
-      <ButtonGroup className="flex flex-wrap items-center justify-center">
+      <ButtonGroup className='flex flex-wrap items-center justify-center'>
         <NavLink
-          href="/maintenance"
-          text="maintenanceEvent"
+          href='/maintenance'
+          text='maintenanceEvent'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/register"
-          text="maintenanceRegister"
+          href='/maintenance/register'
+          text='maintenanceRegister'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/warranty"
-          text="warranty"
+          href='/maintenance/warranty'
+          text='warranty'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/car-maintenance"
-          text="carMaintenance"
+          href='/maintenance/car-maintenance'
+          text='carMaintenance'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/map"
-          text="maintenanceMap"
+          href='/maintenance/map'
+          text='maintenanceMap'
           pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl mt-16 text-center lg:text-2xl sm:!text-lg">
+      <h1 className='font-bold text-4xl mt-16 text-center lg:text-2xl sm:!text-lg'>
         {data.maintenance.title1}
       </h1>
-      <h2 className="max-w-4xl my-8 lg:max-w-xl sm:!text-sm sm:px-5">
+      <h2 className='max-w-4xl my-8 lg:max-w-xl sm:!text-sm sm:px-5'>
         {data.maintenance.text}
       </h2>
-      <h2 className="font-bold text-4xl mb-8 lg:text-2xl sm:!text-sm">
+      <h2 className='font-bold text-4xl mb-8 lg:text-2xl sm:!text-sm'>
         {data.maintenance.title2}
       </h2>
       {data.principles.map((accordion) => (
@@ -99,7 +97,9 @@ export default function MaintenanceWarrantyPage() {
         >
           <AccordionHeader
             className={`text-white hover:text-white px-6 lg:text-base ${
-              open === accordion.id ? 'bg-accordionBg text-black hover:text-black' : ''
+              open === accordion.id
+                ? 'bg-accordionBg text-black hover:text-black'
+                : ''
             }`}
             onClick={() => handleOpen(accordion.id)}
           >
@@ -108,49 +108,57 @@ export default function MaintenanceWarrantyPage() {
           <AccordionBody
             dangerouslySetInnerHTML={{ __html: accordion.text }}
             className={` px-6 lg:text-sm ${
-              open === accordion.id ? 'bg-accordionBg text-black hover:text-black' : ''
+              open === accordion.id
+                ? 'bg-accordionBg text-black hover:text-black'
+                : ''
             }`}
           ></AccordionBody>
         </Accordion>
       ))}
-      <h2 className="font-bold text-4xl my-8 md:text-2xl sm:text-xl">{t('userGuide')}</h2>
-      <table className="text-center border-2 mb-8 sm:mx-2">
-        <tr className="bg-primary text-white py-3 px-3 border-2 md:py-2 md:px-2 sm:py-1 sm:px-1 sm:text-xs">
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2">
+      <h2 className='font-bold text-4xl my-8 md:text-2xl sm:text-xl'>
+        {t('userGuide')}
+      </h2>
+      <table className='text-center border-2 mb-8 sm:mx-2'>
+        <tr className='bg-primary text-white py-3 px-3 border-2 md:py-2 md:px-2 sm:py-1 sm:px-1 sm:text-xs'>
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2'>
             {t('year')}
           </th>
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2">
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2'>
             {t('type')}
           </th>
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2 sm:hidden">
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2 sm:hidden'>
             {t('status')}
           </th>
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2">
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2'>
             {t('carName')}
           </th>
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2">
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2'>
             {t('modelDate')}
           </th>
-          <th className="py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2">
+          <th className='py-3 px-3 md:py-2 md:px-2 sm:py-1 sm:px-1 border-2'>
             {t('link')}
           </th>
         </tr>
         {data.models.map((model) => (
-          <tr key={model.id} className="hover:bg-accordionBg sm:text-xs">
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1">{model.year}</td>
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1">{model.frame}</td>
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1 sm:hidden">
+          <tr key={model.id} className='hover:bg-accordionBg sm:text-xs'>
+            <td className='py-3 border-2 md:px-2 sm:py-1 sm:!px-1'>
+              {model.year}
+            </td>
+            <td className='py-3 border-2 md:px-2 sm:py-1 sm:!px-1'>
+              {model.frame}
+            </td>
+            <td className='py-3 border-2 md:px-2 sm:py-1 sm:!px-1 sm:hidden'>
               {model.status}
             </td>
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1 uppercase">
+            <td className='py-3 border-2 md:px-2 sm:py-1 sm:!px-1 uppercase'>
               {model.name}
             </td>
-            <td className="py-3 border-2 md:px-2 sm:py-1 sm:!px-1">
+            <td className='py-3 border-2 md:px-2 sm:py-1 sm:!px-1'>
               {dayjs(model.createdAt).format('DD.MM.YYYY')}
             </td>
             <Link href={model.userGuidePath}>
-              <td className="border-2 py-3 md:px-2 sm:py-1 flex gap-2 items-center justify-center">
-                <Image src={DownloadIcon} alt="download" />
+              <td className='border-2 py-3 md:px-2 sm:py-1 flex gap-2 items-center justify-center'>
+                <Image src={DownloadIcon} alt='download' />
                 {t('download')}
               </td>
             </Link>
