@@ -2,11 +2,7 @@ import { BaseResponse } from '@/types/contacts';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-interface GetContactsParams {
-  lang?: string;
-}
-
-export const getContacts = async (params?: GetContactsParams) => {
+export const getContacts = async (params?: { lang?: string }) => {
   const { data }: AxiosResponse<BaseResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/contacts',

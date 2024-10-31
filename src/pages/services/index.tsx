@@ -1,10 +1,9 @@
 import { getContacts } from '@/api/getContacts';
 import { postApplication } from '@/api/postApplication';
 import TestDriveImage from '@/assets/testDrive.webp';
-import { Loading } from '@/layout/Loading';
-import ApplicationForm from '@/shared/ui/ApplicationForm';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { NavLink } from '@/shared/ui/NavLink';
+import { CommonHero, NavLink } from '@/components';
+import ApplicationForm from '@/components/ApplicationForm';
+import { Loading } from '@/components/layout/Loading';
 import { ApplicationModel } from '@/types/applicationForm';
 import { ButtonGroup } from '@material-tailwind/react';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
@@ -25,7 +24,8 @@ export default function ServicesPage() {
   });
 
   const mutation = useMutation({
-    mutationFn: (formData: ApplicationModel) => postApplication(formData, 'testDrive'),
+    mutationFn: (formData: ApplicationModel) =>
+      postApplication(formData, 'testDrive'),
     onSuccess: () => {
       queryClient.invalidateQueries();
       reset();
@@ -44,7 +44,7 @@ export default function ServicesPage() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch={false}
         title={t('testDrive')}
@@ -54,30 +54,35 @@ export default function ServicesPage() {
         ]}
         t={t}
       />
-      <ButtonGroup className="flex flex-wrap items-center justify-center">
-        <NavLink href="/services" text="testDrive" pathname={router.pathname} t={t} />
+      <ButtonGroup className='flex flex-wrap items-center justify-center'>
         <NavLink
-          href="/services/contacts"
-          text="contactUs"
+          href='/services'
+          text='testDrive'
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink
+          href='/services/contacts'
+          text='contactUs'
           pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
-      <div className="flex flex-col items-center 2xl:max-w-5xl">
-        <h1 className="text-4xl font-bold mt-16 text-center lg:text-2xl">
+      <div className='flex flex-col items-center 2xl:max-w-5xl'>
+        <h1 className='text-4xl font-bold mt-16 text-center lg:text-2xl'>
           {t('testDriveTitle')}
         </h1>
-        <h2 className="text-linkColor font-bold mb-10 text-center">
+        <h2 className='text-linkColor font-bold mb-10 text-center'>
           {t('testDriveSubtitle')}
         </h2>
         <Image
-          className="mb-10"
+          className='mb-10'
           src={TestDriveImage}
-          alt="Test drive picture"
+          alt='Test drive picture'
           width={500}
           height={300}
         />
-        <h2 className="text-4xl font-bold mb-8 lg:text-2xl text-center ">
+        <h2 className='text-4xl font-bold mb-8 lg:text-2xl text-center '>
           {t('testDriveFormTitle')}
         </h2>
         <ApplicationForm
@@ -85,7 +90,7 @@ export default function ServicesPage() {
           handleSubmit={handleSubmit}
           onSubmit={onSubmit}
         />
-        <div className="flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]">
+        <div className='flex flex-wrap items-center text-center justify-between my-8 w-[60%] md:justify-center sm:text-sm sm:w-[100%]'>
           <span>
             {t('phoneService')} &nbsp;
             {data.data.serviceDepartmentPhone.value}

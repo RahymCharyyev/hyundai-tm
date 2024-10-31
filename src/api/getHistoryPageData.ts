@@ -1,26 +1,15 @@
-import { ApiResponse, DetailedNewsHistory, HistoryResponse } from '@/types/historyPage';
+import {
+  ApiResponse,
+  DetailedNewsHistory,
+  HistoryResponse,
+} from '@/types/historyPage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-interface GetNewsDataParams {
+export const getNewsData = async (params?: {
   search?: string;
   lang?: string;
-}
-
-interface GetNewsDetailsDataParams {
-  id: number;
-  lang?: string;
-}
-
-interface GetMediaDataParams {
-  lang?: string;
-}
-
-interface GetHistoryDataParams {
-  lang?: string;
-}
-
-export const getNewsData = async (params?: GetNewsDataParams) => {
+}) => {
   const { data }: AxiosResponse<HistoryResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/news',
@@ -30,7 +19,10 @@ export const getNewsData = async (params?: GetNewsDataParams) => {
   return data.data;
 };
 
-export const getNewsDetailsData = async (params?: GetNewsDetailsDataParams) => {
+export const getNewsDetailsData = async (params?: {
+  id: number;
+  lang?: string;
+}) => {
   const { data }: AxiosResponse<DetailedNewsHistory> = await axiosInstance({
     method: 'GET',
     url: `/pages/news/${params?.id}`,
@@ -40,7 +32,7 @@ export const getNewsDetailsData = async (params?: GetNewsDetailsDataParams) => {
   return data;
 };
 
-export const getMediaData = async (params?: GetMediaDataParams) => {
+export const getMediaData = async (params?: { lang?: string }) => {
   const { data }: AxiosResponse<ApiResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/media',
@@ -50,7 +42,7 @@ export const getMediaData = async (params?: GetMediaDataParams) => {
   return data;
 };
 
-export const getHistoryData = async (params?: GetHistoryDataParams) => {
+export const getHistoryData = async (params?: { lang?: string }) => {
   const { data }: AxiosResponse<ApiResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/history',

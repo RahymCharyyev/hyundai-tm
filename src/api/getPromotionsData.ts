@@ -2,16 +2,7 @@ import { BaseResponse, DetailedPromotionModel } from '@/types/promotions';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-interface GetPromotionsDataParams {
-  lang?: string;
-}
-
-interface GetPromotionsDetailsData {
-  id: number;
-  lang?: string;
-}
-
-export const getPromotionsData = async (params: GetPromotionsDataParams) => {
+export const getPromotionsData = async (params: { lang?: string }) => {
   const { data }: AxiosResponse<BaseResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/promotions',
@@ -21,7 +12,10 @@ export const getPromotionsData = async (params: GetPromotionsDataParams) => {
   return data;
 };
 
-export const getPromotionsDetailsData = async (params: GetPromotionsDetailsData) => {
+export const getPromotionsDetailsData = async (params: {
+  id: number;
+  lang?: string;
+}) => {
   const { data }: AxiosResponse<DetailedPromotionModel> = await axiosInstance({
     method: 'GET',
     url: `/pages/promotions/${params.id}`,

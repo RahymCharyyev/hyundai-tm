@@ -1,11 +1,11 @@
 import { getModelsPageData } from '@/api/getModelsPageData';
-import { Loading } from '@/layout/Loading';
-import { useQueryParams } from '@/shared/hooks/useQueryParams';
+import { Loading } from '@/components/layout/Loading';
+import { ModelsFilter } from '@/components/models/ModelsFilter';
+import { ModelsHero } from '@/components/models/ModelsHero';
+import { ModelsList } from '@/components/models/ModelsList';
+import { ModelsModal } from '@/components/models/ModelsModal';
+import { useQueryParams } from '@/hooks/useQueryParams';
 import { FrameModel, ModelWithEquipment } from '@/types/modelsPage';
-import { ModelsFilter } from '@/widgets/models/models-filter/ModelsFilter';
-import { ModelsHero } from '@/widgets/models/models-hero/ModelsHero';
-import { ModelsList } from '@/widgets/models/models-list/ModelsList';
-import { ModelsModal } from '@/widgets/models/models-modal/ModelsModal';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
@@ -57,7 +57,7 @@ export default function Models() {
       const optionsArr = query.options.split(',');
       return optionsArr.reduce((result: any, optionId) => {
         const filtered: any = frameDefaultIds?.filter(
-          (frameId: any) => String(frameId) === optionId,
+          (frameId: any) => String(frameId) === optionId
         );
         if (filtered?.length > 0) result.push(filtered[0]);
 
@@ -84,9 +84,10 @@ export default function Models() {
         if (isFrameInOptions.length !== 0) {
           const selectedFrameId = String(isFrameInOptions[0]);
           const filteredOptions = optionsArr.filter(
-            (option) => option !== selectedFrameId,
+            (option) => option !== selectedFrameId
           );
-          if (frame === undefined) changeParams({ options: filteredOptions.join() });
+          if (frame === undefined)
+            changeParams({ options: filteredOptions.join() });
           else changeParams({ options: [...filteredOptions, frameId].join() });
         } else changeParams({ options: [...optionsArr, frameId].join() });
       } else changeParams({ options: frameId });
@@ -96,7 +97,7 @@ export default function Models() {
         if (isFrameInOptions.length !== 0) {
           const selectedFrameId = String(isFrameInOptions[0]);
           const filteredOptions = optionsArr.filter(
-            (option) => option !== selectedFrameId,
+            (option) => option !== selectedFrameId
           );
           changeParams({ options: filteredOptions.join() });
         }
@@ -120,7 +121,7 @@ export default function Models() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <ModelsHero
         searchQuery={searchQuery}
         handleSearchChange={handleSearchChange}
@@ -162,7 +163,7 @@ export default function Models() {
           </Button>
         ))}
       </ButtonGroup>
-      <div className="mt-16">
+      <div className='mt-16'>
         <ModelsList data={data.frameModels} handleOpen={handleOpenModal} />
       </div>
       {selectedModel && (

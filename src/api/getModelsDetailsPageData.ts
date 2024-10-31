@@ -4,27 +4,11 @@ import { axiosInstance } from './axiosInstance';
 import { ModelsCharacteristics } from '@/types/modelsCharacteristics';
 import { ModelImagesResponse } from '@/types/modelsImages';
 
-interface GetModelsDetailsPageDataParams {
+export const getModelsDetailsPageData = async (params?: {
   key?: string;
   modelId?: number;
   lang?: string;
-}
-
-interface GetModelsCharactericsticsParams {
-  configurationId?: number;
-  modelId?: number;
-  lang?: string;
-}
-
-interface GetModelsImagesParams {
-  type?: string;
-  modelId?: number;
-  lang?: string;
-}
-
-export const getModelsDetailsPageData = async (
-  params?: GetModelsDetailsPageDataParams,
-) => {
+}) => {
   const { data }: AxiosResponse<ModelsDetailsResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details',
@@ -34,9 +18,11 @@ export const getModelsDetailsPageData = async (
   return data.data;
 };
 
-export const getModelsCharactericstics = async (
-  params?: GetModelsCharactericsticsParams,
-) => {
+export const getModelsCharactericstics = async (params?: {
+  configurationId?: number;
+  modelId?: number;
+  lang?: string;
+}) => {
   const { data }: AxiosResponse<ModelsCharacteristics> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details/characteristics',
@@ -46,7 +32,11 @@ export const getModelsCharactericstics = async (
   return data;
 };
 
-export const getModelsImages = async (params?: GetModelsImagesParams) => {
+export const getModelsImages = async (params?: {
+  type?: string;
+  modelId?: number;
+  lang?: string;
+}) => {
   const { data }: AxiosResponse<ModelImagesResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details/images',
@@ -56,9 +46,11 @@ export const getModelsImages = async (params?: GetModelsImagesParams) => {
   return data.data;
 };
 
-export const getModelsDetailsSpecificationsData = async (
-  params?: GetModelsDetailsPageDataParams,
-) => {
+export const getModelsDetailsSpecificationsData = async (params?: {
+  key?: string;
+  modelId?: number;
+  lang?: string;
+}) => {
   const { data }: AxiosResponse<ModelsDetailsResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/model-details/specification',

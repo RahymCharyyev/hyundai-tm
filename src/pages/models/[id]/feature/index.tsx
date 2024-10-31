@@ -3,9 +3,8 @@ import {
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
 import DownloadIcon from '@/assets/download.png';
-import { Loading } from '@/layout/Loading';
-import { ModelsDetailsHero } from '@/shared/ui/ModelsDetailsHero';
-import { ModelsDetailsNav } from '@/shared/ui/ModelsDetailsNav';
+import { ModelsDetailsHero, ModelsDetailsNav } from '@/components';
+import { Loading } from '@/components/layout/Loading';
 import { useQuery } from '@tanstack/react-query';
 import { saveAs } from 'file-saver';
 import useTranslation from 'next-translate/useTranslation';
@@ -70,12 +69,15 @@ export default function ModelsMain() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <ModelsDetailsHero
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
+          {
+            href: `/models/${id}/feature`,
+            text: `${data?.model?.name?.toUpperCase()}`,
+          },
           { href: `/models/${id}/feature`, text: t('feature') },
         ]}
         data={data?.banner}
@@ -90,60 +92,65 @@ export default function ModelsMain() {
             index % 2 === 0 ? 'bg-accordionBg' : ''
           }`}
         >
-          <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
+          <h2 className='text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl'>
             {detail?.title}
           </h2>
           <div
-            className="max-w-6xl my-4 md:px-3 sm:text-sm"
+            className='max-w-6xl my-4 md:px-3 sm:text-sm'
             dangerouslySetInnerHTML={{ __html: detail?.text }}
           />
           {detail?.image &&
             (detail?.imagePath.split('.').at(-1) == 'mp4' ? (
               <video
                 autoPlay
-                crossOrigin="anonymous"
-                width="1120"
-                height="600"
+                crossOrigin='anonymous'
+                width='1120'
+                height='600'
                 src={detail?.imagePath}
                 controls={false}
               />
             ) : (
               <Image
                 src={detail?.imagePath}
-                alt="features images"
+                alt='features images'
                 width={1120}
                 height={600}
               />
             ))}
         </div>
       ))}
-      <h2 className="text-center my-4 font-bold text-4xl md:text-2xl sm:!text-xl">
+      <h2 className='text-center my-4 font-bold text-4xl md:text-2xl sm:!text-xl'>
         {t('gallery')}
       </h2>
       {gallery?.length !== 0 && (
-        <div className="flex flex-col items-end">
+        <div className='flex flex-col items-end'>
           <ImageGallery
             showIndex={true}
-            additionalClass="w-[1100px] sm:w-72"
+            additionalClass='w-[1100px] sm:w-72'
             lazyLoad
             showNav={false}
             items={images}
             onThumbnailClick={(value) => handleAddToState(value)}
           />
-          <div className="flex gap-2 items-center" onClick={() => handleDownload()}>
-            <Image src={DownloadIcon} alt="Download icon" />
-            <button className="hover:text-fourthColor font-bold">{t('download')}</button>
+          <div
+            className='flex gap-2 items-center'
+            onClick={() => handleDownload()}
+          >
+            <Image src={DownloadIcon} alt='Download icon' />
+            <button className='hover:text-fourthColor font-bold'>
+              {t('download')}
+            </button>
           </div>
         </div>
       )}
       <ModelsDetailsNav
         t={t}
-        nextLink="specifications"
-        prevLink="feature"
+        nextLink='specifications'
+        prevLink='feature'
         id={id}
         showPrev={false}
       />
-      <span className="mx-auto max-w-6xl mb-10 text-gray-600 md:text-sm md:px-3 sm:!text-xs">
+      <span className='mx-auto max-w-6xl mb-10 text-gray-600 md:text-sm md:px-3 sm:!text-xs'>
         {t('modelDetailsInfo')}
       </span>
     </main>

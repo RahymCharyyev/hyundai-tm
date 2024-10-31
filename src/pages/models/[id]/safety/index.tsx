@@ -2,9 +2,9 @@ import {
   getModelsDetailsPageData,
   getModelsImages,
 } from '@/api/getModelsDetailsPageData';
-import { Loading } from '@/layout/Loading';
-import { ModelsDetailsHero, ModelsDetailsNav } from '@/shared/ui';
-import SmartSenseComponent from '@/shared/ui/SmartSense';
+import { ModelsDetailsHero, ModelsDetailsNav } from '@/components';
+import { Loading } from '@/components/layout/Loading';
+import SmartSenseComponent from '@/components/SmartSense';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import Image from 'next/image';
@@ -41,12 +41,15 @@ export default function ModelsSafety() {
   console.log('data', data);
   console.log('gifs', gifs);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <ModelsDetailsHero
         breadcrumbs={[
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
-          { href: `/models/${id}/feature`, text: `${data?.model?.name?.toUpperCase()}` },
+          {
+            href: `/models/${id}/feature`,
+            text: `${data?.model?.name?.toUpperCase()}`,
+          },
           { href: `/models/${id}/safety`, text: t('safety') },
         ]}
         data={data?.banner}
@@ -57,7 +60,7 @@ export default function ModelsSafety() {
 
       {gifs?.length !== 0 && (
         <>
-          <h1 className="text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl mb-2">
+          <h1 className='text-4xl font-bold md:px-3 md:text-2xl sm:!text-xl mb-2'>
             Hyundai SmartSense
           </h1>
           <SmartSenseComponent gifs={gifs} t={t} />
@@ -72,27 +75,27 @@ export default function ModelsSafety() {
                 index % 2 === 0 ? 'bg-accordionBg' : ''
               }`}
             >
-              <h2 className="text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl">
+              <h2 className='text-3xl font-bold md:px-3 md:text-2xl sm:!text-xl'>
                 {detail?.title}
               </h2>
               <div
-                className="max-w-6xl my-4 md:px-3 sm:text-sm"
+                className='max-w-6xl my-4 md:px-3 sm:text-sm'
                 dangerouslySetInnerHTML={{ __html: detail?.text }}
               />
               {detail?.image &&
                 (detail?.imagePath.split('.').at(-1) == 'mp4' ? (
                   <video
                     autoPlay
-                    crossOrigin="anonymous"
-                    width="1120"
-                    height="600"
+                    crossOrigin='anonymous'
+                    width='1120'
+                    height='600'
                     src={detail?.imagePath}
                     controls={false}
                   />
                 ) : (
                   <Image
                     src={detail?.imagePath}
-                    alt="features images"
+                    alt='features images'
                     width={1120}
                     height={600}
                   />
@@ -101,8 +104,13 @@ export default function ModelsSafety() {
           ))}
         </>
       )}
-      <ModelsDetailsNav t={t} nextLink="comfort" prevLink="performance" id={id} />
-      <span className="mx-auto max-w-6xl text-gray-600 mb-10 md:text-sm md:px-3 sm:!text-xs">
+      <ModelsDetailsNav
+        t={t}
+        nextLink='comfort'
+        prevLink='performance'
+        id={id}
+      />
+      <span className='mx-auto max-w-6xl text-gray-600 mb-10 md:text-sm md:px-3 sm:!text-xs'>
         {t('modelDetailsInfo')}
       </span>
     </main>

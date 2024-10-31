@@ -1,6 +1,6 @@
+import HyundaiSeo from '@/components/hyundaiSeo';
+import { Layout } from '@/components/layout/Layout';
 import * as ga from '@/google-analytics';
-import { Layout } from '@/layout/Layout';
-import HyundaiSeo from '@/shared/seo/hyundaiSeo';
 import '@/styles/globals.css';
 import { ThemeProvider } from '@material-tailwind/react';
 import '@photo-sphere-viewer/core/index.css';
@@ -14,32 +14,32 @@ import { useEffect } from 'react';
 const hyundaiSans = localFont({
   src: [
     {
-      path: './fonts/HyundaiSansTextOffice-Regular.woff2',
+      path: '../fonts/HyundaiSansTextOffice-Regular.woff2',
       weight: '400',
       style: 'normal',
     },
     {
-      path: './fonts/HyundaiSansTextOffice-Italic.woff2',
+      path: '../fonts/HyundaiSansTextOffice-Italic.woff2',
       weight: '400',
       style: 'italic',
     },
     {
-      path: './fonts/HyundaiSansTextOffice-Medium.woff2',
+      path: '../fonts/HyundaiSansTextOffice-Medium.woff2',
       weight: '500',
       style: 'normal',
     },
     {
-      path: './fonts/HyundaiSansTextOffice-MediumItalic.woff2',
+      path: '../fonts/HyundaiSansTextOffice-MediumItalic.woff2',
       weight: '500',
       style: 'italic',
     },
     {
-      path: './fonts/HyundaiSansTextOffice-Bold.woff2',
+      path: '../fonts/HyundaiSansTextOffice-Bold.woff2',
       weight: '700',
       style: 'normal',
     },
     {
-      path: './fonts/HyundaiSansTextOffice-BoldItalic.woff2',
+      path: '../fonts/HyundaiSansTextOffice-BoldItalic.woff2',
       weight: '700',
       style: 'italic',
     },

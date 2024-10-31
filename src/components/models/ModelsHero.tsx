@@ -1,9 +1,9 @@
-import { ChangeEvent, KeyboardEvent, FC } from 'react';
-import { Breadcrumbs } from '@/shared/ui';
-import { Button, Input } from '@material-tailwind/react';
-import Image from 'next/image';
 import FilterIcon from '@/assets/filter_icon.svg';
 import SearchIcon from '@/assets/search_icon.svg';
+import { Button, Input } from '@material-tailwind/react';
+import Image from 'next/image';
+import { ChangeEvent, FC, KeyboardEvent } from 'react';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type ModelsHeroProps = {
   t: Function;
@@ -29,30 +29,30 @@ export const ModelsHero: FC<ModelsHeroProps> = ({
           { href: '/', text: t('main') },
           { href: '/models', text: t('modelsLineup') },
         ]}
-        className="bg-opacity-0"
+        className='bg-opacity-0'
       />
-      <h1 className="text-5xl font-bold lg:text-3xl">{t('allVehicles')}</h1>
-      <div className="flex gap-4 md:flex-wrap justify-center">
+      <h1 className='text-5xl font-bold lg:text-3xl'>{t('allVehicles')}</h1>
+      <div className='flex gap-4 md:flex-wrap justify-center'>
         <Input
-          size="lg"
-          color="blue-gray"
-          className="bg-white rounded-none focus:rounded-none focus:outline-0"
-          crossOrigin="true"
+          size='lg'
+          color='blue-gray'
+          className='bg-white rounded-none focus:rounded-none focus:outline-0'
+          crossOrigin='true'
           label={t('vehicleSearch')}
-          icon={<Image src={SearchIcon} alt="search icon" />}
+          icon={<Image src={SearchIcon} alt='search icon' />}
           value={searchQuery}
           onChange={handleSearchChange}
           onKeyDown={handleSearchKeyPress}
         />
         <Button
           onClick={toggleFilter}
-          className="flex items-center gap-2 bg-primary text-white py-2 px-7 pl-3 hover:underline rounded-none"
+          className='flex items-center gap-2 bg-primary text-white py-2 px-7 pl-3 hover:underline rounded-none'
         >
           {t('filter')}
           {showFilter === true ? (
-            <Image className="rotate-180" src={FilterIcon} alt="filter icon" />
+            <Image className='rotate-180' src={FilterIcon} alt='filter icon' />
           ) : (
-            <Image src={FilterIcon} alt="filter icon" />
+            <Image src={FilterIcon} alt='filter icon' />
           )}
         </Button>
       </div>

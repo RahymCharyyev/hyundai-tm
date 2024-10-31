@@ -1,7 +1,7 @@
 import { getNewsDetailsData } from '@/api/getHistoryPageData';
-import { Loading } from '@/layout/Loading';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { DetailedNews } from '@/widgets/history/news/DetailedNews';
+import { CommonHero } from '@/components';
+import { DetailedNews } from '@/components/history/DetailedNews';
+import { Loading } from '@/components/layout/Loading';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
 import { useRouter } from 'next/router';
@@ -25,7 +25,7 @@ export default function DetailedNewsPage() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch={false}
         title={t('news')}
@@ -36,7 +36,9 @@ export default function DetailedNewsPage() {
         ]}
         t={t}
       />
-      <div className="my-10">{data && <DetailedNews t={t} detailedNews={data} />}</div>
+      <div className='my-10'>
+        {data && <DetailedNews t={t} detailedNews={data} />}
+      </div>
     </main>
   );
 }

@@ -1,9 +1,8 @@
 import { getNewsData } from '@/api/getHistoryPageData';
-import { Loading } from '@/layout/Loading';
-import { useQueryParams } from '@/shared/hooks/useQueryParams';
-import { NavLink } from '@/shared/ui/NavLink';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { NewsList } from '@/widgets/history/news/NewsList';
+import { CommonHero, NavLink } from '@/components';
+import { NewsList } from '@/components/history/NewsList';
+import { Loading } from '@/components/layout/Loading';
+import { useQueryParams } from '@/hooks/useQueryParams';
 import { Button, ButtonGroup } from '@material-tailwind/react';
 import { useQuery } from '@tanstack/react-query';
 import useTranslation from 'next-translate/useTranslation';
@@ -16,7 +15,9 @@ export default function NewsPage() {
   const { query, changeParams } = useQueryParams();
   const router = useRouter();
   const currentLang = router.locale;
-  const [selectedNewsType, setSelectedNewsType] = useState<string | null>('local');
+  const [selectedNewsType, setSelectedNewsType] = useState<string | null>(
+    'local'
+  );
 
   const { isPending, error, data } = useQuery({
     queryKey: ['historyPage', query.search],
@@ -43,7 +44,7 @@ export default function NewsPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch
         searchQuery={searchQuery}
@@ -56,18 +57,28 @@ export default function NewsPage() {
         ]}
         t={t}
       />
-      <ButtonGroup className="flex flex-wrap items-center justify-center">
+      <ButtonGroup className='flex flex-wrap items-center justify-center'>
         <NavLink
-          href="/history"
-          text="hyundaiTurkmenistan"
+          href='/history'
+          text='hyundaiTurkmenistan'
           pathname={router.pathname}
           t={t}
         />
-        <NavLink href="/history/media" text="media" pathname={router.pathname} t={t} />
-        <NavLink href="/history/news" text="news" pathname={router.pathname} t={t} />
         <NavLink
-          href="/history/social-responsibility"
-          text="socialResponsibility"
+          href='/history/media'
+          text='media'
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink
+          href='/history/news'
+          text='news'
+          pathname={router.pathname}
+          t={t}
+        />
+        <NavLink
+          href='/history/social-responsibility'
+          text='socialResponsibility'
           pathname={router.pathname}
           t={t}
         />
@@ -90,7 +101,7 @@ export default function NewsPage() {
           {t('globalNews')}
         </Button>
       </ButtonGroup>
-      <div className="my-10">
+      <div className='my-10'>
         <NewsList t={t} data={data.rows} selectedNewsType={selectedNewsType} />
       </div>
     </main>

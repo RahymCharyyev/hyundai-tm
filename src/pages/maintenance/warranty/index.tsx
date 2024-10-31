@@ -1,8 +1,6 @@
 import { getMaintenanceData } from '@/api/getMaintenancePageData';
-import { Loading } from '@/layout/Loading';
-import { Icon } from '@/shared/ui/AccordionIcon';
-import { CommonHero } from '@/shared/ui/CommonHero';
-import { NavLink } from '@/shared/ui/NavLink';
+import { CommonHero, Icon, NavLink } from '@/components';
+import { Loading } from '@/components/layout/Loading';
 import {
   Accordion,
   AccordionBody,
@@ -32,7 +30,7 @@ export default function MaintenanceWarrantyPage() {
   if (error) return 'An error has occurred: ' + error.message;
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-start">
+    <main className='flex min-h-screen flex-col items-center justify-start'>
       <CommonHero
         showSearch={false}
         title={t('warranty')}
@@ -42,39 +40,39 @@ export default function MaintenanceWarrantyPage() {
         ]}
         t={t}
       />
-      <ButtonGroup className="flex flex-wrap items-center justify-center">
+      <ButtonGroup className='flex flex-wrap items-center justify-center'>
         <NavLink
-          href="/maintenance"
-          text="maintenanceEvent"
+          href='/maintenance'
+          text='maintenanceEvent'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/register"
-          text="maintenanceRegister"
+          href='/maintenance/register'
+          text='maintenanceRegister'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/warranty"
-          text="warranty"
+          href='/maintenance/warranty'
+          text='warranty'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/car-maintenance"
-          text="carMaintenance"
+          href='/maintenance/car-maintenance'
+          text='carMaintenance'
           pathname={router.pathname}
           t={t}
         />
         <NavLink
-          href="/maintenance/map"
-          text="maintenanceMap"
+          href='/maintenance/map'
+          text='maintenanceMap'
           pathname={router.pathname}
           t={t}
         />
       </ButtonGroup>
-      <h1 className="font-bold text-4xl my-16 text-center lg:text-2xl sm:!text-lg sm:px-5">
+      <h1 className='font-bold text-4xl my-16 text-center lg:text-2xl sm:!text-lg sm:px-5'>
         {t('warrantyCondition')}
       </h1>
       {data.guarantees.map((warranty) => (
@@ -88,7 +86,9 @@ export default function MaintenanceWarrantyPage() {
         >
           <AccordionHeader
             className={`text-white hover:text-white px-6 ${
-              open === warranty.id ? 'bg-accordionBg text-black hover:text-black' : ''
+              open === warranty.id
+                ? 'bg-accordionBg text-black hover:text-black'
+                : ''
             } lg:text-base sm:!text-sm`}
             onClick={() => handleOpen(warranty.id)}
           >
@@ -97,7 +97,9 @@ export default function MaintenanceWarrantyPage() {
           <AccordionBody
             dangerouslySetInnerHTML={{ __html: warranty.text }}
             className={` px-6 ${
-              open === warranty.id ? 'bg-accordionBg text-black hover:text-black ' : ''
+              open === warranty.id
+                ? 'bg-accordionBg text-black hover:text-black '
+                : ''
             }lg:text-sm sm:!text-xs`}
           ></AccordionBody>
         </Accordion>

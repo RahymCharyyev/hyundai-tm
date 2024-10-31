@@ -2,11 +2,7 @@ import { MaintenanceResponse } from '@/types/servicePage';
 import type { AxiosResponse } from 'axios';
 import { axiosInstance } from './axiosInstance';
 
-interface GetMaintenancePageParams {
-  lang?: string;
-}
-
-export const getMaintenanceData = async (params?: GetMaintenancePageParams) => {
+export const getMaintenanceData = async (params?: { lang?: string }) => {
   const { data }: AxiosResponse<MaintenanceResponse> = await axiosInstance({
     method: 'GET',
     url: '/pages/service',
