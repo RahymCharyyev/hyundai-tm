@@ -18,9 +18,11 @@ type CarsSliderProps = {
 export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
   return (
     <>
-      <h2 className="font-bold text-5xl mb-10 lg:text-3xl sm:mb-0">{t('models')}</h2>
+      <h2 className='font-bold text-5xl mb-10 lg:text-3xl sm:mb-0'>
+        {t('models')}
+      </h2>
       <Swiper
-        className="model"
+        className='model'
         modules={[Navigation, Pagination, Autoplay, A11y]}
         navigation
         a11y={{ enabled: true }}
@@ -34,15 +36,19 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
       >
         {data.map((model) => (
           <SwiperSlide key={model.id}>
-            <Link href={`/models/${model.id}/feature`} className="mb-20 mt-5  sm:mb-10">
+            <Link
+              href={`/models/${model.id}/feature`}
+              className='mb-20 mt-5 sm:mb-10'
+            >
               <Image
-                className="lg:w-72"
+                className='lg:w-72'
                 src={model.imagePath}
                 alt={`Image of Hyundai ${model.name}`}
                 width={1860}
                 height={100}
+                priority
               />
-              <h2 className="font-bold text-3xl lg:text-xl md:!text-xs hover:underline uppercase">
+              <h2 className='font-bold text-3xl lg:text-xl md:!text-xs hover:underline uppercase'>
                 {model.name}
               </h2>
             </Link>
@@ -50,12 +56,12 @@ export const CarsSlider: FC<CarsSliderProps> = ({ data, t }) => {
         ))}
       </Swiper>
       <Link
-        className="bg-primary text-white py-4 px-5 hover:underline mb-20 lg:py-2 lg:px-3 lg:text-sm"
-        href="/models"
+        className='bg-primary text-white py-4 px-5 hover:underline mb-20 lg:py-2 lg:px-3 lg:text-sm'
+        href='/models'
       >
         {t('moreModels')}
       </Link>
-      <hr className="w-full h-px bg-thirdColor mb-8"></hr>
+      <hr className='w-full h-px bg-thirdColor mb-8'></hr>
     </>
   );
 };

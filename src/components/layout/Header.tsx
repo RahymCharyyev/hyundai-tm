@@ -45,14 +45,13 @@ export default function Header() {
       <div className='flex justify-between items-center h-24 px-28 lg:px-10 md:flex-wrap xs:!justify-center'>
         <Link href='/'>
           <Image
-            className='lg:w-[120px]'
+            className='w-[190px] h-[30px] lg:w-[120px]'
             src={HyundaiBlueLogo}
             alt='hyundai logo'
             width={190}
             height={30}
           />
         </Link>
-
         <div className='flex gap-8 2xl:hidden'>
           <Link
             className={
