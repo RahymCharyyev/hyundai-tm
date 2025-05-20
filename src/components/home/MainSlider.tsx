@@ -33,7 +33,7 @@ export const MainSlider: FC<MainSliderProps> = ({ data, t }) => {
       >
         {data.map((banner, index) => (
           <SwiperSlide key={banner.id}>
-            <div className='relative h-[720px] w-full'>
+            <div className='relative h-[680px] w-full lg:h-[160px]'>
               <Image
                 className='object-cover'
                 src={banner.imageRuPath}
