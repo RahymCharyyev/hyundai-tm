@@ -28,7 +28,7 @@
   .swiper-button-prev {
     background-color: #4d4d4dcc;
     border-radius: 50%;
-    padding: 30px;
+    padding: 10px;
     color: #fff;
   }
 
@@ -72,7 +72,6 @@
 
   .swiper-button-next,
   .swiper-button-prev {
-    padding: 30px;
     color: #000;
   }
 
@@ -111,7 +110,6 @@
 
   .swiper-button-next,
   .swiper-button-prev {
-    padding: 30px;
     color: #000;
   }
 
@@ -134,10 +132,6 @@
 @media screen and (max-width: 900px) {
   .banner {
     --swiper-navigation-size: 20px;
-    .swiper-button-next,
-    .swiper-button-prev {
-      padding: 20px;
-    }
   }
 
   .model {
@@ -155,7 +149,7 @@
     --swiper-navigation-size: 10px;
     .swiper-button-next,
     .swiper-button-prev {
-      padding: 10px;
+      visibility: hidden;
     }
   }
 
@@ -163,9 +157,17 @@
     height: 270px;
     --swiper-navigation-size: 10px !important;
     margin-bottom: 10px;
+    .swiper-button-next,
+    .swiper-button-prev {
+      visibility: hidden;
+    }
   }
   .news {
     --swiper-navigation-size: 20px !important;
+    .swiper-button-next,
+    .swiper-button-prev {
+      visibility: hidden;
+    }
   }
 }
 
